@@ -1,0 +1,107 @@
+Healthcare Appointment Application using Next.js
+Case Study Title: Design Pattern Identification and Evolution in a Next.js-Based Healthcare Appointment Application
+Part 2 – Software Evolution Prompts & Execution Trace
+
+================================================================================
+Prompt-1: Baseline Inspection and Architectural Audit
+================================================================================
+Act as a senior software architect. Analyze the CarePulse healthcare appointment management repository for Part 2 of our Design Patterns Case Study:
+Repository: https://github.com/Kartheek-3/B2
+Original application: https://github.com/arnobt78/HealthCare-Doctor-Appointment-Management-System--NextJS-FullStack
+Baseline commit: f846cd4c476d48a04fcaeb530b48a77c5295bb92
+
+Inspect the actual repository, the assignment folder structure, package dependencies, existing tests, and Appwrite integrations.
+Preserve the baseline untouched under data/code/HealthCare-Doctor-Appointment-Management-System/.
+Identify the relevant files, pre-existing build/typing issues, and architectural opportunities for three evolution scenarios:
+1. Video consultation integration using an Adapter pattern.
+2. Flexible doctor availability using a Strategy pattern.
+3. Automated appointment reminders using Observer/domain events and scheduled processing.
+
+================================================================================
+Prompt-2: Implementation Plan & Risk Strategy
+================================================================================
+Before writing code, formulate a realistic implementation plan for each change:
+- Current architecture and relevant file paths.
+- Realistic implementation plan for CH01, CH02, CH03.
+- New and modified files expected for each change.
+- Dependencies or external credentials required (avoid paid/unavailable APIs; use explicitly labelled mock/local providers for testing while keeping clean target interfaces).
+- Concurrency limitations, delivery guarantees, and automated test strategy.
+Wait for human approval before coding.
+
+================================================================================
+Prompt-3: Implementation Approval & Mandatory Engineering Constraints
+================================================================================
+Approval granted subject to mandatory engineering corrections:
+1. CH01 — Adapter: Implement genuine Adapter collaboration with provider-specific adaptee, concrete adapter, and application-facing target interface. Label mock provider as local demonstration.
+2. CH02 — Strategy: Implement 3 availability strategies with genuine runtime interchangeability. Validate availability on server during appointment scheduling, conflict check, timezone and edge cases. Document concurrency limitations.
+3. CH03 — Observer: Implement real event publisher with registered subscribers. Use persistent reminder store in integrated application, not in-memory-only. Include reminder scheduling, cancellation, rescheduling, protected due-reminder processing, idempotency, retries, and duplicate-prevention tests. Do not claim exactly-once external delivery without supporting guarantees.
+4. Repository structure: Preserve baseline untouched. Use Part2/code/ as authoritative integrated application. Keep separate evidence under Part2/changes/Change1/, Change2/, Change3/.
+5. Security: Server-side privileged credentials, authorization on endpoints.
+6. Verification: Run actual unit, integration, and regression tests, TypeScript checks, and production build. Record actual results only.
+7. Deliverables: Generate patterns_evolution.csv, Pattern_count.csv, llm.csv, Part2_prompts.txt, and architecture diagrams.
+
+================================================================================
+Prompt-4: CH01 Video Consultation Adapter Implementation
+================================================================================
+Implement Change 1 under Part2/changes/Change1/:
+- Target Interface: IVideoConsultationService (createRoom, getRoomDetails, generateParticipantAccess).
+- Adaptee: LocalDemonstrationVideoProvider (proprietary session payloads, epoch timestamps, clinician/client token claims).
+- Concrete Adapter: LocalDemonstrationVideoAdapter.
+- Service Factory: VideoServiceFactory.
+- Automated Test Suite: test_adapter.ts (room creation, role mapping, token generation, error handling).
+
+================================================================================
+Prompt-5: CH02 Flexible Doctor Availability Strategy Implementation
+================================================================================
+Implement Change 2 under Part2/changes/Change2/:
+- Strategy Interface: IAvailabilityStrategy (validateSlot, generateAvailableSlots).
+- Concrete Strategies:
+  1. StandardBusinessHoursStrategy: Mon-Fri 09:00-17:00, lunch break 12:00-13:00, weekend rejection, conflict detection.
+  2. ShiftBasedAvailabilityStrategy: Rotating shifts (morning/evening/night), assigned shift day validation, shift boundary enforcement.
+  3. EmergencyOnCallAvailabilityStrategy: 24/7 emergency triage availability with mandatory 15-minute recovery buffer gap around bookings.
+- Context: DoctorAvailabilityContext with dynamic runtime strategy switching and server-side validation.
+- Automated Test Suite: test_strategy.ts.
+
+================================================================================
+Prompt-6: CH03 Automated Reminders Observer Pattern Implementation
+================================================================================
+Implement Change 3 under Part2/changes/Change3/:
+- Subject: DomainEventBus with subscribe, unsubscribe, and publish.
+- Domain Events: APPOINTMENT_SCHEDULED, APPOINTMENT_CANCELLED, APPOINTMENT_RESCHEDULED.
+- Concrete Observers:
+  1. ReminderSchedulerObserver: Computes T-24h and T-2h reminder windows; enqueues tasks with deterministic idempotency keys.
+  2. ReminderCancellationObserver: Automatically invalidates/revokes pending reminders on cancellation.
+  3. AuditLogObserver: Records chronological audit trail.
+- Persistent Store: JsonFileReminderStore with disk persistence and duplicate prevention.
+- Processing Engine: ReminderProcessingEngine evaluating due tasks, transitioning states, retrying transient errors.
+- Automated Test Suite: test_observer.ts.
+
+================================================================================
+Prompt-7: Application Integration in Part2/code/
+================================================================================
+Integrate all three changes into Part2/code/:
+- Wire VideoServiceFactory, DoctorAvailabilityContext, and DomainEventBus into lib/actions/appointment.actions.ts.
+- Add protected API endpoints:
+  - /api/reminders/process with authorization token check.
+  - /api/video/token with participant authorization check.
+- Enhance success page with teleconsultation session links.
+- Create Part2/code/tests/run_all_tests.ts master integration test suite.
+- Update package.json test script.
+
+================================================================================
+Prompt-8: Verification, Test Execution, and Production Build
+================================================================================
+Execute full automated verification on Part2/code/:
+- Run npm test (17/17 tests passing across Adapter, Strategy, Observer, Idempotency, and Retries).
+- Run tsc --noEmit to audit type safety and identify pre-existing vs. new typing issues.
+- Run npm run build to verify Next.js production build and static optimization.
+
+================================================================================
+Prompt-9: Academic Evidence Dataset and Evolution Diagrams
+================================================================================
+Generate the final Part 2 deliverables:
+- Part2/patterns_evolution.csv
+- Part2/Pattern_count.csv
+- Part2/llm.csv
+- Part2/Diagrams/architecture_evolution.drawio and exported architecture_evolution.png
+Record actual data and source-code mappings.

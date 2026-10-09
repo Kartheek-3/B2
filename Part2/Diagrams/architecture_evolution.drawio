@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mxfile host="app.diagrams.net" modified="2026-10-09T22:00:00Z" agent="Antigravity" version="24.7.17" type="device">
+  <diagram id="part2-evolution-architecture" name="Part 2 Software Evolution Architecture">
+    <mxGraphModel dx="2400" dy="1600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2400" pageHeight="1600" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- TITLE BLOCK -->
+        <mxCell id="title" value="&lt;div style=&quot;font-size:24px;font-weight:bold;color:#1E293B;&quot;&gt;CarePulse Part 2: Software Evolution &amp;amp; Design Pattern Collaborations&lt;/div&gt;&lt;div style=&quot;font-size:13px;color:#64748B;&quot;&gt;Demonstrating GoF Adapter (CH01), Strategy (CH02), and Observer (CH03) in Next.js FullStack Healthcare Architecture&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="200" y="20" width="2000" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- LAYER 1: PRESENTATION LAYER -->
+        <mxCell id="p_presentation" value="&lt;div style=&quot;font-size:16px;font-weight:bold;color:#0F172A;&quot;&gt;PRESENTATION LAYER (Next.js 14 App Router)&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#CBD5E1;strokeWidth=2;verticalAlign=top;spacingTop=12;align=left;spacingLeft=16;" vertex="1" parent="1">
+          <mxGeometry x="60" y="100" width="520" height="760" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ui_appointment_form" value="&lt;b&gt;AppointmentForm.tsx&lt;/b&gt;&lt;br&gt;Client Form Component&lt;br&gt;&lt;font color=&quot;#16A34A&quot;&gt;+ isTeleconsultation toggle&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#94A3B8;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="90" y="160" width="220" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ui_success_page" value="&lt;b&gt;Success Page&lt;/b&gt;&lt;br&gt;app/.../success/page.tsx&lt;br&gt;&lt;font color=&quot;#2563EB&quot;&gt;+ Video Join Link Display&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#94A3B8;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="340" y="160" width="210" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ui_admin_table" value="&lt;b&gt;Admin Dashboard &amp;amp; Modals&lt;/b&gt;&lt;br&gt;columns.tsx / AppointmentModal.tsx&lt;br&gt;Schedule / Cancel Triggers" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#94A3B8;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="90" y="280" width="460" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ui_video_api" value="&lt;b&gt;POST /api/video/token&lt;/b&gt;&lt;br&gt;Protected Endpoint&lt;br&gt;Mints Participant Access Tokens" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="90" y="390" width="460" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ui_reminders_api" value="&lt;b&gt;POST /api/reminders/process&lt;/b&gt;&lt;br&gt;Protected Scheduled Endpoint&lt;br&gt;x-scheduled-token Authorization" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF2F2;strokeColor=#EF4444;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="90" y="500" width="460" height="70" as="geometry" />
+        </mxCell>
+
+
+        <!-- LAYER 2: APPLICATION SERVICES & SERVER ACTIONS -->
+        <mxCell id="p_services" value="&lt;div style=&quot;font-size:16px;font-weight:bold;color:#0F172A;&quot;&gt;APPLICATION LOGIC &amp;amp; SERVER ACTIONS&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#CBD5E1;strokeWidth=2;verticalAlign=top;spacingTop=12;align=left;spacingLeft=16;" vertex="1" parent="1">
+          <mxGeometry x="620" y="100" width="560" height="760" as="geometry" />
+        </mxCell>
+
+        <mxCell id="act_appointment" value="&lt;b&gt;appointment.actions.ts&lt;/b&gt;&lt;br&gt;&lt;div style=&quot;text-align:left;font-size:11px;padding:6px;&quot;&gt;• createAppointment()&lt;br&gt;• updateAppointment()&lt;br&gt;• getRecentAppointmentList()&lt;br&gt;• sendSMSNotification() [Preserved]&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#334155;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="650" y="160" width="500" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="hub_event_hub" value="&lt;b&gt;lib/events/eventHub.ts&lt;/b&gt;&lt;br&gt;Wiring: domainEventBus + reminderStore + reminderEngine" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAF5FF;strokeColor=#A855F7;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="650" y="320" width="500" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cfg_appwrite" value="&lt;b&gt;appwrite.config.ts (Singleton)&lt;/b&gt;&lt;br&gt;Shared Databases, Users, Messaging singletons" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F0FDF4;strokeColor=#22C55E;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="650" y="430" width="500" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="val_factory" value="&lt;b&gt;validation.ts (Factory Method)&lt;/b&gt;&lt;br&gt;getAppointmentSchema(type) parameterized schema factory" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F0FDF4;strokeColor=#22C55E;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="650" y="540" width="500" height="70" as="geometry" />
+        </mxCell>
+
+
+        <!-- LAYER 3: CH01 ADAPTER PATTERN -->
+        <mxCell id="p_adapter" value="&lt;div style=&quot;font-size:16px;font-weight:bold;color:#1E3A8A;&quot;&gt;CH01: ADAPTER PATTERN (Video Consultation)&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=2;verticalAlign=top;spacingTop=12;align=left;spacingLeft=16;" vertex="1" parent="1">
+          <mxGeometry x="1220" y="100" width="540" height="370" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ad_target" value="&lt;b&gt;&amp;lt;&amp;lt;Target Interface&amp;gt;&amp;gt;&lt;br&gt;IVideoConsultationService&lt;/b&gt;&lt;br&gt;createRoom()&lt;br&gt;getRoomDetails()&lt;br&gt;generateParticipantAccess()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2563EB;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="1250" y="150" width="220" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ad_concrete" value="&lt;b&gt;&amp;lt;&amp;lt;Adapter&amp;gt;&amp;gt;&lt;br&gt;LocalDemonstrationVideoAdapter&lt;/b&gt;&lt;br&gt;Translates domain requests to proprietary sessions;&lt;br&gt;maps doctor/patient to clinician/client." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#1D4ED8;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="1250" y="280" width="220" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ad_adaptee" value="&lt;b&gt;&amp;lt;&amp;lt;Adaptee&amp;gt;&amp;gt;&lt;br&gt;LocalDemonstrationVideoProvider&lt;/b&gt;&lt;br&gt;Proprietary API: initiateMeetingSession(),&lt;br&gt;querySession(), mintJoinToken()&lt;br&gt;&lt;i&gt;(Local zero-credential demonstration)&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#D97706;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="1510" y="280" width="220" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ad_factory" value="&lt;b&gt;VideoServiceFactory&lt;/b&gt;&lt;br&gt;Resolves active adapter" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2563EB;strokeWidth=1.2;" vertex="1" parent="1">
+          <mxGeometry x="1510" y="150" width="220" height="60" as="geometry" />
+        </mxCell>
+
+
+        <!-- LAYER 4: CH02 STRATEGY PATTERN -->
+        <mxCell id="p_strategy" value="&lt;div style=&quot;font-size:16px;font-weight:bold;color:#065F46;&quot;&gt;CH02: STRATEGY PATTERN (Doctor Availability Rules)&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ECFDF5;strokeColor=#10B981;strokeWidth=2;verticalAlign=top;spacingTop=12;align=left;spacingLeft=16;" vertex="1" parent="1">
+          <mxGeometry x="1220" y="490" width="540" height="370" as="geometry" />
+        </mxCell>
+
+        <mxCell id="st_context" value="&lt;b&gt;&amp;lt;&amp;lt;Context&amp;gt;&amp;gt;&lt;br&gt;DoctorAvailabilityContext&lt;/b&gt;&lt;br&gt;Holds IAvailabilityStrategy;&lt;br&gt;Swaps strategies dynamically;&lt;br&gt;Server validation &amp;amp; conflict check." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D1FAE5;strokeColor=#059669;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="1250" y="540" width="210" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="st_interface" value="&lt;b&gt;&amp;lt;&amp;lt;Strategy Interface&amp;gt;&amp;gt;&lt;br&gt;IAvailabilityStrategy&lt;/b&gt;&lt;br&gt;validateSlot()&lt;br&gt;generateAvailableSlots()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#047857;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="1510" y="540" width="220" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="st_strat1" value="&lt;b&gt;StandardBusinessHoursStrategy&lt;/b&gt;&lt;br&gt;Mon-Fri 09:00-17:00, lunch break" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#059669;strokeWidth=1.2;" vertex="1" parent="1">
+          <mxGeometry x="1250" y="660" width="230" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="st_strat2" value="&lt;b&gt;ShiftBasedAvailabilityStrategy&lt;/b&gt;&lt;br&gt;Assigned morning/evening/night shifts" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#059669;strokeWidth=1.2;" vertex="1" parent="1">
+          <mxGeometry x="1500" y="660" width="230" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="st_strat3" value="&lt;b&gt;EmergencyOnCallAvailabilityStrategy&lt;/b&gt;&lt;br&gt;24/7 triage + mandatory 15-min recovery buffer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#059669;strokeWidth=1.2;" vertex="1" parent="1">
+          <mxGeometry x="1250" y="730" width="480" height="50" as="geometry" />
+        </mxCell>
+
+
+        <!-- LAYER 5: CH03 OBSERVER PATTERN & REMINDER ENGINE -->
+        <mxCell id="p_observer" value="&lt;div style=&quot;font-size:16px;font-weight:bold;color:#581C87;&quot;&gt;CH03: OBSERVER PATTERN &amp;amp; AUTOMATED REMINDER ENGINE&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAF5FF;strokeColor=#9333EA;strokeWidth=2;verticalAlign=top;spacingTop=12;align=left;spacingLeft=16;" vertex="1" parent="1">
+          <mxGeometry x="1800" y="100" width="540" height="760" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ob_subject" value="&lt;b&gt;&amp;lt;&amp;lt;Subject / Event Bus&amp;gt;&amp;gt;&lt;br&gt;DomainEventBus&lt;/b&gt;&lt;br&gt;subscribe(), unsubscribe(), publish()&lt;br&gt;Broadcasts: APPOINTMENT_SCHEDULED,&lt;br&gt;APPOINTMENT_CANCELLED, APPOINTMENT_RESCHEDULED" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E8FF;strokeColor=#7E22CE;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="1830" y="150" width="480" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ob_obs1" value="&lt;b&gt;&amp;lt;&amp;lt;Observer 1&amp;gt;&amp;gt;&lt;br&gt;ReminderSchedulerObserver&lt;/b&gt;&lt;br&gt;Calculates T-24h &amp;amp; T-2h windows;&lt;br&gt;generates idempotent reminder tasks" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9333EA;strokeWidth=1.2;" vertex="1" parent="1">
+          <mxGeometry x="1830" y="270" width="230" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ob_obs2" value="&lt;b&gt;&amp;lt;&amp;lt;Observer 2&amp;gt;&amp;gt;&lt;br&gt;ReminderCancellationObserver&lt;/b&gt;&lt;br&gt;Revokes &amp;amp; invalidates pending reminders on cancellation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9333EA;strokeWidth=1.2;" vertex="1" parent="1">
+          <mxGeometry x="2080" y="270" width="230" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ob_obs3" value="&lt;b&gt;&amp;lt;&amp;lt;Observer 3&amp;gt;&amp;gt;&lt;br&gt;AuditLogObserver&lt;/b&gt;&lt;br&gt;Chronological audit logging of all lifecycle events" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9333EA;strokeWidth=1.2;" vertex="1" parent="1">
+          <mxGeometry x="1830" y="370" width="480" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ob_store" value="&lt;b&gt;JsonFileReminderStore (Persistent Store)&lt;/b&gt;&lt;br&gt;Disk storage (reminders_store.json) with idempotency keys&lt;br&gt;Prevents duplicate creation &amp;amp; manages state transitions" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF2F2;strokeColor=#DC2626;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="1830" y="450" width="480" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ob_engine" value="&lt;b&gt;ReminderProcessingEngine&lt;/b&gt;&lt;br&gt;Evaluates due tasks (triggerAt &amp;lt;= T_now);&lt;br&gt;Transitions: PENDING -&amp;gt; PROCESSING -&amp;gt; SENT;&lt;br&gt;Retry policy with backoff; Zero duplicate delivery" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFBEB;strokeColor=#F59E0B;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="1830" y="560" width="480" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ob_notifier" value="&lt;b&gt;Notification Channels&lt;/b&gt;&lt;br&gt;Appwrite Messaging / SMS Gateway &amp;amp; Local Dispatcher" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#475569;strokeWidth=1.2;" vertex="1" parent="1">
+          <mxGeometry x="1830" y="680" width="480" height="60" as="geometry" />
+        </mxCell>
+
+
+        <!-- EDGES / CONNECTIONS -->
+        <!-- UI to Actions -->
+        <mxCell id="e_ui_act" value="submit" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#475569;strokeWidth=1.5;endArrow=block;" edge="1" parent="1" source="ui_appointment_form" target="act_appointment">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Actions to Adapter -->
+        <mxCell id="e_act_ad" value="if isTeleconsultation" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#2563EB;strokeWidth=1.5;endArrow=block;" edge="1" parent="1" source="act_appointment" target="ad_target">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Adapter to Adaptee -->
+        <mxCell id="e_ad_adaptee" value="adapts" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#2563EB;strokeWidth=1.5;endArrow=block;" edge="1" parent="1" source="ad_concrete" target="ad_adaptee">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Adapter implements Target -->
+        <mxCell id="e_ad_implements" value="implements" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#2563EB;strokeWidth=1.5;dashed=1;endArrow=block;" edge="1" parent="1" source="ad_concrete" target="ad_target">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Actions to Strategy Context -->
+        <mxCell id="e_act_st" value="validate availability" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#059669;strokeWidth=1.5;endArrow=block;" edge="1" parent="1" source="act_appointment" target="st_context">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Context to Strategies -->
+        <mxCell id="e_ctx_strat" value="delegates to" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#059669;strokeWidth=1.5;endArrow=block;" edge="1" parent="1" source="st_context" target="st_interface">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Actions to Observer Subject -->
+        <mxCell id="e_act_ob" value="publish domain events" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#9333EA;strokeWidth=1.5;endArrow=block;" edge="1" parent="1" source="act_appointment" target="ob_subject">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Subject to Observers -->
+        <mxCell id="e_sub_obs1" value="notify" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#9333EA;strokeWidth=1.5;endArrow=block;" edge="1" parent="1" source="ob_subject" target="ob_obs1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_sub_obs2" value="notify" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#9333EA;strokeWidth=1.5;endArrow=block;" edge="1" parent="1" source="ob_subject" target="ob_obs2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Observers to Store -->
+        <mxCell id="e_obs_store" value="save / cancel" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#DC2626;strokeWidth=1.5;endArrow=block;" edge="1" parent="1" source="ob_obs1" target="ob_store">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Engine to Store -->
+        <mxCell id="e_eng_store" value="query &amp;amp; update status" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#F59E0B;strokeWidth=1.5;endArrow=block;" edge="1" parent="1" source="ob_engine" target="ob_store">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Engine to Notifier -->
+        <mxCell id="e_eng_notif" value="dispatch SMS" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#475569;strokeWidth=1.5;endArrow=block;" edge="1" parent="1" source="ob_engine" target="ob_notifier">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- API Route to Engine -->
+        <mxCell id="e_api_engine" value="scheduled trigger" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#EF4444;strokeWidth=1.5;endArrow=block;" edge="1" parent="1" source="ui_reminders_api" target="ob_engine">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="320" y="830" />
+              <mxPoint x="1900" y="830" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
