@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mxfile host="app.diagrams.net" modified="2026-10-10T00:00:00Z" agent="Antigravity" version="24.7.17" type="device">
+  <diagram id="diag-ch03-observer-uml" name="4. CH03 Observer UML &amp; Flow">
+    <mxGraphModel dx="2600" dy="1700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2600" pageHeight="1600" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- TITLE BLOCK -->
+        <mxCell id="title_ob" value="&lt;div style=&quot;font-size:24px;font-weight:bold;color:#0F172A;&quot;&gt;CH03: Automated Appointment Reminders Observer Pattern &amp;amp; Event Flow&lt;/div&gt;&lt;div style=&quot;font-size:13px;color:#475569;margin-top:4px;&quot;&gt;Source-Verified GoF Behavioral Pattern: DomainEventBus (Subject), Subscribers, Persistent Store, Engine &amp;amp; Chronological Flow&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="100" y="20" width="2400" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- SECTION 1: CLASS DIAGRAM PANEL (Top Half) -->
+        <mxCell id="ob_sec1" value="&lt;b&gt;PART A: OBSERVER PATTERN CLASS STRUCTURE &amp;amp; PARTICIPANTS&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#94A3B8;strokeWidth=1.5;verticalAlign=top;align=left;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="50" y="100" width="2400" height="580" as="geometry" />
+        </mxCell>
+
+        <!-- SUBJECT / EVENT BUS -->
+        <mxCell id="ob_uml_subject" value="&lt;b&gt;DomainEventBus (Subject)&lt;/b&gt;&lt;br&gt;&lt;i&gt;Part2/code/lib/events/DomainEventBus.ts&lt;/i&gt;&lt;hr size=&quot;1&quot;&gt;&lt;div style=&quot;text-align:left;font-size:11px;&quot;&gt;- subscribers: Map&amp;lt;string, Set&amp;lt;IDomainEventSubscriber&amp;gt;&amp;gt;&lt;hr size=&quot;1&quot;&gt;+ subscribe&amp;lt;T&amp;gt;(eventType: string, subscriber: IDomainEventSubscriber&amp;lt;T&amp;gt;): void&lt;br&gt;+ unsubscribe&amp;lt;T&amp;gt;(eventType: string, subscriber: IDomainEventSubscriber&amp;lt;T&amp;gt;): void&lt;br&gt;+ publish&amp;lt;T&amp;gt;(event: T): Promise&amp;lt;void&amp;gt;&lt;br&gt;+ clearSubscribers(): void&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFEDD5;strokeColor=#C2410C;strokeWidth=2;verticalAlign=top;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="80" y="160" width="520" height="160" as="geometry" />
+        </mxCell>
+
+        <!-- OBSERVER INTERFACE -->
+        <mxCell id="ob_uml_interface" value="&lt;b&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;br&gt;IDomainEventSubscriber&amp;lt;T extends DomainEvent&amp;gt;&lt;/b&gt;&lt;br&gt;&lt;i&gt;Part2/code/lib/events/types.ts&lt;/i&gt;&lt;hr size=&quot;1&quot;&gt;&lt;div style=&quot;text-align:left;font-size:11px;&quot;&gt;+ onEvent(event: T): Promise&amp;lt;void&amp;gt;&lt;br&gt;+ getSubscriberName(): string&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#C2410C;strokeWidth=2;verticalAlign=top;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="720" y="160" width="460" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- CONCRETE OBSERVER 1 -->
+        <mxCell id="ob_uml_obs1" value="&lt;b&gt;ReminderSchedulerObserver&lt;/b&gt;&lt;br&gt;&lt;i&gt;Part2/code/lib/events/subscribers/ReminderSchedulerObserver.ts&lt;/i&gt;&lt;hr size=&quot;1&quot;&gt;&lt;div style=&quot;text-align:left;font-size:11px;&quot;&gt;- store: IReminderStore&lt;hr size=&quot;1&quot;&gt;+ onEvent(event: AppointmentScheduledEvent): Promise&amp;lt;void&amp;gt;&lt;br&gt;+ getSubscriberName(): &quot;ReminderSchedulerObserver&quot;&lt;br&gt;&lt;i style=&quot;color:#C2410C;&quot;&gt;• Computes T-24h &amp;amp; T-2h windows&lt;br&gt;• Generates idempotency key: ${aptId}_${win}_${epoch}&lt;br&gt;• Enqueues PENDING reminders to store&lt;/i&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#C2410C;strokeWidth=1.5;verticalAlign=top;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="540" y="340" width="370" height="180" as="geometry" />
+        </mxCell>
+
+        <!-- CONCRETE OBSERVER 2 -->
+        <mxCell id="ob_uml_obs2" value="&lt;b&gt;ReminderCancellationObserver&lt;/b&gt;&lt;br&gt;&lt;i&gt;Part2/code/lib/events/subscribers/ReminderCancellationObserver.ts&lt;/i&gt;&lt;hr size=&quot;1&quot;&gt;&lt;div style=&quot;text-align:left;font-size:11px;&quot;&gt;- store: IReminderStore&lt;hr size=&quot;1&quot;&gt;+ onEvent(event: AppointmentCancelledEvent): Promise&amp;lt;void&amp;gt;&lt;br&gt;+ getSubscriberName(): &quot;ReminderCancellationObserver&quot;&lt;br&gt;&lt;i style=&quot;color:#C2410C;&quot;&gt;• Revokes pending reminder tasks on cancellation&lt;br&gt;• Transitions status to CANCELLED in store&lt;/i&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#C2410C;strokeWidth=1.5;verticalAlign=top;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="940" y="340" width="360" height="180" as="geometry" />
+        </mxCell>
+
+        <!-- CONCRETE OBSERVER 3 -->
+        <mxCell id="ob_uml_obs3" value="&lt;b&gt;AuditLogObserver&lt;/b&gt;&lt;br&gt;&lt;i&gt;Part2/code/lib/events/subscribers/AuditLogObserver.ts&lt;/i&gt;&lt;hr size=&quot;1&quot;&gt;&lt;div style=&quot;text-align:left;font-size:11px;&quot;&gt;- auditTrail: Array&amp;lt;AuditEntry&amp;gt;&lt;hr size=&quot;1&quot;&gt;+ onEvent(event: DomainEvent): Promise&amp;lt;void&amp;gt;&lt;br&gt;+ getSubscriberName(): &quot;AuditLogObserver&quot;&lt;br&gt;+ getAuditTrail(): AuditEntry[]&lt;br&gt;&lt;i style=&quot;color:#C2410C;&quot;&gt;• Chronological audit log of all domain events&lt;/i&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#C2410C;strokeWidth=1.5;verticalAlign=top;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1330" y="340" width="350" height="180" as="geometry" />
+        </mxCell>
+
+        <!-- STORE INTERFACE & CONCRETE -->
+        <mxCell id="ob_uml_store" value="&lt;b&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt; IReminderStore&lt;/b&gt;&lt;br&gt;&lt;i&gt;Part2/code/lib/reminders/IReminderStore.ts&lt;/i&gt;&lt;hr size=&quot;1&quot;&gt;&lt;div style=&quot;text-align:left;font-size:11px;&quot;&gt;+ save(reminder: ReminderRecord): Promise&amp;lt;void&amp;gt;&lt;br&gt;+ findDueReminders(referenceTime: Date): Promise&amp;lt;ReminderRecord[]&amp;gt;&lt;br&gt;+ updateStatus(reminderId: string, status: ReminderStatus, details?): Promise&amp;lt;void&amp;gt;&lt;br&gt;+ cancelByAppointmentId(appointmentId: string): Promise&amp;lt;number&amp;gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAF5FF;strokeColor=#7E22CE;strokeWidth=1.5;verticalAlign=top;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1750" y="160" width="670" height="140" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ob_uml_json_store" value="&lt;b&gt;JsonFileReminderStore&lt;/b&gt;&lt;br&gt;&lt;i&gt;Part2/code/lib/reminders/JsonFileReminderStore.ts&lt;/i&gt;&lt;hr size=&quot;1&quot;&gt;&lt;div style=&quot;text-align:left;font-size:11px;&quot;&gt;- filePath: string (data/reminders_store.json)&lt;br&gt;- inMemoryCache: Map&amp;lt;string, ReminderRecord&amp;gt;&lt;hr size=&quot;1&quot;&gt;+ Implements IReminderStore with atomic disk sync&lt;br&gt;+ Prevents duplicates using idempotency keys&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAF5FF;strokeColor=#7E22CE;strokeWidth=1.5;verticalAlign=top;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1750" y="340" width="370" height="180" as="geometry" />
+        </mxCell>
+
+        <!-- PROCESSING ENGINE -->
+        <mxCell id="ob_uml_engine" value="&lt;b&gt;ReminderProcessingEngine&lt;/b&gt;&lt;br&gt;&lt;i&gt;Part2/code/lib/reminders/ReminderProcessingEngine.ts&lt;/i&gt;&lt;hr size=&quot;1&quot;&gt;&lt;div style=&quot;text-align:left;font-size:11px;&quot;&gt;- store: IReminderStore&lt;br&gt;- channel: INotificationChannel&lt;br&gt;- maxRetries: number = 3&lt;hr size=&quot;1&quot;&gt;+ processDueReminders(referenceTime: Date, dryRun?: boolean): Promise&amp;lt;ReminderProcessReport&amp;gt;&lt;br&gt;&lt;i style=&quot;color:#D97706;&quot;&gt;Transitions: PENDING -&amp;gt; PROCESSING -&amp;gt; SENT / FAILED with retry backoff&lt;/i&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFBEB;strokeColor=#D97706;strokeWidth=2;verticalAlign=top;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="80" y="380" width="430" height="160" as="geometry" />
+        </mxCell>
+
+
+        <!-- SECTION 2: CHRONOLOGICAL EVENT FLOW (Sequence Style - Bottom Half) -->
+        <mxCell id="ob_sec2" value="&lt;b&gt;PART B: CHRONOLOGICAL REMINDER LIFECYCLE &amp;amp; SCHEDULED PROCESSING EVENT FLOW&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#94A3B8;strokeWidth=1.5;verticalAlign=top;align=left;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="50" y="700" width="2400" height="660" as="geometry" />
+        </mxCell>
+
+        <!-- Step 1 -->
+        <mxCell id="flow_step1" value="&lt;b&gt;1. Appointment Mutation&lt;/b&gt;&lt;br&gt;&lt;i&gt;appointment.actions.ts&lt;/i&gt;&lt;hr size=&quot;1&quot;&gt;&lt;div style=&quot;text-align:left;font-size:10px;&quot;&gt;Client submits booking form.&lt;br&gt;Server action commits record to Appwrite Databases.&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#334155;strokeWidth=1.2;verticalAlign=top;align=left;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="80" y="760" width="300" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- Step 2 -->
+        <mxCell id="flow_step2" value="&lt;b&gt;2. Publish Domain Event&lt;/b&gt;&lt;br&gt;&lt;i&gt;DomainEventBus.publish()&lt;/i&gt;&lt;hr size=&quot;1&quot;&gt;&lt;div style=&quot;text-align:left;font-size:10px;&quot;&gt;Broadcasts APPOINTMENT_SCHEDULED event with payload (appointmentId, time, teleconsult info).&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFEDD5;strokeColor=#C2410C;strokeWidth=1.5;verticalAlign=top;align=left;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="420" y="760" width="330" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- Step 3 -->
+        <mxCell id="flow_step3" value="&lt;b&gt;3. Observers React&lt;/b&gt;&lt;br&gt;&lt;i&gt;ReminderScheduler &amp;amp; AuditLog&lt;/i&gt;&lt;hr size=&quot;1&quot;&gt;&lt;div style=&quot;text-align:left;font-size:10px;&quot;&gt;• Scheduler calculates 24h &amp;amp; 2h windows.&lt;br&gt;• Generates deterministic idempotency keys.&lt;br&gt;• AuditLog records lifecycle event.&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#C2410C;strokeWidth=1.2;verticalAlign=top;align=left;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="790" y="760" width="340" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- Step 4 -->
+        <mxCell id="flow_step4" value="&lt;b&gt;4. Persistent Storage&lt;/b&gt;&lt;br&gt;&lt;i&gt;JsonFileReminderStore.save()&lt;/i&gt;&lt;hr size=&quot;1&quot;&gt;&lt;div style=&quot;text-align:left;font-size:10px;&quot;&gt;Persists tasks into reminders_store.json with status PENDING.&lt;br&gt;Duplicate events update existing key.&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAF5FF;strokeColor=#7E22CE;strokeWidth=1.2;verticalAlign=top;align=left;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="1170" y="760" width="340" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- Step 5 -->
+        <mxCell id="flow_step5" value="&lt;b&gt;5. Scheduled Trigger&lt;/b&gt;&lt;br&gt;&lt;i&gt;POST /api/reminders/process&lt;/i&gt;&lt;hr size=&quot;1&quot;&gt;&lt;div style=&quot;text-align:left;font-size:10px;&quot;&gt;External scheduler triggers endpoint with x-scheduled-token header.&lt;br&gt;Invokes reminderEngine.processDueReminders()&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF2F2;strokeColor=#EF4444;strokeWidth=1.5;verticalAlign=top;align=left;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="1550" y="760" width="360" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- Step 6 -->
+        <mxCell id="flow_step6" value="&lt;b&gt;6. Sweep &amp;amp; Dispatch&lt;/b&gt;&lt;br&gt;&lt;i&gt;ReminderProcessingEngine&lt;/i&gt;&lt;hr size=&quot;1&quot;&gt;&lt;div style=&quot;text-align:left;font-size:10px;&quot;&gt;• Finds tasks where triggerAt &amp;lt;= T_now.&lt;br&gt;• Transitions: PENDING -&amp;gt; PROCESSING.&lt;br&gt;• Calls sendSMS() notification channel.&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFBEB;strokeColor=#D97706;strokeWidth=1.2;verticalAlign=top;align=left;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="1950" y="760" width="340" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- Step 7 -->
+        <mxCell id="flow_step7" value="&lt;b&gt;7. Delivery Outcome &amp;amp; Retry Handling&lt;/b&gt;&lt;br&gt;&lt;i&gt;State Transition in JsonFileReminderStore&lt;/i&gt;&lt;hr size=&quot;1&quot;&gt;&lt;div style=&quot;text-align:left;font-size:11px;&quot;&gt;&lt;b&gt;Success Case&lt;/b&gt;: Reminder status transitions to &lt;b&gt;SENT&lt;/b&gt; with messageId &amp;amp; dispatchedAt timestamp. Duplicate delivery is impossible on future sweeps.&lt;br&gt;&lt;b&gt;Failure Case&lt;/b&gt;: Status transitions to &lt;b&gt;FAILED&lt;/b&gt;; increments retryCount. If retryCount &amp;lt; 3, task remains eligible for subsequent sweep retry.&lt;br&gt;&lt;b&gt;Cancellation Case&lt;/b&gt;: If APPOINTMENT_CANCELLED received before triggerAt, ReminderCancellationObserver immediately transitions status to &lt;b&gt;CANCELLED&lt;/b&gt;, preventing delivery.&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#334155;strokeWidth=1.5;verticalAlign=top;align=left;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="80" y="930" width="2210" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- AUDIT & OPERATIONAL CALLOUT -->
+        <mxCell id="flow_callout" value="&lt;b&gt;OPERATIONAL GUARANTEES &amp;amp; CONCURRENCY LIMITATIONS AUDIT&lt;/b&gt;&lt;hr size=&quot;1&quot;&gt;&lt;div style=&quot;font-size:11px;line-height:1.5;&quot;&gt;1. &lt;b&gt;External Delivery Semantics&lt;/b&gt;: External telephony gateways guarantee &lt;b&gt;At-Least-Once Delivery&lt;/b&gt;. Zero duplicate delivery at the application layer is guaranteed via deterministic idempotency keys (${appointmentId}_${windowType}_${scheduleEpoch}).&lt;br&gt;2. &lt;b&gt;No False Scheduler Claims&lt;/b&gt;: Serverless Next.js runtimes do not execute perpetual daemon threads in background process memory. Execution is strictly on-demand via the protected HTTP route.&lt;br&gt;3. &lt;b&gt;Store Concurrency Limitation&lt;/b&gt;: The JsonFileReminderStore uses single-process file serialization. Enterprise high-concurrency scaling requires Redis BullMQ or PostgreSQL row-level locking (SELECT ... FOR UPDATE SKIP LOCKED).&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=1.5;verticalAlign=top;align=left;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1080" width="2210" height="120" as="geometry" />
+        </mxCell>
+
+
+        <!-- UML CONNECTORS -->
+        <!-- Subject to Interface (Notification / Registration) -->
+        <mxCell id="ob_e1" value="maintains registry / notifies" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#C2410C;strokeWidth=2;endArrow=open;" edge="1" parent="1" source="ob_uml_subject" target="ob_uml_interface">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Concrete Observers realize Interface (implements) -->
+        <mxCell id="ob_e2" value="implements" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#C2410C;strokeWidth=2;dashed=1;endArrow=block;endFill=0;" edge="1" parent="1" source="ob_uml_obs1" target="ob_uml_interface">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="725" y="300" />
+              <mxPoint x="830" y="300" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="ob_e3" value="implements" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#C2410C;strokeWidth=2;dashed=1;endArrow=block;endFill=0;" edge="1" parent="1" source="ob_uml_obs2" target="ob_uml_interface">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1120" y="300" />
+              <mxPoint x="950" y="300" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="ob_e4" value="implements" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#C2410C;strokeWidth=2;dashed=1;endArrow=block;endFill=0;" edge="1" parent="1" source="ob_uml_obs3" target="ob_uml_interface">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1505" y="300" />
+              <mxPoint x="1070" y="300" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Concrete Observers to Store -->
+        <mxCell id="ob_e5" value="enqueues" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#7E22CE;strokeWidth=1.5;dashed=1;endArrow=open;" edge="1" parent="1" source="ob_uml_obs1" target="ob_uml_store">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="725" y="540" />
+              <mxPoint x="1730" y="540" />
+              <mxPoint x="1730" y="230" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- JsonStore realizes IReminderStore -->
+        <mxCell id="ob_e6" value="implements" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#7E22CE;strokeWidth=2;dashed=1;endArrow=block;endFill=0;" edge="1" parent="1" source="ob_uml_json_store" target="ob_uml_store">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Flow Arrows -->
+        <mxCell id="flow_e1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#C2410C;strokeWidth=2;endArrow=block;" edge="1" parent="1" source="flow_step1" target="flow_step2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="flow_e2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#C2410C;strokeWidth=2;endArrow=block;" edge="1" parent="1" source="flow_step2" target="flow_step3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="flow_e3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#7E22CE;strokeWidth=2;endArrow=block;" edge="1" parent="1" source="flow_step3" target="flow_step4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="flow_e4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#EF4444;strokeWidth=2;endArrow=block;" edge="1" parent="1" source="flow_step4" target="flow_step5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="flow_e5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#D97706;strokeWidth=2;endArrow=block;" edge="1" parent="1" source="flow_step5" target="flow_step6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

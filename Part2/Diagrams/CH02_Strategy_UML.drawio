@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mxfile host="app.diagrams.net" modified="2026-10-10T00:00:00Z" agent="Antigravity" version="24.7.17" type="device">
+  <diagram id="diag-ch02-strategy-uml" name="3. CH02 Strategy UML">
+    <mxGraphModel dx="2400" dy="1600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2400" pageHeight="1600" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- TITLE BLOCK -->
+        <mxCell id="title_st" value="&lt;div style=&quot;font-size:24px;font-weight:bold;color:#0F172A;&quot;&gt;CH02: Flexible Doctor Availability Strategy Pattern — UML Class Diagram&lt;/div&gt;&lt;div style=&quot;font-size:13px;color:#475569;margin-top:4px;&quot;&gt;Source-Verified GoF Behavioral Pattern: Strategy Interface, 3 Concrete Strategies, Context, Dynamic Selection &amp;amp; Client Action&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="100" y="20" width="2200" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- CLIENT BOX -->
+        <mxCell id="st_uml_client" value="&lt;b&gt;Client: Appointment Server Action&lt;/b&gt;&lt;br&gt;&lt;i&gt;Part2/code/lib/actions/appointment.actions.ts&lt;/i&gt;&lt;hr size=&quot;1&quot;&gt;&lt;div style=&quot;text-align:left;font-size:11px;&quot;&gt;+ createAppointment(appointment: CreateAppointmentParams): Promise&amp;lt;Appointment&amp;gt;&lt;br&gt;&lt;i style=&quot;color:#047857;&quot;&gt;Queries doctor config -&amp;gt; Context.resolveStrategy() -&amp;gt; context.validateSlot()&lt;/i&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#475569;strokeWidth=1.5;verticalAlign=top;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="60" y="140" width="500" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- CONTEXT BOX -->
+        <mxCell id="st_uml_context" value="&lt;b&gt;DoctorAvailabilityContext&lt;/b&gt;&lt;br&gt;&lt;i&gt;Part2/code/lib/availability/DoctorAvailabilityContext.ts&lt;/i&gt;&lt;hr size=&quot;1&quot;&gt;&lt;div style=&quot;text-align:left;font-size:11px;&quot;&gt;- strategy: IAvailabilityStrategy&lt;hr size=&quot;1&quot;&gt;+ constructor(initialStrategy?: IAvailabilityStrategy)&lt;br&gt;+ setStrategy(strategy: IAvailabilityStrategy): void&lt;br&gt;+ getStrategy(): IAvailabilityStrategy&lt;br&gt;+ static resolveStrategy(config: DoctorAvailabilityConfig): IAvailabilityStrategy&lt;br&gt;+ validateSlot(request: SlotValidationRequest, config: DoctorAvailabilityConfig, existingBookings: ExistingBooking[]): SlotValidationResult&lt;br&gt;+ generateAvailableSlots(date: Date, config: DoctorAvailabilityConfig, existingBookings: ExistingBooking[]): Date[]&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D1FAE5;strokeColor=#059669;strokeWidth=2;verticalAlign=top;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="60" y="320" width="600" height="200" as="geometry" />
+        </mxCell>
+
+        <!-- STRATEGY INTERFACE BOX -->
+        <mxCell id="st_uml_interface" value="&lt;b&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;br&gt;IAvailabilityStrategy&lt;/b&gt;&lt;br&gt;&lt;i&gt;Part2/code/lib/availability/IAvailabilityStrategy.ts&lt;/i&gt;&lt;hr size=&quot;1&quot;&gt;&lt;div style=&quot;text-align:left;font-size:11px;&quot;&gt;+ validateSlot(request: SlotValidationRequest, config: DoctorAvailabilityConfig, existingBookings: ExistingBooking[]): SlotValidationResult&lt;br&gt;+ generateAvailableSlots(date: Date, config: DoctorAvailabilityConfig, existingBookings: ExistingBooking[]): Date[]&lt;br&gt;+ getStrategyType(): StrategyType&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#047857;strokeWidth=2;verticalAlign=top;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="800" y="320" width="620" height="150" as="geometry" />
+        </mxCell>
+
+        <!-- CONCRETE STRATEGY 1 -->
+        <mxCell id="st_uml_strat1" value="&lt;b&gt;StandardBusinessHoursStrategy&lt;/b&gt;&lt;br&gt;&lt;i&gt;Part2/code/lib/availability/StandardBusinessHoursStrategy.ts&lt;/i&gt;&lt;hr size=&quot;1&quot;&gt;&lt;div style=&quot;text-align:left;font-size:11px;&quot;&gt;- startHour: number = 9&lt;br&gt;- endHour: number = 17&lt;br&gt;- lunchStart: number = 12&lt;br&gt;- lunchEnd: number = 13&lt;hr size=&quot;1&quot;&gt;+ validateSlot(...): SlotValidationResult&lt;br&gt;+ generateAvailableSlots(...): Date[]&lt;br&gt;+ getStrategyType(): &quot;STANDARD_BUSINESS_HOURS&quot;&lt;br&gt;&lt;i style=&quot;color:#047857;&quot;&gt;• Mon-Fri 09:00-17:00 outpatient schedule&lt;br&gt;• Rejects weekends &amp;amp; lunch blackout&lt;br&gt;• Verifies booking overlap conflicts&lt;/i&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#059669;strokeWidth=1.5;verticalAlign=top;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="600" y="580" width="380" height="220" as="geometry" />
+        </mxCell>
+
+        <!-- CONCRETE STRATEGY 2 -->
+        <mxCell id="st_uml_strat2" value="&lt;b&gt;ShiftBasedAvailabilityStrategy&lt;/b&gt;&lt;br&gt;&lt;i&gt;Part2/code/lib/availability/ShiftBasedAvailabilityStrategy.ts&lt;/i&gt;&lt;hr size=&quot;1&quot;&gt;&lt;div style=&quot;text-align:left;font-size:11px;&quot;&gt;- defaultShifts: DoctorShift[]&lt;hr size=&quot;1&quot;&gt;+ validateSlot(...): SlotValidationResult&lt;br&gt;+ generateAvailableSlots(...): Date[]&lt;br&gt;+ getStrategyType(): &quot;SHIFT_BASED&quot;&lt;br&gt;&lt;i style=&quot;color:#047857;&quot;&gt;• Rotating shift rosters per physician&lt;br&gt;• Morning (07-15), Evening (15-23), Night&lt;br&gt;• Rejects off-duty days &amp;amp; hours outside shift&lt;/i&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#059669;strokeWidth=1.5;verticalAlign=top;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="580" width="380" height="220" as="geometry" />
+        </mxCell>
+
+        <!-- CONCRETE STRATEGY 3 -->
+        <mxCell id="st_uml_strat3" value="&lt;b&gt;EmergencyOnCallAvailabilityStrategy&lt;/b&gt;&lt;br&gt;&lt;i&gt;Part2/code/lib/availability/EmergencyOnCallAvailabilityStrategy.ts&lt;/i&gt;&lt;hr size=&quot;1&quot;&gt;&lt;div style=&quot;text-align:left;font-size:11px;&quot;&gt;- defaultBufferMinutes: number = 15&lt;hr size=&quot;1&quot;&gt;+ validateSlot(...): SlotValidationResult&lt;br&gt;+ generateAvailableSlots(...): Date[]&lt;br&gt;+ getStrategyType(): &quot;EMERGENCY_ON_CALL&quot;&lt;br&gt;&lt;i style=&quot;color:#047857;&quot;&gt;• 24/7 continuous triage availability&lt;br&gt;• Permits late-night &amp;amp; weekend emergencies&lt;br&gt;• Enforces mandatory 15-min recovery buffer gap&lt;/i&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#059669;strokeWidth=1.5;verticalAlign=top;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1420" y="580" width="380" height="220" as="geometry" />
+        </mxCell>
+
+        <!-- DATA STRUCTURES PANEL -->
+        <mxCell id="st_uml_types_box" value="&lt;b&gt;Strategy Data Types &amp;amp; Roster Configurations (Part2/code/lib/availability/types.ts &amp;amp; constants/index.ts)&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#94A3B8;strokeWidth=1.5;verticalAlign=top;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="60" y="850" width="1740" height="240" as="geometry" />
+        </mxCell>
+
+        <mxCell id="st_dto_req" value="&lt;b&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt; SlotValidationRequest&lt;/b&gt;&lt;hr size=&quot;1&quot;&gt;+ doctorName: string&lt;br&gt;+ requestedTime: Date&lt;br&gt;+ durationMinutes: number&lt;br&gt;+ isEmergency?: boolean" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#64748B;verticalAlign=top;align=left;spacing=6;fontFamily=monospace;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="90" y="900" width="320" height="150" as="geometry" />
+        </mxCell>
+
+        <mxCell id="st_dto_res" value="&lt;b&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt; SlotValidationResult&lt;/b&gt;&lt;hr size=&quot;1&quot;&gt;+ isValid: boolean&lt;br&gt;+ reason?: string&lt;br&gt;+ conflictingBooking?: ExistingBooking&lt;br&gt;+ evaluatedStrategy: StrategyType" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#64748B;verticalAlign=top;align=left;spacing=6;fontFamily=monospace;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="440" y="900" width="340" height="150" as="geometry" />
+        </mxCell>
+
+        <mxCell id="st_dto_cfg" value="&lt;b&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt; DoctorAvailabilityConfig&lt;/b&gt;&lt;hr size=&quot;1&quot;&gt;+ doctorName: string&lt;br&gt;+ strategyType: StrategyType&lt;br&gt;+ assignedShifts?: DoctorShift[]&lt;br&gt;+ emergencyBufferMinutes?: number&lt;br&gt;+ slotDurationMinutes?: number" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#64748B;verticalAlign=top;align=left;spacing=6;fontFamily=monospace;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="810" y="900" width="350" height="150" as="geometry" />
+        </mxCell>
+
+        <mxCell id="st_dto_notice" value="&lt;b&gt;CONCURRENCY LIMITATION NOTICE (TOCTOU)&lt;/b&gt;&lt;hr size=&quot;1&quot;&gt;&lt;div style=&quot;font-size:10px;line-height:1.4;&quot;&gt;The Strategy pattern validates slot legality at the application layer.&lt;br&gt;In high-concurrency environments, two concurrent requests for the exact same slot may both evaluate as valid in memory before the first record commits to the database (Time-of-Check to Time-of-Use race condition).&lt;br&gt;Production remediation requires database-level unique constraints (e.g. compound index on [doctorId, scheduleTimestamp]) or optimistic version matching.&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF2F2;strokeColor=#EF4444;verticalAlign=top;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1190" y="900" width="580" height="150" as="geometry" />
+        </mxCell>
+
+        <!-- UML CONNECTORS -->
+        <!-- Client uses Context -->
+        <mxCell id="st_e1" value="instantiates / calls" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#059669;strokeWidth=1.5;dashed=1;endArrow=open;" edge="1" parent="1" source="st_uml_client" target="st_uml_context">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Context has-a Strategy (Aggregation / Composition) -->
+        <mxCell id="st_e2" value="- strategy&#xa;1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#059669;strokeWidth=2;endArrow=open;" edge="1" parent="1" source="st_uml_context" target="st_uml_interface">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Concrete Strategies realize Interface (implements) -->
+        <mxCell id="st_e3" value="implements" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#059669;strokeWidth=2;dashed=1;endArrow=block;endFill=0;" edge="1" parent="1" source="st_uml_strat1" target="st_uml_interface">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="790" y="520" />
+              <mxPoint x="950" y="520" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="st_e4" value="implements" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#059669;strokeWidth=2;dashed=1;endArrow=block;endFill=0;" edge="1" parent="1" source="st_uml_strat2" target="st_uml_interface">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1200" y="520" />
+              <mxPoint x="1110" y="520" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="st_e5" value="implements" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#059669;strokeWidth=2;dashed=1;endArrow=block;endFill=0;" edge="1" parent="1" source="st_uml_strat3" target="st_uml_interface">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1610" y="520" />
+              <mxPoint x="1270" y="520" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
