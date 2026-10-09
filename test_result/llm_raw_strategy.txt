@@ -1,0 +1,18 @@
+=== LLM PATTERN DISCOVERY OUTPUT ===
+Model: Claude 3.5 Sonnet
+Target Module: code/HealthCare-Doctor-Appointment-Management-System/lib/validation.ts & components/forms/AppointmentForm.tsx
+
+Pattern Name: Strategy
+Pattern Type: Behavioral
+Instance Name: Zod Form Validation Strategy
+Participant Roles:
+- Context: react-hook-form useForm hook (executes validation during submission)
+- StrategyInterface: zodResolver contract
+- ConcreteStrategies: CreateAppointmentSchema, ScheduleAppointmentSchema, CancelAppointmentSchema
+- StrategySelector: getAppointmentSchema (dynamic strategy resolver based on operation type)
+Source Locations:
+- lib/validation.ts:118-157
+- components/forms/AppointmentForm.tsx:43-46
+Intent & Evidence:
+- Problem Solved: Allows the validation algorithm and required schema constraints to vary independently based on whether an appointment is being created, rescheduled, or cancelled, without polluting the UI form with branching conditional validation logic.
+- Code Interaction: `AppointmentForm` calls `getAppointmentSchema(type)` to retrieve the specific Zod schema strategy, and injects it into `useForm({ resolver: zodResolver(AppointmentFormValidation) })`.

@@ -1,0 +1,18 @@
+=== LLM PATTERN DISCOVERY OUTPUT ===
+Model: Claude 3.5 Sonnet
+Target Module: code/HealthCare-Doctor-Appointment-Management-System/lib/actions/appointment.actions.ts
+
+Pattern Name: Facade
+Pattern Type: Structural
+Instance Name: Healthcare Appointment Server Action Facade
+Participant Roles:
+- Facade: updateAppointment (simplified high-level entrypoint for appointment state transitions)
+- Subsystems: 
+  * Appwrite Databases SDK (databases.updateDocument)
+  * Twilio SMS Dispatcher (sendSMSNotification)
+  * Next.js Route Cache Subsystem (revalidatePath)
+Source Locations:
+- lib/actions/appointment.actions.ts:134-165
+Intent & Evidence:
+- Problem Solved: Simplifies complex multi-step backend operations (database document persistence, patient SMS dispatch, and edge cache revalidation) into a single unified callable server action so UI components do not have to orchestrate lower-level subsystem APIs.
+- Code Interaction: `updateAppointment` receives the appointment status mutation, directly calls `databases.updateDocument` to persist the update, formats and invokes `sendSMSNotification` to trigger the Twilio communication gateway, and calls `revalidatePath("/admin")` before returning clean serialized JSON to the client.

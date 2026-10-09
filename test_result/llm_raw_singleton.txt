@@ -1,0 +1,16 @@
+=== LLM PATTERN DISCOVERY OUTPUT ===
+Model: Claude 3.5 Sonnet
+Target Module: code/HealthCare-Doctor-Appointment-Management-System/lib/appwrite.config.ts
+
+Pattern Name: Singleton
+Pattern Type: Creational
+Instance Name: Appwrite SDK Service Client Singletons
+Participant Roles:
+- SingletonClient: sdk.Client (instantiated once as `const client = new sdk.Client()`)
+- ClientConfigurator: client.setEndpoint().setProject().setKey()
+- ServiceInstances: databases (sdk.Databases), users (sdk.Users), messaging (sdk.Messaging), storage (sdk.Storage)
+Source Locations:
+- lib/appwrite.config.ts:29-40
+Intent & Evidence:
+- Problem Solved: Prevents re-establishing new authenticated HTTP/TCP sessions on every server-side operation by creating a single Appwrite client instance and module-level service facades shared across the entire backend execution context.
+- Code Interaction: `client` is instantiated and configured with API keys on lines 29-34. Subsequently, `databases`, `users`, `messaging`, and `storage` are exported as module-level singletons bound to that exact `client` instance (lines 36-39).

@@ -1,0 +1,11 @@
+=== LLM PATTERN EVALUATION OUTPUT ===
+Model: Claude 3.5 Sonnet
+Target Module: code/HealthCare-Doctor-Appointment-Management-System/lib/actions/appointment.actions.ts
+
+Pattern Name: Command
+Pattern Type: Behavioral
+Instance Name: P06 Appointment Operation Command Encapsulation Opportunity
+Analysis:
+- Appointment operations createAppointment() and updateAppointment() are directly implemented as asynchronous Next.js server action functions.
+- Operations lack a Command interface with execute(), undo(), or serializable parameters.
+- Verdict: Source-verified absence of GoF Command pattern. Identified as a refactoring opportunity to encapsulate actions into Command objects supporting retries, transaction auditing, and queued execution.

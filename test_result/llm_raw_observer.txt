@@ -1,0 +1,18 @@
+=== LLM PATTERN DISCOVERY OUTPUT ===
+Model: Claude 3.5 Sonnet
+Target Module: code/HealthCare-Doctor-Appointment-Management-System/lib/actions/appointment.actions.ts
+
+Pattern Name: Observer
+Pattern Type: Behavioral
+Instance Name: Appointment State Change SMS Notification
+Participant Roles:
+- Subject: updateAppointment (event emitter triggered on appointment status change)
+- Event: Appointment status update (scheduled or cancelled)
+- Publisher/Dispatcher: sendSMSNotification (wraps messaging.createSms)
+- Observer: External patient endpoint / telephone SMS recipient
+Source Locations:
+- lib/actions/appointment.actions.ts:108-118 (sendSMSNotification)
+- lib/actions/appointment.actions.ts:157-159 (event notification dispatch)
+Intent & Evidence:
+- Problem Solved: Informs the patient whenever an administrator alters their appointment schedule or cancels a pending visit without tightly coupling patient notification delivery to database update primitives.
+- Code Interaction: When `updateAppointment` successfully mutates state via `databases.updateDocument`, it broadcasts an event notification containing appointment status details to `sendSMSNotification(userId, smsMessage)`, which delivers the SMS via Twilio integration.

@@ -1,0 +1,16 @@
+# Part 1 Prompt: AI-Assisted Design Pattern Discovery in HealthCare Doctor Appointment System
+
+## Instruction:
+Analyze the provided source code modules from the Next.js FullStack HealthCare Doctor Appointment Management System repository. 
+
+For each module, detect and classify any confirmed software design patterns (Creational, Structural, Behavioral, Architectural, or GRASP).
+
+For every confirmed pattern collaboration, specify:
+1. Pattern Name: Exact pattern name (e.g., Singleton, Factory Method, Facade, Strategy, Observer).
+2. Pattern Type: Category (Creational, Structural, Behavioral, Architectural, GRASP).
+3. Instance Name: A concise, descriptive name for the collaboration.
+4. Participant Roles: Map every applicable role in the design pattern to its concrete class, interface, function, or module in the codebase (e.g., Creator=..., ConcreteProduct=...).
+5. Source Locations: Concrete file path and exact line range for each participant.
+6. Intent and Evidence: Explain the problem being solved and the concrete code interactions proving that the pattern is implemented.
+
+Refrain from hallucinating patterns where simple helper functions or standard procedural logic exist. Verify all participant roles directly against the code structure.

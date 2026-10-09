@@ -1,0 +1,18 @@
+=== LLM PATTERN DISCOVERY OUTPUT ===
+Model: Claude 3.5 Sonnet
+Target Module: code/HealthCare-Doctor-Appointment-Management-System/components/CustomFormField.tsx
+
+Pattern Name: Factory Method
+Pattern Type: Creational
+Instance Name: Dynamic Form Field Component Factory
+Participant Roles:
+- Creator: CustomFormField (renders the appropriate form item layout)
+- FactoryMethod: RenderInput (switch-based concrete component generator)
+- Discriminator: FormFieldType enum (INPUT, TEXTAREA, PHONE_INPUT, CHECKBOX, DATE_PICKER, SELECT, SKELETON)
+- ConcreteProducts: Input, Textarea, PhoneInput, Checkbox, ReactDatePicker, Select
+Source Locations:
+- components/CustomFormField.tsx:21-29 (Discriminator enum)
+- components/CustomFormField.tsx:47-152 (RenderInput factory method)
+Intent & Evidence:
+- Problem Solved: Eliminates boilerplate duplication across dozens of healthcare form fields by abstracting the instantiation of specialized UI input controls behind a single parameterized factory component.
+- Code Interaction: CustomFormField passes `props.fieldType` to `RenderInput`. Inside `RenderInput`, a switch statement evaluates the type discriminator and dynamically instantiates and configures the corresponding input control along with its custom handlers and styling.
