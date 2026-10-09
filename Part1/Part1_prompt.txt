@@ -1,16 +1,237 @@
-# Part 1 Prompt: AI-Assisted Design Pattern Discovery in HealthCare Doctor Appointment System
+Healthcare Appointment Application using Next.js\
+Case Study Title\
+Design Pattern Identification and Evolution in a Next.js-Based Healthcare Appointment Application\
+Part 1 – Pattern Discovery\
+Investigate:\
+•	patient management \
+•	doctor management \
+•	appointment scheduling \
+•	doctor availability \
+•	consultation \
+•	reminders \
+•	authentication \
+•	notification \
+Identify actual patterns supported by source-code evidence.\
+Part 2 – Software Evolution\
+Introduce:\
+1\.	Add video consultation. \
+2\.	Add flexible doctor-availability rules. \
+3\.	Add automated appointment reminders. \
+Analyze pattern evolution.\
+Part 3 – Cross-Language Analysis\
+Select 2 significant patterns and implement the same design problem in Java, Python, JavaScript and C++.\
+Expected Outputs\
+1\.	Application description \
+2\.	Framework architecture \
+3\.	Pattern inventory \
+4\.	Pattern-to-source-code mapping \
+5\.	UML diagrams \
+6\.	Source-code evidence \
+7\.	Three evolution scenarios \
+8\.	Before/after analysis \
+9\.	Refactoring analysis \
+10\.	Four-language implementations \
+11\.	LLM prompts and outputs \
+12\.	Human verification \
+13\.	Metrics \
+14\.	Excel + CSV dataset
 
-## Instruction:
-Analyze the provided source code modules from the Next.js FullStack HealthCare Doctor Appointment Management System repository. 
+So here DP_Csestudy(1).pdf is the report format
+and DP_Csestudy(1)(1).pdf is the instructions
 
-For each module, detect and classify any confirmed software design patterns (Creational, Structural, Behavioral, Architectural, or GRASP).
+and the Github repo of the project : [https://github.com/arnobt78/HealthCare-Doctor-Appointment-Management-System--NextJS-FullStack](https://github.com/arnobt78/HealthCare-Doctor-Appointment-Management-System--NextJS-FullStack)
 
-For every confirmed pattern collaboration, specify:
-1. Pattern Name: Exact pattern name (e.g., Singleton, Factory Method, Facade, Strategy, Observer).
-2. Pattern Type: Category (Creational, Structural, Behavioral, Architectural, GRASP).
-3. Instance Name: A concise, descriptive name for the collaboration.
-4. Participant Roles: Map every applicable role in the design pattern to its concrete class, interface, function, or module in the codebase (e.g., Creator=..., ConcreteProduct=...).
-5. Source Locations: Concrete file path and exact line range for each participant.
-6. Intent and Evidence: Explain the problem being solved and the concrete code interactions proving that the pattern is implemented.
+So this are our resources 
+extract the information
 
-Refrain from hallucinating patterns where simple helper functions or standard procedural logic exist. Verify all participant roles directly against the code structure.
+
+Prompt-1 
+
+Act as a senior software architect. I'm analyzing this project for Part 1 of a Design Patterns case study:
+
+[https://github.com/arnobt78/HealthCare-Doctor-Appointment-Management-System--NextJS-FullStack](https://github.com/arnobt78/HealthCare-Doctor-Appointment-Management-System--NextJS-FullStack)
+
+First, help me understand the project before looking for design patterns. Review the repository structure, major modules, technology stack, and main application flow.
+
+Give me:
+
+- a concise architecture overview
+- important modules and their responsibilities
+- major user workflows
+- external services used
+- files that are most relevant for later design-pattern analysis
+
+Use the actual repository as the source of truth. Don't assume patterns yet.
+
+
+Prompt-2
+
+Now act as a senior Design Patterns engineer.
+
+Using the same HealthCare Doctor Appointment Management System repository, identify potential design patterns in the existing source code.
+
+Focus on 23 patterns that are genuinely relevant to the implementation, especially Factory, Singleton, Adapter, Facade, Observer, Strategy, Command, Template Method, State, and Proxy.
+
+For each candidate, give:
+
+- pattern name
+- category
+- exact file path
+- relevant function/class/component
+- short source-code evidence
+- why it resembles the pattern
+
+Don't force patterns into the project. If the evidence is weak, mark it as uncertain or a possible refactoring opportunity.
+
+Prompt-3
+
+Act as a behavioral design-pattern specialist.
+
+Based on the same repository and the verified findings so far, examine the appointment and notification workflows.
+
+Pay particular attention to:
+
+- create/schedule/cancel appointment behavior
+- conditional logic
+- appointment state changes
+- SMS or notification triggering
+- interactions between application components
+
+Determine whether Observer, Strategy, Command, State, or Template Method is actually present, partially present, or would be useful as a refactoring.
+
+Keep the analysis tied to actual files and code.
+
+Prompt-4
+
+Act as a senior structural design-pattern specialist.
+Now examine the repository for Adapter, Facade, Proxy, Decorator, Composite, and similar structural patterns.
+Pay particular attention to how the application interacts with Appwrite, database services, storage, messaging, APIs, and shared configuration.
+For each meaningful finding, identify the exact source file and explain whether the pattern is implemented, partial, or only a future refactoring opportunity.
+Do not classify ordinary abstraction as a GoF pattern without sufficient evidence.
+
+Prompt-5
+
+Act as a senior creational-pattern specialist.
+Review the same repository for Factory, Singleton, Builder, Prototype, and related creational patterns.
+Pay special attention to object/service creation, schema selection, shared service instances, and configuration.
+Give me only findings that can be supported by the actual source code. Clearly distinguish a true pattern from a pattern-like implementation.
+
+Prompt-6
+
+Act as a software-engineering evidence analyst.
+
+Using the pattern findings from the previous steps, create a source-code evidence table.
+
+For each accepted or partial pattern, provide:
+
+- Pattern
+- Category
+- Classification
+- File path
+- Function/class/component
+- Relevant code section
+- What the code proves
+- What it does not prove
+- Verification status
+
+Keep code excerpts short. The evidence must be sufficient for another person to independently verify the claim.
+
+Prompt-7
+
+Act as a senior software architecture auditor performing the final review of my Part 1 analysis.
+
+Recheck every claimed design pattern against the actual repository.
+
+Look specifically for:
+
+- false positives
+- framework features incorrectly called design patterns
+- ordinary conditional logic incorrectly called Strategy
+- service sharing incorrectly called Singleton
+- direct notification incorrectly called Observer
+- simple configuration wrappers incorrectly called Facade
+
+Remove or downgrade any claim that cannot be defended from source code.
+
+Finally give me the validated list of:
+
+1. Clearly implemented patterns
+2. Partial/pattern-like implementations
+3. Refactoring opportunities
+4. Rejected pattern claims
+
+This will be used as evidence in an academic case study, so accuracy is more important than the number of patterns found.
+
+Prompt -8  (patterns.csv)
+
+Retrieve the outputs of my previous 7 design-pattern prompts from the conversation above. 
+Don’t ask me to paste them again. Use those outputs, especially the final audit, to prepare the 
+`patterns.csv` for Part 1. Keep only evidence-supported patterns and distinguish `implemented`, 
+`pattern-like`, and `refactoring_opportunity`.  Give csv content what to paste
+
+Prompt-9 (pattern_counts.csv)
+
+Retrieve the final pattern classifications from my previous 7 design-pattern prompts above and prepare 
+`pattern_counts.csv`. Don’t ask me to paste them again. Count only the final validated patterns and 
+separate implemented, pattern-like, and refactoring opportunities. 
+Give me the final CSV content ready to save.
+
+Prompt - 10 (Understanding the project architecture)
+
+Act as a senior software architect. Review my Healthcare Doctor Appointment Management System 
+repository and explain its actual architecture. Identify the main modules, appointment workflows, 
+and Appwrite integrations. Use source-code evidence and don't assume any design patterns yet. Keep it concise.
+
+Prompt - 11 (Identify diagram components)
+
+Using your architecture analysis above, identify the exact components and connections 
+that should appear in my Part 1 architecture diagram. Include only relationships supported 
+by the source code. Give me a clear component list and the direction of each connection.
+
+Prompt-12  (Use this final pattern audit to annotate the architecture diagram)
+
+Use this final pattern audit to annotate the architecture diagram. Show Singleton-like shared Appwrite instances 
+and Factory-like schema selection as pattern-like structures. Show Observer, Strategy, State, Command, 
+and Adapter only as future refactoring opportunities, not existing implementations. 
+Don't invent any other patterns.
+
+Prompt -13  (Annotate the architecture diagram based on the final pattern audit)
+
+Use this final pattern audit to annotate the architecture diagram. Show Singleton-like shared Appwrite instances and 
+Factory-like schema selection as pattern-like structures. Show Observer, Strategy, State, 
+Command, and Adapter only as future refactoring opportunities, not existing implementations. 
+Don't invent any other patterns.
+
+Prompt - 14 (Architecture diagram)
+
+Create a clean, academic architecture diagram for Part 1 based on the verified components and final pattern audit 
+above. Make the actual application architecture the main focus and distinguish existing components from pattern-like structures and future refactoring opportunities. 
+Keep labels readable and connections accurate. Provide an editable diagrams.net (draw.io) source and an exported PNG suitable for my assignment.
+
+Prompt -15  (Review the issues in the diagram)
+
+Act as a strict software architecture reviewer. Check the diagram against the repository and final pattern audit. 
+Identify inaccurate connections, unsupported components, or patterns shown as implemented incorrectly. 
+Give me the corrections needed before submission.
+
+Prompt- 16 (Refine the issues in the architetcure diagram)
+
+Act as a senior software architect. Review your previous architecture diagram and the final review feedback in this conversation. Update the existing diagram instead of starting from scratch.
+
+Fix these issues:
+1. Show PatientForm, RegisterForm, AppointmentForm and AdminPage as separate components.
+2. Style PatientModal as an existing component, not a future feature.
+3. Show the correct Appwrite dependencies:
+   - patient.actions.ts → Users, Databases and Storage
+   - appointment.actions.ts → Databases and Messaging
+   - checkEmail route → Databases
+   - PatientModal.tsx → its own Client and Databases instance
+4. Connect Twilio only through Appwrite Messaging, and label it as a documented provider integration, not a direct application SDK call.
+5. Keep Singleton-like and Factory-like as pattern-like structures only.
+6. Keep Observer, Strategy, State, Command and Adapter in a clearly labelled future-refactoring section.
+7. Keep Sentry as a configuration/monitoring note unless its runtime connection is verified.
+8. Include the API-key configuration concern in a separate security note, not as a design pattern.
+
+Export the corrected editable `.drawio` file and a high-resolution PNG. Verify the source XML and exported image, then give me the actual saved files and their locations. Do not claim files were updated unless they were actually generated and checked.
+
+

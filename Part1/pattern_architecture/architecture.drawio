@@ -1,0 +1,544 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" modified="2026-10-09T12:24:52Z" agent="OpenAI" version="24.7.17" type="device">
+  <diagram id="healthcare-architecture" name="Part 1 Architecture">
+    <mxGraphModel dx="2700" dy="1840" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2700" pageHeight="1840" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="p_ui" value="&lt;div style=&quot;font-size:15px;font-weight:bold;color:#152B45;text-align:left&quot;&gt;PRESENTATION LAYER&lt;/div&gt;&lt;div style=&quot;font-size:11px;color:#63758B;text-align:left;line-height:1.35&quot;&gt;Next.js App Router · React components&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#CBD5E1;strokeWidth=1.5;arcSize=10;spacing=7;verticalAlign=top;spacingTop=14;spacingLeft=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="140" width="555" height="790" as="geometry" />
+          <mxGeometry x="35" y="130" width="555" height="1025" as="geometry" />
+          <mxGeometry x="35" y="130" width="555" height="1025" as="geometry" />
+        </mxCell>
+        <mxCell id="p_logic" value="&lt;div style=&quot;font-size:15px;font-weight:bold;color:#152B45;text-align:left&quot;&gt;APPLICATION LOGIC&lt;/div&gt;&lt;div style=&quot;font-size:11px;color:#63758B;text-align:left;line-height:1.35&quot;&gt;Validation · route handler · server actions&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#CBD5E1;strokeWidth=1.5;arcSize=10;spacing=7;verticalAlign=top;spacingTop=14;spacingLeft=16;" vertex="1" parent="1">
+          <mxGeometry x="615" y="140" width="490" height="790" as="geometry" />
+          <mxGeometry x="615" y="130" width="520" height="1025" as="geometry" />
+          <mxGeometry x="615" y="130" width="520" height="1025" as="geometry" />
+        </mxCell>
+        <mxCell id="p_config" value="&lt;div style=&quot;font-size:15px;font-weight:bold;color:#152B45;text-align:left&quot;&gt;APPWRITE SDK / CONFIGURATION&lt;/div&gt;&lt;div style=&quot;font-size:11px;color:#63758B;text-align:left;line-height:1.35&quot;&gt;Shared server SDK objects and separate PatientModal client&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#CBD5E1;strokeWidth=1.5;arcSize=10;spacing=7;verticalAlign=top;spacingTop=14;spacingLeft=16;" vertex="1" parent="1">
+          <mxGeometry x="1125" y="140" width="475" height="790" as="geometry" />
+          <mxGeometry x="1160" y="130" width="550" height="1025" as="geometry" />
+          <mxGeometry x="1160" y="130" width="550" height="1025" as="geometry" />
+        </mxCell>
+        <mxCell id="p_backend" value="&lt;div style=&quot;font-size:15px;font-weight:bold;color:#152B45;text-align:left&quot;&gt;BACKEND &amp; INTEGRATIONS&lt;/div&gt;&lt;div style=&quot;font-size:11px;color:#63758B;text-align:left;line-height:1.35&quot;&gt;Appwrite API calls and README-documented provider configuration&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#CBD5E1;strokeWidth=1.5;arcSize=10;spacing=7;verticalAlign=top;spacingTop=14;spacingLeft=16;" vertex="1" parent="1">
+          <mxGeometry x="1620" y="140" width="540" height="790" as="geometry" />
+          <mxGeometry x="1735" y="130" width="930" height="1025" as="geometry" />
+          <mxGeometry x="1735" y="130" width="930" height="1025" as="geometry" />
+        </mxCell>
+        <mxCell id="existing_panel" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FCF8;strokeColor=#84B58B;strokeWidth=1.5;arcSize=10;spacing=7;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1000" width="650" height="410" as="geometry" />
+          <mxGeometry x="35" y="1215" width="650" height="390" as="geometry" />
+          <mxGeometry x="35" y="1215" width="650" height="390" as="geometry" />
+        </mxCell>
+        <mxCell id="future_panel" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFCF3;strokeColor=#D5B46A;strokeWidth=1.5;arcSize=10;spacing=7;dashed=1;dashPattern=7 5;" vertex="1" parent="1">
+          <mxGeometry x="710" y="1000" width="1450" height="410" as="geometry" />
+          <mxGeometry x="705" y="1215" width="1960" height="390" as="geometry" />
+          <mxGeometry x="705" y="1215" width="1960" height="390" as="geometry" />
+        </mxCell>
+        <mxCell id="e_patient_validation" value="validation" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#52657A;strokeWidth=1.7;endArrow=block;endFill=1;exitX=1.0000;exitY=0.4947;entryX=0.0000;entryY=0.5000;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="patient_ui" target="validation">
+          <mxGeometry relative="1" as="geometry" />
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="595" y="247" />
+              <mxPoint x="595" y="260" />
+            </Array>
+          </mxGeometry>
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="595" y="247" />
+              <mxPoint x="595" y="260" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_patient_actions" value="createUser()" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#52657A;strokeWidth=1.7;endArrow=block;endFill=1;exitX=1.0000;exitY=0.6947;entryX=0.0000;entryY=0.4583;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="patient_ui" target="patient_actions">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="580" y="310" />
+              <mxPoint x="580" y="522" />
+            </Array>
+          </mxGeometry>
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="601" y="266" />
+              <mxPoint x="601" y="555" />
+            </Array>
+          </mxGeometry>
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="601" y="266" />
+              <mxPoint x="601" y="555" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_register_validation" value="validation" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#52657A;strokeWidth=1.7;endArrow=block;endFill=1;exitX=1.0000;exitY=0.2727;entryX=0.0000;entryY=0.6250;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="register_form" target="validation">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="605" y="350" />
+              <mxPoint x="605" y="275" />
+            </Array>
+          </mxGeometry>
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="605" y="350" />
+              <mxPoint x="605" y="275" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_register_actions" value="registerPatient()" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#52657A;strokeWidth=1.7;endArrow=block;endFill=1;exitX=1.0000;exitY=0.7091;entryX=0.0000;entryY=0.6250;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="register_form" target="patient_actions">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="612" y="398" />
+              <mxPoint x="612" y="575" />
+            </Array>
+          </mxGeometry>
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="612" y="398" />
+              <mxPoint x="612" y="575" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_appt_validation" value="schema selection" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#52657A;strokeWidth=1.7;endArrow=block;endFill=1;exitX=1.0000;exitY=0.2273;entryX=0.0000;entryY=0.7667;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="appointment_admin_ui" target="validation">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="595" y="465" />
+              <mxPoint x="595" y="285" />
+            </Array>
+          </mxGeometry>
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="619" y="490" />
+              <mxPoint x="619" y="292" />
+            </Array>
+          </mxGeometry>
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="619" y="490" />
+              <mxPoint x="619" y="292" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_appointment_actions" value="create / update" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#52657A;strokeWidth=1.7;endArrow=block;endFill=1;exitX=1.0000;exitY=0.7273;entryX=0.0000;entryY=0.3846;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="appointment_admin_ui" target="appointment_actions">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="600" y="565" />
+              <mxPoint x="600" y="700" />
+            </Array>
+          </mxGeometry>
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="625" y="545" />
+              <mxPoint x="625" y="725" />
+            </Array>
+          </mxGeometry>
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="625" y="545" />
+              <mxPoint x="625" y="725" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_admin_actions" value="getRecentAppointmentList()" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#52657A;strokeWidth=1.7;endArrow=block;endFill=1;exitX=1.0000;exitY=0.4211;entryX=0.0000;entryY=0.6154;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="admin_page" target="appointment_actions">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="630" y="650" />
+              <mxPoint x="630" y="755" />
+            </Array>
+          </mxGeometry>
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="630" y="650" />
+              <mxPoint x="630" y="755" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_admin_table" value="renders table" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#52657A;strokeWidth=1.7;endArrow=block;endFill=1;exitX=0.4990;exitY=1.0000;entryX=0.4990;entryY=0.0000;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="admin_page" target="data_table">
+          <mxGeometry relative="1" as="geometry" />
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_table_appointment_modal" value="schedule / cancel" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#52657A;strokeWidth=1.7;endArrow=block;endFill=1;exitX=0.2376;exitY=1.0000;entryX=0.4898;entryY=0.0000;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="data_table" target="appointment_modal">
+          <mxGeometry relative="1" as="geometry" />
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_table_patient_modal" value="patient lookup" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#52657A;strokeWidth=1.7;endArrow=block;endFill=1;exitX=0.7624;exitY=1.0000;entryX=0.5102;entryY=0.0000;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="data_table" target="patient_modal_ui">
+          <mxGeometry relative="1" as="geometry" />
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_validation_email" value="HTTP fetch" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#52657A;strokeWidth=1.7;endArrow=block;endFill=1;exitX=0.5000;exitY=1.0000;entryX=0.5000;entryY=0.0000;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="validation" target="email_route">
+          <mxGeometry relative="1" as="geometry" />
+          <mxGeometry relative="1" as="geometry" />
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_patient_users" value="Users" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#52657A;strokeWidth=1.7;endArrow=block;endFill=1;exitX=1.0000;exitY=0.1500;entryX=0.0000;entryY=0.5000;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="patient_actions" target="users_inner">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1130" y="518" />
+              <mxPoint x="1130" y="351" />
+            </Array>
+          </mxGeometry>
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1130" y="518" />
+              <mxPoint x="1130" y="351" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_patient_database" value="Databases" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#52657A;strokeWidth=1.7;endArrow=block;endFill=1;exitX=1.0000;exitY=0.4583;entryX=0.0000;entryY=0.5000;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="patient_actions" target="databases_inner">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1138" y="555" />
+              <mxPoint x="1138" y="416" />
+            </Array>
+          </mxGeometry>
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1138" y="555" />
+              <mxPoint x="1138" y="416" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_patient_storage" value="Storage" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#52657A;strokeWidth=1.7;endArrow=block;endFill=1;exitX=1.0000;exitY=0.7833;entryX=0.0000;entryY=0.5000;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="patient_actions" target="storage_inner">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1147" y="594" />
+              <mxPoint x="1147" y="481" />
+            </Array>
+          </mxGeometry>
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1147" y="594" />
+              <mxPoint x="1147" y="481" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_appointment_database" value="Databases" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#52657A;strokeWidth=1.7;endArrow=block;endFill=1;exitX=1.0000;exitY=0.2462;entryX=0.0000;entryY=0.5962;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="appointment_actions" target="databases_inner">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1128" y="707" />
+              <mxPoint x="1128" y="421" />
+            </Array>
+          </mxGeometry>
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1128" y="707" />
+              <mxPoint x="1128" y="421" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_appointment_messaging" value="Messaging" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#52657A;strokeWidth=1.7;endArrow=block;endFill=1;exitX=1.0000;exitY=0.7000;entryX=0.0000;entryY=0.5000;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="appointment_actions" target="messaging_inner">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1152" y="766" />
+              <mxPoint x="1152" y="546" />
+            </Array>
+          </mxGeometry>
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1152" y="766" />
+              <mxPoint x="1152" y="546" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_email_database" value="patient query" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#52657A;strokeWidth=1.7;endArrow=block;endFill=1;exitX=1.0000;exitY=0.4941;entryX=0.0000;entryY=0.5000;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="email_route" target="databases_inner">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1167" y="407" />
+            </Array>
+          </mxGeometry>
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1167" y="407" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="i_users" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#338B86;strokeWidth=1.4;endArrow=block;endFill=1;exitX=0.5000;exitY=1.0000;entryX=0.5000;entryY=0.0000;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="shared_client_inner" target="users_inner">
+          <mxGeometry relative="1" as="geometry" />
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="i_databases" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#338B86;strokeWidth=1.4;endArrow=block;endFill=1;exitX=0.0781;exitY=1.0000;entryX=0.0000;entryY=0.5000;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="shared_client_inner" target="databases_inner">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1175" y="305" />
+              <mxPoint x="1175" y="416" />
+            </Array>
+          </mxGeometry>
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1175" y="305" />
+              <mxPoint x="1175" y="416" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="i_storage" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#338B86;strokeWidth=1.4;endArrow=block;endFill=1;exitX=0.9219;exitY=1.0000;entryX=1.0000;entryY=0.5000;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="shared_client_inner" target="storage_inner">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1680" y="307" />
+              <mxPoint x="1680" y="481" />
+            </Array>
+          </mxGeometry>
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1680" y="307" />
+              <mxPoint x="1680" y="481" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="i_messaging" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#338B86;strokeWidth=1.4;endArrow=block;endFill=1;exitX=0.9844;exitY=0.7292;entryX=1.0000;entryY=0.5000;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="shared_client_inner" target="messaging_inner">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1690" y="302" />
+              <mxPoint x="1690" y="546" />
+            </Array>
+          </mxGeometry>
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1690" y="302" />
+              <mxPoint x="1690" y="546" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_users_api" value="API call" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#52657A;strokeWidth=1.7;endArrow=block;endFill=1;exitX=1.0000;exitY=0.5000;entryX=0.0000;entryY=0.5000;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="users_inner" target="api_users">
+          <mxGeometry relative="1" as="geometry" />
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_databases_api" value="API call" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#52657A;strokeWidth=1.7;endArrow=block;endFill=1;exitX=1.0000;exitY=0.5000;entryX=0.0000;entryY=0.5000;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="databases_inner" target="appwrite_apis">
+          <mxGeometry relative="1" as="geometry" />
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_storage_api" value="API call" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#52657A;strokeWidth=1.7;endArrow=block;endFill=1;exitX=1.0000;exitY=0.5000;entryX=0.0000;entryY=0.5000;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="storage_inner" target="api_storage">
+          <mxGeometry relative="1" as="geometry" />
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_messaging_api" value="API call" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#52657A;strokeWidth=1.7;endArrow=block;endFill=1;exitX=1.0000;exitY=0.5000;entryX=0.0000;entryY=0.5000;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="messaging_inner" target="api_messaging">
+          <mxGeometry relative="1" as="geometry" />
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_modal_local_client" value="separate client" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#52657A;strokeWidth=1.7;endArrow=block;endFill=1;exitX=1.0000;exitY=0.5000;entryX=0.0000;entryY=0.5000;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="patient_modal_ui" target="pm_client_inner">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="585" y="866" />
+              <mxPoint x="585" y="1080" />
+              <mxPoint x="1144" y="1080" />
+              <mxPoint x="1144" y="796" />
+            </Array>
+          </mxGeometry>
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="585" y="866" />
+              <mxPoint x="585" y="890" />
+              <mxPoint x="1144" y="890" />
+              <mxPoint x="1144" y="796" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_pm_client_db" value="constructs" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#52657A;strokeWidth=1.7;endArrow=block;endFill=1;exitX=1.0000;exitY=0.5000;entryX=0.0000;entryY=0.5000;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="pm_client_inner" target="pm_databases_inner">
+          <mxGeometry relative="1" as="geometry" />
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_pm_database_api" value="getDocument()" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#52657A;strokeWidth=1.7;endArrow=block;endFill=1;exitX=1.0000;exitY=0.5000;entryX=0.0000;entryY=0.5000;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="pm_databases_inner" target="appwrite_apis">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1720" y="796" />
+              <mxPoint x="1720" y="416" />
+            </Array>
+          </mxGeometry>
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1720" y="796" />
+              <mxPoint x="1720" y="416" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_twillio" value="README-documented provider configuration" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#8A96A5;strokeWidth=1.8;endArrow=block;endFill=1;dashed=1;dashPattern=7 5;exitX=0.5000;exitY=1.0000;entryX=0.5000;entryY=0.0000;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="api_messaging" target="twilio">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1870" y="670" />
+              <mxPoint x="1885" y="670" />
+            </Array>
+          </mxGeometry>
+          <mxGeometry relative="1" as="geometry" />
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="patient_ui" value="&lt;div style=&quot;font-size:16px;font-weight:bold;color:#152B45;text-align:center&quot;&gt;PatientForm.tsx&lt;/div&gt;&lt;div style=&quot;font-size:12px;color:#52657A;text-align:center;line-height:1.35&quot;&gt;Patient onboarding and basic contact details&lt;br&gt;Uses UserFormValidation; calls createUser()&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EAF2FC;strokeColor=#4779B8;strokeWidth=1.5;arcSize=10;spacing=7;" vertex="1" parent="1">
+          <mxGeometry x="70" y="220" width="460" height="120" as="geometry" />
+          <mxGeometry x="60" y="200" width="505" height="95" as="geometry" />
+          <mxGeometry x="60" y="200" width="505" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="register_form" value="&lt;div style=&quot;font-size:16px;font-weight:bold;color:#152B45;text-align:center&quot;&gt;RegisterForm.tsx&lt;/div&gt;&lt;div style=&quot;font-size:12px;color:#52657A;text-align:center;line-height:1.35&quot;&gt;Detailed personal and medical profile&lt;br&gt;Uses PatientFormValidation; calls registerPatient()&lt;br&gt;FileUploader.tsx is used for the identification document&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EAF2FC;strokeColor=#4779B8;strokeWidth=1.5;arcSize=10;spacing=7;" vertex="1" parent="1">
+          <mxGeometry x="60" y="320" width="505" height="110" as="geometry" />
+          <mxGeometry x="60" y="320" width="505" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="appointment_admin_ui" value="&lt;div style=&quot;font-size:16px;font-weight:bold;color:#152B45;text-align:center&quot;&gt;AppointmentForm.tsx&lt;/div&gt;&lt;div style=&quot;font-size:12px;color:#52657A;text-align:center;line-height:1.35&quot;&gt;Creates, schedules and cancels appointment records&lt;br&gt;Uses getAppointmentSchema(type)&lt;br&gt;Calls createAppointment() / updateAppointment()&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EAF2FC;strokeColor=#4779B8;strokeWidth=1.5;arcSize=10;spacing=7;" vertex="1" parent="1">
+          <mxGeometry x="70" y="430" width="460" height="205" as="geometry" />
+          <mxGeometry x="60" y="465" width="505" height="110" as="geometry" />
+          <mxGeometry x="60" y="465" width="505" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="admin_page" value="&lt;div style=&quot;font-size:16px;font-weight:bold;color:#152B45;text-align:center&quot;&gt;app/admin/page.tsx — AdminPage&lt;/div&gt;&lt;div style=&quot;font-size:12px;color:#52657A;text-align:center;line-height:1.35&quot;&gt;Calls getRecentAppointmentList()&lt;br&gt;Renders StatCard and DataTable; manages patient-modal state&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EAF2FC;strokeColor=#4779B8;strokeWidth=1.5;arcSize=10;spacing=7;" vertex="1" parent="1">
+          <mxGeometry x="60" y="610" width="505" height="95" as="geometry" />
+          <mxGeometry x="60" y="610" width="505" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="data_table" value="&lt;div style=&quot;font-size:15px;font-weight:bold;color:#152B45;text-align:center&quot;&gt;DataTable.tsx + columns.tsx&lt;/div&gt;&lt;div style=&quot;font-size:12px;color:#52657A;text-align:center;line-height:1.35&quot;&gt;Displays appointment rows; columns define schedule/cancel and patient actions&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EAF2FC;strokeColor=#4779B8;strokeWidth=1.5;arcSize=10;spacing=7;" vertex="1" parent="1">
+          <mxGeometry x="60" y="730" width="505" height="70" as="geometry" />
+          <mxGeometry x="60" y="730" width="505" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="appointment_modal" value="&lt;div style=&quot;font-size:14px;font-weight:bold;color:#152B45;text-align:center&quot;&gt;AppointmentModal.tsx&lt;/div&gt;&lt;div style=&quot;font-size:11px;color:#52657A;text-align:center;line-height:1.35&quot;&gt;Existing component&lt;br&gt;Renders AppointmentForm.tsx&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EAF2FC;strokeColor=#4779B8;strokeWidth=1.5;arcSize=10;spacing=7;" vertex="1" parent="1">
+          <mxGeometry x="60" y="825" width="245" height="82" as="geometry" />
+          <mxGeometry x="60" y="825" width="245" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="patient_modal_ui" value="&lt;div style=&quot;font-size:14px;font-weight:bold;color:#152B45;text-align:center&quot;&gt;PatientModal.tsx&lt;/div&gt;&lt;div style=&quot;font-size:11px;color:#52657A;text-align:center;line-height:1.35&quot;&gt;Existing component&lt;br&gt;Loads patient details using its own client&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EAF2FC;strokeColor=#4779B8;strokeWidth=1.5;arcSize=10;spacing=7;" vertex="1" parent="1">
+          <mxGeometry x="320" y="825" width="245" height="82" as="geometry" />
+          <mxGeometry x="320" y="825" width="245" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="validation" value="&lt;div style=&quot;font-size:16px;font-weight:bold;color:#152B45;text-align:center&quot;&gt;lib/validation.ts&lt;/div&gt;&lt;div style=&quot;font-size:12px;color:#52657A;text-align:center;line-height:1.35&quot;&gt;Zod schemas and getAppointmentSchema(type)&lt;br&gt;Create / Schedule / Cancel schema selection&lt;br&gt;UserFormValidation calls /api/checkEmail&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F2EDFA;strokeColor=#866CB0;strokeWidth=1.5;arcSize=10;spacing=7;" vertex="1" parent="1">
+          <mxGeometry x="645" y="220" width="430" height="95" as="geometry" />
+          <mxGeometry x="640" y="200" width="470" height="120" as="geometry" />
+          <mxGeometry x="640" y="200" width="470" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="email_route" value="&lt;div style=&quot;font-size:15px;font-weight:bold;color:#152B45;text-align:center&quot;&gt;app/api/checkEmail/route.ts&lt;/div&gt;&lt;div style=&quot;font-size:12px;color:#52657A;text-align:center;line-height:1.35&quot;&gt;GET endpoint queries the patient collection&lt;br&gt;Imports the shared Appwrite databases instance&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F2EDFA;strokeColor=#866CB0;strokeWidth=1.5;arcSize=10;spacing=7;" vertex="1" parent="1">
+          <mxGeometry x="645" y="350" width="430" height="70" as="geometry" />
+          <mxGeometry x="640" y="365" width="470" height="85" as="geometry" />
+          <mxGeometry x="640" y="365" width="470" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="patient_actions" value="&lt;div style=&quot;font-size:15px;font-weight:bold;color:#152B45;text-align:center&quot;&gt;lib/actions/patient.actions.ts&lt;/div&gt;&lt;div style=&quot;font-size:12px;color:#52657A;text-align:center;line-height:1.35&quot;&gt;Server actions: createUser(), registerPatient(), lookups&lt;br&gt;Uses Users + Databases + Storage SDK instances&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F2EDFA;strokeColor=#866CB0;strokeWidth=1.5;arcSize=10;spacing=7;" vertex="1" parent="1">
+          <mxGeometry x="645" y="470" width="430" height="105" as="geometry" />
+          <mxGeometry x="640" y="500" width="470" height="120" as="geometry" />
+          <mxGeometry x="640" y="500" width="470" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="appointment_actions" value="&lt;div style=&quot;font-size:15px;font-weight:bold;color:#152B45;text-align:center&quot;&gt;lib/actions/appointment.actions.ts&lt;/div&gt;&lt;div style=&quot;font-size:12px;color:#52657A;text-align:center;line-height:1.35&quot;&gt;Creates, lists and updates appointment documents&lt;br&gt;updateAppointment() calls sendSMSNotification()&lt;br&gt;Uses Databases + Messaging; SMS is triggered after update&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F2EDFA;strokeColor=#866CB0;strokeWidth=1.5;arcSize=10;spacing=7;" vertex="1" parent="1">
+          <mxGeometry x="645" y="645" width="430" height="110" as="geometry" />
+          <mxGeometry x="640" y="675" width="470" height="130" as="geometry" />
+          <mxGeometry x="640" y="675" width="470" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="shared_appwrite" value="&lt;div style=&quot;font-size:15px;font-weight:bold;color:#1E615D;text-align:center&quot;&gt;lib/appwrite.config.ts — shared module configuration&lt;/div&gt;&lt;div style=&quot;font-size:12px;color:#3E716F;text-align:center;line-height:1.35&quot;&gt;One module-level node-appwrite Client&lt;br&gt;Exports Users, Databases, Storage and Messaging instances&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E7F5F4;strokeColor=#338B86;strokeWidth=1.5;arcSize=10;spacing=7;verticalAlign=top;spacingTop=12;" vertex="1" parent="1">
+          <mxGeometry x="1150" y="425" width="425" height="315" as="geometry" />
+          <mxGeometry x="1180" y="195" width="510" height="445" as="geometry" />
+          <mxGeometry x="1180" y="195" width="510" height="445" as="geometry" />
+        </mxCell>
+        <mxCell id="shared_client_inner" value="&lt;div style=&quot;font-size:14px;font-weight:bold;color:#1E615D;text-align:center&quot;&gt;Client (module-level)&lt;/div&gt;&lt;div style=&quot;font-size:10px;color:#3E716F;text-align:center;line-height:1.35&quot;&gt;setEndpoint · setProject · setKey&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#338B86;strokeWidth=1.5;arcSize=10;spacing=7;" vertex="1" parent="1">
+          <mxGeometry x="50" y="53" width="325" height="45" as="geometry" />
+          <mxGeometry x="1275" y="250" width="320" height="48" as="geometry" />
+          <mxGeometry x="1275" y="250" width="320" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="users_inner" value="&lt;div style=&quot;font-size:14px;font-weight:bold;color:#1E615D;text-align:center&quot;&gt;users instance&lt;/div&gt;&lt;div style=&quot;font-size:11px;color:#3E716F;text-align:center;line-height:1.35&quot;&gt;Created from the shared Client&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#338B86;strokeWidth=1.5;arcSize=10;spacing=7;" vertex="1" parent="1">
+          <mxGeometry x="20" y="120" width="180" height="45" as="geometry" />
+          <mxGeometry x="1195" y="325" width="480" height="52" as="geometry" />
+          <mxGeometry x="1195" y="325" width="480" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="databases_inner" value="&lt;div style=&quot;font-size:14px;font-weight:bold;color:#1E615D;text-align:center&quot;&gt;databases instance&lt;/div&gt;&lt;div style=&quot;font-size:11px;color:#3E716F;text-align:center;line-height:1.35&quot;&gt;Created from the shared Client&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#338B86;strokeWidth=1.5;arcSize=10;spacing=7;" vertex="1" parent="1">
+          <mxGeometry x="225" y="120" width="180" height="45" as="geometry" />
+          <mxGeometry x="1195" y="390" width="480" height="52" as="geometry" />
+          <mxGeometry x="1195" y="390" width="480" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="storage_inner" value="&lt;div style=&quot;font-size:14px;font-weight:bold;color:#1E615D;text-align:center&quot;&gt;storage instance&lt;/div&gt;&lt;div style=&quot;font-size:11px;color:#3E716F;text-align:center;line-height:1.35&quot;&gt;Created from the shared Client&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#338B86;strokeWidth=1.5;arcSize=10;spacing=7;" vertex="1" parent="1">
+          <mxGeometry x="20" y="190" width="180" height="45" as="geometry" />
+          <mxGeometry x="1195" y="455" width="480" height="52" as="geometry" />
+          <mxGeometry x="1195" y="455" width="480" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="messaging_inner" value="&lt;div style=&quot;font-size:14px;font-weight:bold;color:#1E615D;text-align:center&quot;&gt;messaging instance&lt;/div&gt;&lt;div style=&quot;font-size:11px;color:#3E716F;text-align:center;line-height:1.35&quot;&gt;Created from the shared Client&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#338B86;strokeWidth=1.5;arcSize=10;spacing=7;" vertex="1" parent="1">
+          <mxGeometry x="225" y="190" width="180" height="45" as="geometry" />
+          <mxGeometry x="1195" y="520" width="480" height="52" as="geometry" />
+          <mxGeometry x="1195" y="520" width="480" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="patientmodal_client" value="&lt;div style=&quot;font-size:15px;font-weight:bold;color:#152B45;text-align:center&quot;&gt;Separate client path in PatientModal.tsx&lt;/div&gt;&lt;div style=&quot;font-size:11px;color:#52657A;text-align:center;line-height:1.35&quot;&gt;Existing implementation — not part of lib/appwrite.config.ts&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F0F7FF;strokeColor=#4779B8;strokeWidth=1.5;arcSize=10;spacing=7;verticalAlign=top;spacingTop=12;" vertex="1" parent="1">
+          <mxGeometry x="1150" y="790" width="425" height="75" as="geometry" />
+          <mxGeometry x="1180" y="685" width="510" height="195" as="geometry" />
+          <mxGeometry x="1180" y="685" width="510" height="195" as="geometry" />
+        </mxCell>
+        <mxCell id="pm_client_inner" value="&lt;div style=&quot;font-size:14px;font-weight:bold;color:#152B45;text-align:center&quot;&gt;new Client()&lt;/div&gt;&lt;div style=&quot;font-size:11px;color:#52657A;text-align:center;line-height:1.35&quot;&gt;appwrite package&lt;br&gt;sets endpoint + project&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#4779B8;strokeWidth=1.5;arcSize=10;spacing=7;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="755" width="215" height="82" as="geometry" />
+          <mxGeometry x="1200" y="755" width="215" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="pm_databases_inner" value="&lt;div style=&quot;font-size:14px;font-weight:bold;color:#152B45;text-align:center&quot;&gt;new Databases(client)&lt;/div&gt;&lt;div style=&quot;font-size:11px;color:#52657A;text-align:center;line-height:1.35&quot;&gt;Calls getDocument()&lt;br&gt;patient collection&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#4779B8;strokeWidth=1.5;arcSize=10;spacing=7;" vertex="1" parent="1">
+          <mxGeometry x="1440" y="755" width="230" height="82" as="geometry" />
+          <mxGeometry x="1440" y="755" width="230" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="api_users" value="&lt;div style=&quot;font-size:15px;font-weight:bold;color:#152B45;text-align:center&quot;&gt;Appwrite Users API&lt;/div&gt;&lt;div style=&quot;font-size:12px;color:#52657A;text-align:center;line-height:1.35&quot;&gt;Account / user operations from users instance&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#64748B;strokeWidth=1.5;arcSize=10;spacing=7;" vertex="1" parent="1">
+          <mxGeometry x="1780" y="325" width="850" height="52" as="geometry" />
+          <mxGeometry x="1780" y="325" width="850" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="appwrite_apis" value="&lt;div style=&quot;font-size:15px;font-weight:bold;color:#152B45;text-align:center&quot;&gt;Appwrite Databases API&lt;/div&gt;&lt;div style=&quot;font-size:12px;color:#52657A;text-align:center;line-height:1.35&quot;&gt;Patient and appointment documents from databases instance&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#64748B;strokeWidth=1.5;arcSize=10;spacing=7;" vertex="1" parent="1">
+          <mxGeometry x="1650" y="420" width="440" height="230" as="geometry" />
+          <mxGeometry x="1780" y="390" width="850" height="52" as="geometry" />
+          <mxGeometry x="1780" y="390" width="850" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="api_storage" value="&lt;div style=&quot;font-size:15px;font-weight:bold;color:#152B45;text-align:center&quot;&gt;Appwrite Storage API&lt;/div&gt;&lt;div style=&quot;font-size:12px;color:#52657A;text-align:center;line-height:1.35&quot;&gt;Identification-document file operations from storage instance&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#64748B;strokeWidth=1.5;arcSize=10;spacing=7;" vertex="1" parent="1">
+          <mxGeometry x="1780" y="455" width="850" height="52" as="geometry" />
+          <mxGeometry x="1780" y="455" width="850" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="api_messaging" value="&lt;div style=&quot;font-size:15px;font-weight:bold;color:#152B45;text-align:center&quot;&gt;Appwrite Messaging API&lt;/div&gt;&lt;div style=&quot;font-size:12px;color:#52657A;text-align:center;line-height:1.35&quot;&gt;SMS creation via messaging.createSms()&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#64748B;strokeWidth=1.5;arcSize=10;spacing=7;" vertex="1" parent="1">
+          <mxGeometry x="1780" y="520" width="850" height="52" as="geometry" />
+          <mxGeometry x="1780" y="520" width="850" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="twilio" value="&lt;div style=&quot;font-size:15px;font-weight:bold;color:#152B45;text-align:center&quot;&gt;Twilio SMS provider — documented integration&lt;/div&gt;&lt;div style=&quot;font-size:12px;color:#52657A;text-align:center;line-height:1.35&quot;&gt;README says to configure Twilio under Appwrite Messaging.&lt;br&gt;Application code calls Appwrite Messaging; no direct Twilio SDK call is shown.&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#64748B;strokeWidth=1.5;arcSize=10;spacing=7;" vertex="1" parent="1">
+          <mxGeometry x="1710" y="690" width="350" height="70" as="geometry" />
+          <mxGeometry x="1780" y="620" width="850" height="85" as="geometry" />
+          <mxGeometry x="1780" y="620" width="850" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="sentry" value="&lt;div style=&quot;font-size:15px;font-weight:bold;color:#152B45;text-align:center&quot;&gt;Sentry configuration / monitoring note&lt;/div&gt;&lt;div style=&quot;font-size:12px;color:#52657A;text-align:center;line-height:1.35&quot;&gt;Sentry configuration and instrumentation files exist.&lt;br&gt;No runtime connection is asserted by this architecture diagram.&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F4F6F9;strokeColor=#94A3B8;strokeWidth=1.5;arcSize=10;spacing=7;" vertex="1" parent="1">
+          <mxGeometry x="1650" y="790" width="440" height="75" as="geometry" />
+          <mxGeometry x="1780" y="790" width="850" height="95" as="geometry" />
+          <mxGeometry x="1780" y="790" width="850" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="audit_title" value="Pattern audit annotations" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=12;fontColor=#17365D;shape=text;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="42" y="945" width="900" height="35" as="geometry" />
+          <mxGeometry x="40" y="1175" width="1000" height="35" as="geometry" />
+          <mxGeometry x="40" y="1175" width="1000" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="existing_title" value="EXISTING PATTERN-LIKE STRUCTURES" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=12;fontColor=#2F6C3B;shape=text;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="62" y="1018" width="610" height="30" as="geometry" />
+          <mxGeometry x="55" y="1230" width="600" height="30" as="geometry" />
+          <mxGeometry x="55" y="1230" width="600" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="future_title" value="FUTURE REFACTORING OPPORTUNITIES — NOT EXISTING IMPLEMENTATIONS" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=12;fontColor=#946200;shape=text;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="732" y="1018" width="1400" height="30" as="geometry" />
+          <mxGeometry x="730" y="1230" width="1850" height="30" as="geometry" />
+          <mxGeometry x="730" y="1230" width="1850" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="singleton_card" value="&lt;div style=&quot;font-size:17px;font-weight:bold;color:#245331;text-align:center&quot;&gt;Singleton-like&lt;/div&gt;&lt;div style=&quot;font-size:12px;color:#356444;text-align:center;line-height:1.35&quot;&gt;Shared Appwrite client and exported service objects&lt;br&gt;&lt;br&gt;Evidence: lib/appwrite.config.ts creates one module-level Client and exports users, databases, storage and messaging.&lt;br&gt;&lt;br&gt;Caveat: PatientModal.tsx creates a separate Client + Databases instance. Not a strict GoF Singleton.&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EAF6EC;strokeColor=#4B8757;strokeWidth=1.5;arcSize=10;spacing=7;" vertex="1" parent="1">
+          <mxGeometry x="62" y="1058" width="292" height="320" as="geometry" />
+          <mxGeometry x="55" y="1270" width="292" height="310" as="geometry" />
+          <mxGeometry x="55" y="1270" width="292" height="310" as="geometry" />
+        </mxCell>
+        <mxCell id="factory_card" value="&lt;div style=&quot;font-size:17px;font-weight:bold;color:#245331;text-align:center&quot;&gt;Factory-like&lt;/div&gt;&lt;div style=&quot;font-size:12px;color:#356444;text-align:center;line-height:1.35&quot;&gt;Appointment schema selection&lt;br&gt;&lt;br&gt;Evidence: getAppointmentSchema(type) selects Create, Schedule or Cancel Zod schema.&lt;br&gt;&lt;br&gt;Caveat: schema-selection helper; not proof of a full GoF Factory Method.&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EAF6EC;strokeColor=#4B8757;strokeWidth=1.5;arcSize=10;spacing=7;" vertex="1" parent="1">
+          <mxGeometry x="374" y="1058" width="294" height="320" as="geometry" />
+          <mxGeometry x="365" y="1270" width="295" height="310" as="geometry" />
+          <mxGeometry x="365" y="1270" width="295" height="310" as="geometry" />
+        </mxCell>
+        <mxCell id="future_observer" value="&lt;div style=&quot;font-size:17px;font-weight:bold;color:#805B0A;text-align:center&quot;&gt;Observer&lt;/div&gt;&lt;div style=&quot;font-size:12px;color:#775A1D;text-align:center;line-height:1.35&quot;&gt;Proposal: decouple appointment-update events from SMS and other notification handlers.&lt;br&gt;&lt;br&gt;Target: appointment update / notification flow.&lt;br&gt;&lt;br&gt;PROPOSED ONLY — NOT IMPLEMENTED&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF5DA;strokeColor=#C18A1B;strokeWidth=1.5;arcSize=10;spacing=7;dashed=1;dashPattern=7 5;" vertex="1" parent="1">
+          <mxGeometry x="732" y="1058" width="267" height="320" as="geometry" />
+          <mxGeometry x="730" y="1270" width="355" height="310" as="geometry" />
+          <mxGeometry x="730" y="1270" width="355" height="310" as="geometry" />
+        </mxCell>
+        <mxCell id="future_strategy" value="&lt;div style=&quot;font-size:17px;font-weight:bold;color:#805B0A;text-align:center&quot;&gt;Strategy&lt;/div&gt;&lt;div style=&quot;font-size:12px;color:#775A1D;text-align:center;line-height:1.35&quot;&gt;Proposal: interchangeable doctor-availability policies.&lt;br&gt;&lt;br&gt;Target: future scheduling rules; the current doctor list is local constants.&lt;br&gt;&lt;br&gt;PROPOSED ONLY — NOT IMPLEMENTED&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF5DA;strokeColor=#C18A1B;strokeWidth=1.5;arcSize=10;spacing=7;dashed=1;dashPattern=7 5;" vertex="1" parent="1">
+          <mxGeometry x="1013" y="1058" width="267" height="320" as="geometry" />
+          <mxGeometry x="1100" y="1270" width="355" height="310" as="geometry" />
+          <mxGeometry x="1100" y="1270" width="355" height="310" as="geometry" />
+        </mxCell>
+        <mxCell id="future_state" value="&lt;div style=&quot;font-size:17px;font-weight:bold;color:#805B0A;text-align:center&quot;&gt;State&lt;/div&gt;&lt;div style=&quot;font-size:12px;color:#775A1D;text-align:center;line-height:1.35&quot;&gt;Proposal: centralize valid appointment-status transitions.&lt;br&gt;&lt;br&gt;Target: pending, scheduled and cancelled status workflow.&lt;br&gt;&lt;br&gt;PROPOSED ONLY — NOT IMPLEMENTED&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF5DA;strokeColor=#C18A1B;strokeWidth=1.5;arcSize=10;spacing=7;dashed=1;dashPattern=7 5;" vertex="1" parent="1">
+          <mxGeometry x="1294" y="1058" width="267" height="320" as="geometry" />
+          <mxGeometry x="1470" y="1270" width="355" height="310" as="geometry" />
+          <mxGeometry x="1470" y="1270" width="355" height="310" as="geometry" />
+        </mxCell>
+        <mxCell id="future_command" value="&lt;div style=&quot;font-size:17px;font-weight:bold;color:#805B0A;text-align:center&quot;&gt;Command&lt;/div&gt;&lt;div style=&quot;font-size:12px;color:#775A1D;text-align:center;line-height:1.35&quot;&gt;Proposal: represent schedule and cancellation operations as command objects.&lt;br&gt;&lt;br&gt;Target: appointment actions.&lt;br&gt;&lt;br&gt;PROPOSED ONLY — NOT IMPLEMENTED&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF5DA;strokeColor=#C18A1B;strokeWidth=1.5;arcSize=10;spacing=7;dashed=1;dashPattern=7 5;" vertex="1" parent="1">
+          <mxGeometry x="1575" y="1058" width="267" height="320" as="geometry" />
+          <mxGeometry x="1840" y="1270" width="355" height="310" as="geometry" />
+          <mxGeometry x="1840" y="1270" width="355" height="310" as="geometry" />
+        </mxCell>
+        <mxCell id="future_adapter" value="&lt;div style=&quot;font-size:17px;font-weight:bold;color:#805B0A;text-align:center&quot;&gt;Adapter&lt;/div&gt;&lt;div style=&quot;font-size:12px;color:#775A1D;text-align:center;line-height:1.35&quot;&gt;Proposal: isolate provider-specific SMS details behind a common messaging interface.&lt;br&gt;&lt;br&gt;Target: messaging integration.&lt;br&gt;&lt;br&gt;PROPOSED ONLY — NOT IMPLEMENTED&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF5DA;strokeColor=#C18A1B;strokeWidth=1.5;arcSize=10;spacing=7;dashed=1;dashPattern=7 5;" vertex="1" parent="1">
+          <mxGeometry x="1856" y="1058" width="267" height="320" as="geometry" />
+          <mxGeometry x="2210" y="1270" width="420" height="310" as="geometry" />
+          <mxGeometry x="2210" y="1270" width="420" height="310" as="geometry" />
+        </mxCell>
+        <mxCell id="security_note" value="&lt;div style=&quot;font-size:16px;font-weight:bold;color:#912018;text-align:left&quot;&gt;SECURITY NOTE — NOT A DESIGN PATTERN&lt;/div&gt;&lt;div style=&quot;font-size:13px;color:#7A271A;text-align:left;line-height:1.35&quot;&gt;Repository config names the key NEXT_PUBLIC_API_KEY and passes it to node-appwrite Client.setKey().&lt;br&gt;Review this configuration: keep privileged API keys server-only and verify the key is not bundled or exposed.&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF1F0;strokeColor=#D92D20;strokeWidth=1.5;arcSize=10;spacing=7;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="35" y="1630" width="2630" height="112" as="geometry" />
+          <mxGeometry x="35" y="1630" width="2630" height="112" as="geometry" />
+        </mxCell>
+        <mxCell id="scope_note" value="Scope: source-grounded component/dependency diagram. Twilio is README-documented through Appwrite Messaging; Sentry is a configuration note only. Solid arrows show code-level calls/dependencies; dashed arrow shows documented provider integration." style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=12;fontColor=#718096;shape=text;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="42" y="1420" width="2100" height="38" as="geometry" />
+          <mxGeometry x="40" y="1765" width="2600" height="38" as="geometry" />
+          <mxGeometry x="40" y="1765" width="2600" height="38" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
