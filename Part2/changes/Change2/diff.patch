@@ -1,0 +1,12 @@
+diff --git a/Part2/code/lib/availability/index.ts b/Part2/code/lib/availability/index.ts
+new file mode 100644
+index 0000000..ad23f7b
+--- /dev/null
++++ b/Part2/code/lib/availability/index.ts
+@@ -0,0 +1,6 @@
++export * from "./types";
++export * from "./IAvailabilityStrategy";
++export * from "./StandardBusinessHoursStrategy";
++export * from "./ShiftBasedAvailabilityStrategy";
++export * from "./EmergencyOnCallAvailabilityStrategy";
++export * from "./DoctorAvailabilityContext";

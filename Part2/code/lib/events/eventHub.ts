@@ -1,8 +1,8 @@
 import path from "node:path";
-import { DomainEventBus } from "./index";
-import { ReminderSchedulerObserver } from "./index";
-import { ReminderCancellationObserver } from "./index";
-import { AuditLogObserver } from "./index";
+import { DomainEventBus } from "./DomainEventBus";
+import { ReminderSchedulerObserver } from "./subscribers/ReminderSchedulerObserver";
+import { ReminderCancellationObserver } from "./subscribers/ReminderCancellationObserver";
+import { AuditLogObserver } from "./subscribers/AuditLogObserver";
 import {
   JsonFileReminderStore,
   ReminderProcessingEngine,

@@ -3,27 +3,27 @@ import path from "node:path";
 import fs from "node:fs";
 
 // 1. CH01 Adapter Imports
-import { LocalDemonstrationVideoProvider } from "../changes/Change1/adaptee/LocalDemonstrationVideoProvider";
-import { LocalDemonstrationVideoAdapter } from "../changes/Change1/adapter/LocalDemonstrationVideoAdapter";
-import { VideoServiceFactory } from "../changes/Change1/adapter/VideoServiceFactory";
+import { LocalDemonstrationVideoProvider } from "../lib/video/LocalDemonstrationVideoProvider";
+import { LocalDemonstrationVideoAdapter } from "../lib/video/LocalDemonstrationVideoAdapter";
+import { VideoServiceFactory } from "../lib/video/VideoServiceFactory";
 
 // 2. CH02 Strategy Imports
-import { StandardBusinessHoursStrategy } from "../changes/Change2/strategy/StandardBusinessHoursStrategy";
-import { ShiftBasedAvailabilityStrategy } from "../changes/Change2/strategy/ShiftBasedAvailabilityStrategy";
-import { EmergencyOnCallAvailabilityStrategy } from "../changes/Change2/strategy/EmergencyOnCallAvailabilityStrategy";
-import { DoctorAvailabilityContext } from "../changes/Change2/strategy/DoctorAvailabilityContext";
+import { StandardBusinessHoursStrategy } from "../lib/availability/StandardBusinessHoursStrategy";
+import { ShiftBasedAvailabilityStrategy } from "../lib/availability/ShiftBasedAvailabilityStrategy";
+import { EmergencyOnCallAvailabilityStrategy } from "../lib/availability/EmergencyOnCallAvailabilityStrategy";
+import { DoctorAvailabilityContext } from "../lib/availability/DoctorAvailabilityContext";
 import { DoctorAvailabilityConfigs } from "../constants/index";
 
 // 3. CH03 Observer & Reminders Imports
-import { DomainEventBus } from "../changes/Change3/observer/DomainEventBus";
-import { ReminderSchedulerObserver } from "../changes/Change3/observer/subscribers/ReminderSchedulerObserver";
-import { ReminderCancellationObserver } from "../changes/Change3/observer/subscribers/ReminderCancellationObserver";
-import { AuditLogObserver } from "../changes/Change3/observer/subscribers/AuditLogObserver";
-import { JsonFileReminderStore } from "../changes/Change3/reminders/JsonFileReminderStore";
+import { DomainEventBus } from "../lib/events/DomainEventBus";
+import { ReminderSchedulerObserver } from "../lib/events/subscribers/ReminderSchedulerObserver";
+import { ReminderCancellationObserver } from "../lib/events/subscribers/ReminderCancellationObserver";
+import { AuditLogObserver } from "../lib/events/subscribers/AuditLogObserver";
+import { JsonFileReminderStore } from "../lib/reminders/JsonFileReminderStore";
 import {
   ReminderProcessingEngine,
   INotificationChannel,
-} from "../changes/Change3/reminders/ReminderProcessingEngine";
+} from "../lib/reminders/ReminderProcessingEngine";
 
 class TestMockChannel implements INotificationChannel {
   public messages: Array<{ to: string; text: string }> = [];

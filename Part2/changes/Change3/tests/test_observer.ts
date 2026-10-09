@@ -1,20 +1,20 @@
 import assert from "node:assert";
 import fs from "node:fs";
 import path from "node:path";
-import { DomainEventBus } from "../observer/DomainEventBus";
-import { ReminderSchedulerObserver } from "../observer/subscribers/ReminderSchedulerObserver";
-import { ReminderCancellationObserver } from "../observer/subscribers/ReminderCancellationObserver";
-import { AuditLogObserver } from "../observer/subscribers/AuditLogObserver";
-import { JsonFileReminderStore } from "../reminders/JsonFileReminderStore";
+import { DomainEventBus } from "../../../code/lib/events/DomainEventBus";
+import { ReminderSchedulerObserver } from "../../../code/lib/events/subscribers/ReminderSchedulerObserver";
+import { ReminderCancellationObserver } from "../../../code/lib/events/subscribers/ReminderCancellationObserver";
+import { AuditLogObserver } from "../../../code/lib/events/subscribers/AuditLogObserver";
+import { JsonFileReminderStore } from "../../../code/lib/reminders/JsonFileReminderStore";
 import {
   ReminderProcessingEngine,
   INotificationChannel,
-} from "../reminders/ReminderProcessingEngine";
+} from "../../../code/lib/reminders/ReminderProcessingEngine";
 import {
   AppointmentScheduledPayload,
   AppointmentCancelledPayload,
   NotificationDeliveryResult,
-} from "../types/events.types";
+} from "../../../code/lib/events/types";
 
 class MockNotificationChannel implements INotificationChannel {
   public sentMessages: Array<{ phone: string; message: string }> = [];

@@ -1,0 +1,14 @@
+.next/types/app/api/patients/[patientId]/page.ts(28,13): error TS2344: Type 'OmitWithTag<NextApiRequest, keyof PageProps, "default">' does not satisfy the constraint '{ [x: string]: never; }'.
+  Property 'push' is incompatible with index signature.
+    Type '(chunk: any, encoding?: BufferEncoding | undefined) => boolean' is not assignable to type 'never'.
+.next/types/app/api/patients/[patientId]/page.ts(28,29): error TS2559: Type 'NextApiRequest' has no properties in common with type 'PageProps'.
+app/api/checkEmail/route.ts(30,26): error TS2352: Conversion of type 'DefaultDocument' to type 'Patient' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Type 'DefaultDocument' is missing the following properties from type 'Patient': userId, name, email, phone, and 17 more.
+lib/actions/appointment.actions.ts(148,21): error TS2352: Conversion of type 'DefaultDocument[]' to type 'Appointment[]' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Type 'DefaultDocument' is missing the following properties from type 'Appointment': patient, schedule, status, primaryPhysician, and 4 more.
+lib/actions/patient.actions.ts(92,7): error TS2345: Argument of type '{ $id?: string; userId: string; birthDate: Date; gender: Gender; address: string; occupation: string; emergencyContactName: string; emergencyContactNumber: string; primaryPhysician: string; ... 13 more ...; identificationDocumentUrl: string | null; }' is not assignable to parameter of type 'DataWithoutDocumentKeys'.
+  Type '{ $id?: string; userId: string; birthDate: Date; gender: Gender; address: string; occupation: string; emergencyContactName: string; emergencyContactNumber: string; primaryPhysician: string; ... 13 more ...; identificationDocumentUrl: string | null; }' is not assignable to type '{ $id?: undefined; $sequence?: undefined; $collectionId?: undefined; $databaseId?: undefined; $createdAt?: undefined; $updatedAt?: undefined; $permissions?: undefined; }'.
+    Types of property '$id' are incompatible.
+      Type 'string | undefined' is not assignable to type 'undefined'.
+        Type 'string' is not assignable to type 'undefined'.
+EXIT_CODE=0  

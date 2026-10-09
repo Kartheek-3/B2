@@ -1,13 +1,13 @@
 import assert from "node:assert";
-import { StandardBusinessHoursStrategy } from "../strategy/StandardBusinessHoursStrategy";
-import { ShiftBasedAvailabilityStrategy } from "../strategy/ShiftBasedAvailabilityStrategy";
-import { EmergencyOnCallAvailabilityStrategy } from "../strategy/EmergencyOnCallAvailabilityStrategy";
-import { DoctorAvailabilityContext } from "../strategy/DoctorAvailabilityContext";
+import { StandardBusinessHoursStrategy } from "../../../code/lib/availability/StandardBusinessHoursStrategy";
+import { ShiftBasedAvailabilityStrategy } from "../../../code/lib/availability/ShiftBasedAvailabilityStrategy";
+import { EmergencyOnCallAvailabilityStrategy } from "../../../code/lib/availability/EmergencyOnCallAvailabilityStrategy";
+import { DoctorAvailabilityContext } from "../../../code/lib/availability/DoctorAvailabilityContext";
 import {
   DoctorAvailabilityConfig,
   ExistingBooking,
   SlotValidationRequest,
-} from "../types/availability.types";
+} from "../../../code/lib/availability/types";
 
 function runStrategyTests() {
   console.log("=== Running CH02 Doctor Availability Strategy Pattern Tests ===");

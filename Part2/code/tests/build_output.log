@@ -1,0 +1,54 @@
+
+> carepulse@0.2.1 build
+> next build
+
+  ▲ Next.js 14.2.35
+  - Environments: .env.local
+  - Experiments (use with caution):
+    · instrumentationHook
+
+   Creating an optimized production build ...
+[@sentry/nextjs] The Sentry SDK has enabled source map generation for your Next.js app. If you don't want to serve Source Maps to your users, either set the `sourcemaps.deleteSourcemapsAfterUpload` option to true, or manually delete the source maps after the build. In future Sentry SDK versions `sourcemaps.deleteSourcemapsAfterUpload` will default to `true`. If you do not want to generate and upload sourcemaps, set the `sourcemaps.disable` option in `withSentryConfig()`.
+ ✓ Compiled successfully
+   Skipping validation of types
+   Skipping linting
+   Collecting page data ...
+   Generating static pages (0/11) ...
+ ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+ ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+ ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+   Generating static pages (2/11) 
+   Generating static pages (5/11) 
+ ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+ ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+   Generating static pages (8/11) 
+ ✓ Generating static pages (11/11)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                     Size     First Load JS
+┌ ƒ /                                           11.9 kB         387 kB
+├ ○ /_not-found                                 1.02 kB         189 kB
+├ ○ /admin                                      27.8 kB         403 kB
+├ ƒ /api/checkEmail                             0 B                0 B
+├ ƒ /api/checkPhone                             0 B                0 B
+├ ƒ /api/patients/[patientId]                   310 B           188 kB
+├ ƒ /api/reminders/process                      0 B                0 B
+├ ƒ /api/sentry-example-api                     0 B                0 B
+├ ƒ /api/video/token                            0 B                0 B
+├ ƒ /patients/[userId]/new-appointment          2.61 kB         378 kB
+├ ƒ /patients/[userId]/new-appointment/success  1.89 kB         200 kB
+├ ƒ /patients/[userId]/register                 23.2 kB         398 kB
+├ ƒ /patients/find-by-email                     310 B           188 kB
+└ ○ /sentry-example-page                        1.99 kB         190 kB
++ First Load JS shared by all                   188 kB
+  ├ chunks/0ba13a79-7780fa5d4080d4ac.js         53.8 kB
+  ├ chunks/246-0e39c49baf3ebf4b.js              94.8 kB
+  ├ chunks/e7d4ae7b-3c879deef211099a.js         37 kB
+  └ other shared chunks (total)                 2.63 kB
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+EXIT_CODE=0  

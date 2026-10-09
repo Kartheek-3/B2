@@ -1,0 +1,37 @@
+
+> carepulse@0.2.1 test
+> sucrase-node tests/run_all_tests.ts
+
+================================================================================
+        CAREPULSE PART 2 MASTER INTEGRATION & PATTERN TEST SUITE                
+================================================================================
+
+--- 1. Testing CH01 Adapter Pattern Collaboration ---
+[PASS] CH01.1: Adapter translates domain createRoom request to proprietary provider
+[PASS] CH01.2: Adapter translates domain doctor role to clinician token claims
+[PASS] CH01.3: Adapter translates domain patient role to client token claims
+[PASS] CH01.4: VideoServiceFactory reliably supplies active adapter
+
+--- 2. Testing CH02 Strategy Pattern Collaboration ---
+[PASS] CH02.1: StandardBusinessHoursStrategy accepts valid weekday outpatient slot
+[PASS] CH02.2: StandardBusinessHoursStrategy rejects weekend outpatient request
+[PASS] CH02.3: ShiftBasedAvailabilityStrategy accepts slot strictly within assigned roster shift
+[PASS] CH02.4: ShiftBasedAvailabilityStrategy rejects slot outside active shift hours
+[PASS] CH02.5: EmergencyOnCallAvailabilityStrategy permits 24/7 emergency triage
+[PASS] CH02.6: EmergencyOnCallAvailabilityStrategy rejects slot encroaching on 15-min recovery buffer
+
+--- 3. Testing CH03 Observer Pattern & Scheduled Processing ---
+[PASS] CH03.1: DomainEventBus published APPOINTMENT_SCHEDULED; observer enqueued 24h and 2h reminders
+[PASS] CH03.2: AuditLogObserver recorded event in chronological audit trail
+[PASS] CH03.3: ReminderProcessingEngine dispatched due teleconsultation reminder
+[PASS] CH03.4: Idempotency keys prevented duplicate delivery on re-execution
+[PASS] CH03.5: Transient dispatch failure captured and scheduled for retry
+[PASS] CH03.6: Subsequent retry successfully delivered notification
+[PASS] CH03.7: APPOINTMENT_CANCELLED revoked remaining pending reminders
+
+================================================================================
+TOTAL TESTS: 17 | PASSED: 17 | FAILED: 0
+ALL INTEGRATION TESTS VERIFIED SUCCESSFULLY!
+================================================================================
+
+EXIT_CODE=0  

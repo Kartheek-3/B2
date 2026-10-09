@@ -1,0 +1,129 @@
+diff --git a/Part2/code/app/api/reminders/process/route.ts b/Part2/code/app/api/reminders/process/route.ts
+new file mode 100644
+index 0000000..fe7d3f9
+--- /dev/null
++++ b/Part2/code/app/api/reminders/process/route.ts
+@@ -0,0 +1,39 @@
++import { NextRequest, NextResponse } from "next/server";
++import { reminderEngine } from "@/lib/events/eventHub";
++
++/**
++ * Protected Automated Scheduled Reminders Processing Endpoint
++ *
++ * Security Requirement:
++ * Requires authorization header 'x-scheduled-token' matching the configured secret
++ * to prevent unauthorized trigger sweeps.
++ */
++export async function POST(request: NextRequest) {
++  const authHeader = request.headers.get("x-scheduled-token");
++  const expectedToken = process.env.SCHEDULED_TASK_SECRET || "carepulse_demo_cron_secret";
++
++  if (authHeader !== expectedToken) {
++    return NextResponse.json(
++      { error: "Unauthorized: Missing or invalid x-scheduled-token authentication header." },
++      { status: 401 }
++    );
++  }
++
++  try {
++    const referenceTime = new Date();
++    const report = await reminderEngine.processDueReminders(referenceTime);
++
++    return NextResponse.json({
++      success: true,
++      timestamp: referenceTime.toISOString(),
++      report,
++    });
++  } catch (err: unknown) {
++    const errorMsg = err instanceof Error ? err.message : String(err);
++    return NextResponse.json({ success: false, error: errorMsg }, { status: 500 });
++  }
++}
++
++export async function GET(request: NextRequest) {
++  return POST(request);
++}
+diff --git a/Part2/code/lib/events/eventHub.ts b/Part2/code/lib/events/eventHub.ts
+new file mode 100644
+index 0000000..949b46b
+--- /dev/null
++++ b/Part2/code/lib/events/eventHub.ts
+@@ -0,0 +1,57 @@
++import path from "node:path";
++import { DomainEventBus } from "./DomainEventBus";
++import { ReminderSchedulerObserver } from "./subscribers/ReminderSchedulerObserver";
++import { ReminderCancellationObserver } from "./subscribers/ReminderCancellationObserver";
++import { AuditLogObserver } from "./subscribers/AuditLogObserver";
++import {
++  JsonFileReminderStore,
++  ReminderProcessingEngine,
++  INotificationChannel,
++} from "../reminders";
++import { sendSMSNotification } from "../actions/appointment.actions";
++
++// Default reminder storage location in Part2/code/data/
++const defaultStorePath = path.join(process.cwd(), "data", "reminders_store.json");
++
++export const reminderStore = new JsonFileReminderStore(defaultStorePath);
++export const domainEventBus = new DomainEventBus();
++export const auditLogObserver = new AuditLogObserver();
++
++const schedulerObserver = new ReminderSchedulerObserver(reminderStore);
++const cancellationObserver = new ReminderCancellationObserver(reminderStore);
++
++// Register observers with the Subject
++domainEventBus.subscribe("APPOINTMENT_SCHEDULED", schedulerObserver);
++domainEventBus.subscribe("APPOINTMENT_RESCHEDULED", schedulerObserver);
++domainEventBus.subscribe("APPOINTMENT_CANCELLED", cancellationObserver);
++domainEventBus.subscribe("APPOINTMENT_SCHEDULED", auditLogObserver);
++domainEventBus.subscribe("APPOINTMENT_RESCHEDULED", auditLogObserver);
++domainEventBus.subscribe("APPOINTMENT_CANCELLED", auditLogObserver);
++
++// Appwrite-backed notification channel with fallback to mock/log
++export class AppwriteNotificationChannel implements INotificationChannel {
++  public async sendSMS(recipientPhone: string, message: string) {
++    try {
++      if (process.env.NEXT_PUBLIC_ENDPOINT && process.env.NEXT_PUBLIC_PROJECT_ID) {
++        await sendSMSNotification(recipientPhone, message);
++      } else {
++        console.log(`[Notification Sink - Local Log] SMS to ${recipientPhone}: ${message}`);
++      }
++      return {
++        success: true,
++        messageId: `msg_${Date.now()}`,
++        timestamp: new Date(),
++      };
++    } catch (err: unknown) {
++      console.warn("Notification delivery warning:", err);
++      return {
++        success: false,
++        error: err instanceof Error ? err.message : String(err),
++        timestamp: new Date(),
++      };
++    }
++  }
++}
++
++export const notificationChannel = new AppwriteNotificationChannel();
++export const reminderEngine = new ReminderProcessingEngine(reminderStore, notificationChannel);
+diff --git a/Part2/code/lib/events/index.ts b/Part2/code/lib/events/index.ts
+new file mode 100644
+index 0000000..01f715d
+--- /dev/null
++++ b/Part2/code/lib/events/index.ts
+@@ -0,0 +1,6 @@
++export * from "./types";
++export * from "./DomainEventBus";
++export * from "./subscribers/ReminderSchedulerObserver";
++export * from "./subscribers/ReminderCancellationObserver";
++export * from "./subscribers/AuditLogObserver";
++export * from "./eventHub";
+diff --git a/Part2/code/lib/reminders/index.ts b/Part2/code/lib/reminders/index.ts
+new file mode 100644
+index 0000000..ee1c98e
+--- /dev/null
++++ b/Part2/code/lib/reminders/index.ts
+@@ -0,0 +1,3 @@
++export * from "./IReminderStore";
++export * from "./JsonFileReminderStore";
++export * from "./ReminderProcessingEngine";

@@ -1,8 +1,8 @@
 import assert from "node:assert";
-import { LocalDemonstrationVideoProvider } from "../adaptee/LocalDemonstrationVideoProvider";
-import { LocalDemonstrationVideoAdapter } from "../adapter/LocalDemonstrationVideoAdapter";
-import { VideoServiceFactory } from "../adapter/VideoServiceFactory";
-import { VideoRoomRequest, VideoParticipant } from "../types/video.types";
+import { LocalDemonstrationVideoProvider } from "../../../code/lib/video/LocalDemonstrationVideoProvider";
+import { LocalDemonstrationVideoAdapter } from "../../../code/lib/video/LocalDemonstrationVideoAdapter";
+import { VideoServiceFactory } from "../../../code/lib/video/VideoServiceFactory";
+import { VideoRoomRequest, VideoParticipant } from "../../../code/lib/video/types";
 
 async function runAdapterTests() {
   console.log("=== Running CH01 Video Consultation Adapter Pattern Tests ===");

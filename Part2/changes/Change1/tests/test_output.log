@@ -1,0 +1,9 @@
+=== Running CH01 Video Consultation Adapter Pattern Tests ===
+✔ Test 1 Passed: createRoom correctly adapted and populated domain model
+✔ Test 2 Passed: getRoomDetails retrieves adapted session data
+✔ Test 3 Passed: Role translation and token generation verified
+✔ Test 4 Passed: VideoServiceFactory returns configured adapter instance
+✔ Test 5 Passed: Non-existent session throws descriptive error
+All 5 CH01 Adapter pattern tests passed successfully.
+
+EXIT_CODE=0  

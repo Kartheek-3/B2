@@ -8,5 +8,6 @@ Evolution v2,per_pattern,State,1
 Evolution v2,per_pattern,Command,1
 Evolution v2,total_pattern_types,,7
 Evolution v2,total_pattern_instances,,7
-Evolution v2,total_implemented_patterns,,5
-Evolution v2,total_preserved_baseline_patterns,,4
+Evolution v2,total_implemented_patterns,,3
+Evolution v2,total_pattern_like,,2
+Evolution v2,total_refactoring_opportunities,,2
