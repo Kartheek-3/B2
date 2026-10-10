@@ -63,8 +63,13 @@ export const Columns = ({
     cell: ({ row }) => {
       const appointment = row.original;
       return (
-        <div className="min-w-[115px]">
+        <div className="flex flex-col gap-1.5 min-w-[120px]">
           <StatusBadge status={appointment.status} />
+          {appointment.isTeleconsultation && (
+            <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-400 bg-emerald-950/50 px-2 py-0.5 rounded-full border border-emerald-600/40 w-fit">
+              📹 Teleconsult
+            </span>
+          )}
         </div>
       );
     },
@@ -86,21 +91,30 @@ export const Columns = ({
     header: "Doctor",
     cell: ({ row }) => {
       const appointment = row.original;
-
+      const rawName = (appointment.primaryPhysician || "")
+        .replace(/^Dr\.\s*/i, "")
+        .trim();
       const doctor = Doctors.find(
-        (doctor) => doctor.name === appointment.primaryPhysician
+        (doc) =>
+          doc.name.toLowerCase() === rawName.toLowerCase() ||
+          doc.name.toLowerCase() === appointment.primaryPhysician?.toLowerCase()
       );
+
+      const displayName = rawName
+        ? `Dr. ${rawName}`
+        : appointment.primaryPhysician || "Dr. Staff Physician";
+      const imageSrc = doctor?.image || "/assets/images/dr-green.png";
 
       return (
         <div className="flex items-center gap-3">
           <img
-            src={doctor?.image!}
-            alt="doctor"
-            width={100}
-            height="auto"
-            className="size-8"
+            src={imageSrc}
+            alt={displayName}
+            width={32}
+            height={32}
+            className="size-8 rounded-full border border-dark-500 object-cover shadow-sm"
           />
-          <p className="whitespace-nowrap">Dr. {doctor?.name}</p>
+          <p className="whitespace-nowrap font-medium text-white">{displayName}</p>
         </div>
       );
     },

@@ -6,6 +6,7 @@ import {
   NEXT_PUBLIC_DATABASE_ID,
   NEXT_PUBLIC_PATIENT_COLLECTION_ID,
 } from "@/lib/appwrite.config";
+import { localDemoStore } from "@/lib/demo/localDemoStore";
 import type { Patient } from "@/types/appwrite.types";
 
 export async function GET(req: NextRequest) {
@@ -27,15 +28,23 @@ export async function GET(req: NextRequest) {
     let userId;
     let user;
     if (exists) {
-      const patientDoc = response.documents[0] as Patient;
-      userId = patientDoc.userId; // Use Appwrite Auth user ID for routing
+      const patientDoc = response.documents[0] as unknown as Patient;
+      userId = patientDoc.userId;
       user = patientDoc;
     }
     return NextResponse.json({ exists, userId, user });
-  } catch (error) {
-    return NextResponse.json(
-      { error: "Internal server error" },
-      { status: 500 }
+  } catch (error: any) {
+    console.warn(
+      `[LOCAL DEMO MODE] Appwrite checkEmail failed (${error?.code || error?.message}). Falling back to local demonstration store.`
     );
+    const demoPatient = localDemoStore.getPatientByEmail(email);
+    if (demoPatient) {
+      return NextResponse.json({
+        exists: true,
+        userId: demoPatient.userId,
+        user: demoPatient,
+      });
+    }
+    return NextResponse.json({ exists: false, userId: null, user: null });
   }
 }

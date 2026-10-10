@@ -52,6 +52,7 @@ export const AppointmentForm = ({
       reason: appointment ? appointment.reason : "",
       note: appointment?.note || "",
       cancellationReason: appointment?.cancellationReason || "",
+      isTeleconsultation: appointment ? !!appointment.isTeleconsultation : false,
     },
   });
 
@@ -204,6 +205,13 @@ export const AppointmentForm = ({
                 disabled={type === "schedule"}
               />
             </div>
+
+            <CustomFormField
+              fieldType={FormFieldType.CHECKBOX}
+              control={form.control}
+              name="isTeleconsultation"
+              label="Request Video Teleconsultation Room (CH01 Adapter Pattern)"
+            />
           </>
         )}
 

@@ -1,5 +1,5 @@
-import { IDomainEventSubscriber } from "../DomainEventBus";
 import { IReminderStore } from "../../reminders/IReminderStore";
+import { IDomainEventSubscriber } from "../DomainEventBus";
 import {
   DomainEvent,
   AppointmentCancelledPayload,

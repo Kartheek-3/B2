@@ -6,6 +6,7 @@ import {
   NEXT_PUBLIC_DATABASE_ID,
   NEXT_PUBLIC_PATIENT_COLLECTION_ID,
 } from "@/lib/appwrite.config";
+import { localDemoStore } from "@/lib/demo/localDemoStore";
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
@@ -19,22 +20,18 @@ export async function GET(req: NextRequest) {
   }
 
   try {
-    console.log(`Checking phone in database: ${phone}`);
     const response = await databases.listDocuments(
       NEXT_PUBLIC_DATABASE_ID!,
       NEXT_PUBLIC_PATIENT_COLLECTION_ID!,
       [Query.equal("phone", phone)]
     );
-    console.log(`Database response: ${JSON.stringify(response)}`);
-
     const exists = response.documents.length > 0;
-    console.log(`Phone exists in database: ${exists}`);
     return NextResponse.json({ exists });
-  } catch (error) {
-    console.error(`Error checking phone in database: ${error}`);
-    return NextResponse.json(
-      { error: "Internal server error" },
-      { status: 500 }
+  } catch (error: any) {
+    console.warn(
+      `[LOCAL DEMO MODE] Appwrite checkPhone failed (${error?.code || error?.message}). Falling back to local demonstration store.`
     );
+    const demoPatient = localDemoStore.getPatientByPhone(phone);
+    return NextResponse.json({ exists: !!demoPatient });
   }
 }

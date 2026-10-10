@@ -2,106 +2,769 @@ Healthcare Appointment Application using Next.js
 Case Study Title: Design Pattern Identification and Evolution in a Next.js-Based Healthcare Appointment Application
 Part 2 – Software Evolution Prompts & Execution Trace
 
-================================================================================
-Prompt-1: Baseline Inspection and Architectural Audit
-================================================================================
-Act as a senior software architect. Analyze the CarePulse healthcare appointment management repository for Part 2 of our Design Patterns Case Study:
-Repository: https://github.com/Kartheek-3/B2
-Original application: https://github.com/arnobt78/HealthCare-Doctor-Appointment-Management-System--NextJS-FullStack
+Prompt-1 
+
+Healthcare Appointment Application using Next.js
+Case Study Title
+Design Pattern Identification and Evolution in a Next.js-Based Healthcare Appointment Application\\\
+Part 1 – Pattern Discovery
+Investigate:
+•	patient management 
+•	doctor management 
+•	appointment scheduling 
+•	doctor availability 
+•	consultation 
+•	reminders 
+•	authentication 
+•	notification 
+Identify actual patterns supported by source-code evidence.
+Part 2 – Software Evolution
+Introduce:
+1.	Add video consultation. 
+2.	Add flexible doctor-availability rules. 
+3.	Add automated appointment reminders. 
+Analyze pattern evolution.
+Part 3 – Cross-Language Analysis
+Select 2 significant patterns and implement the same design problem in Java, Python, JavaScript and C++.\\\
+Expected Outputs
+1.	Application description 
+2.	Framework architecture 
+3.	Pattern inventory 
+4.	Pattern-to-source-code mapping 
+5.	UML diagrams 
+6.	Source-code evidence 
+7.	Three evolution scenarios 
+8.	Before/after analysis 
+9.	Refactoring analysis 
+10.	Four-language implementations 
+11.	LLM prompts and outputs 
+12\\.	Human verification \\\
+13\\.	Metrics \\\
+14\\.	Excel + CSV dataset\
+\
+So here DP_Csestudy(1).pdf is the report format&#x20;\
+and DP_Csestudy.pdf is the instructions&#x20;\
+\
+and the Github repo of the project : [https\://github.com/arnobt78/HealthCare-Doctor-Appointment-Management-System--NextJS-FullStack]\(https\://github.com/arnobt78/HealthCare-Doctor-Appointment-Management-System--NextJS-FullStack)\
+\
+So this are our resources&#x20;\
+\
+extract the information
+
+This is Part1 [https://github.com/Kartheek-3/B2.git](https://github.com/Kartheek-3/B2.git)
+
+extract and what they analyze and done the work
+
+
+Prompt -2 
+
+Act as a senior software architect and implementation engineer for Part 2 of our Design Patterns Case Study.
+
+Repository: [https://github.com/Kartheek-3/B2](https://github.com/Kartheek-3/B2)
+
+Original application: [https://github.com/arnobt78/HealthCare-Doctor-Appointment-Management-System--NextJS-FullStack](https://github.com/arnobt78/HealthCare-Doctor-Appointment-Management-System--NextJS-FullStack)
+
 Baseline commit: f846cd4c476d48a04fcaeb530b48a77c5295bb92
 
-Inspect the actual repository, the assignment folder structure, package dependencies, existing tests, and Appwrite integrations.
-Preserve the baseline untouched under data/code/HealthCare-Doctor-Appointment-Management-System/.
-Identify the relevant files, pre-existing build/typing issues, and architectural opportunities for three evolution scenarios:
-1. Video consultation integration using an Adapter pattern.
-2. Flexible doctor availability using a Strategy pattern.
-3. Automated appointment reminders using Observer/domain events and scheduled processing.
+Our Part 2 requires three changes:
 
-================================================================================
-Prompt-2: Implementation Plan & Risk Strategy
-================================================================================
-Before writing code, formulate a realistic implementation plan for each change:
-- Current architecture and relevant file paths.
-- Realistic implementation plan for CH01, CH02, CH03.
-- New and modified files expected for each change.
-- Dependencies or external credentials required (avoid paid/unavailable APIs; use explicitly labelled mock/local providers for testing while keeping clean target interfaces).
-- Concurrency limitations, delivery guarantees, and automated test strategy.
-Wait for human approval before coding.
+CH01 — Video consultation integration using an Adapter pattern.\
+CH02 — Flexible doctor availability using a Strategy pattern.\
+CH03 — Automated appointment reminders using Observer/domain events and scheduled processing.
 
-================================================================================
-Prompt-3: Implementation Approval & Mandatory Engineering Constraints
-================================================================================
-Approval granted subject to mandatory engineering corrections:
-1. CH01 — Adapter: Implement genuine Adapter collaboration with provider-specific adaptee, concrete adapter, and application-facing target interface. Label mock provider as local demonstration.
-2. CH02 — Strategy: Implement 3 availability strategies with genuine runtime interchangeability. Validate availability on server during appointment scheduling, conflict check, timezone and edge cases. Document concurrency limitations.
-3. CH03 — Observer: Implement real event publisher with registered subscribers. Use persistent reminder store in integrated application, not in-memory-only. Include reminder scheduling, cancellation, rescheduling, protected due-reminder processing, idempotency, retries, and duplicate-prevention tests. Do not claim exactly-once external delivery without supporting guarantees.
-4. Repository structure: Preserve baseline untouched. Use Part2/code/ as authoritative integrated application. Keep separate evidence under Part2/changes/Change1/, Change2/, Change3/.
-5. Security: Server-side privileged credentials, authorization on endpoints.
-6. Verification: Run actual unit, integration, and regression tests, TypeScript checks, and production build. Record actual results only.
-7. Deliverables: Generate patterns_evolution.csv, Pattern_count.csv, llm.csv, Part2_prompts.txt, and architecture diagrams.
+FIRST, inspect the actual repository, the assignment folder structure, the original application, package dependencies and existing tests.
 
-================================================================================
-Prompt-4: CH01 Video Consultation Adapter Implementation
-================================================================================
-Implement Change 1 under Part2/changes/Change1/:
-- Target Interface: IVideoConsultationService (createRoom, getRoomDetails, generateParticipantAccess).
-- Adaptee: LocalDemonstrationVideoProvider (proprietary session payloads, epoch timestamps, clinician/client token claims).
-- Concrete Adapter: LocalDemonstrationVideoAdapter.
-- Service Factory: VideoServiceFactory.
-- Automated Test Suite: test_adapter.ts (room creation, role mapping, token generation, error handling).
+Do not modify the original baseline source. Preserve it unchanged.
 
-================================================================================
-Prompt-5: CH02 Flexible Doctor Availability Strategy Implementation
-================================================================================
-Implement Change 2 under Part2/changes/Change2/:
-- Strategy Interface: IAvailabilityStrategy (validateSlot, generateAvailableSlots).
-- Concrete Strategies:
-  1. StandardBusinessHoursStrategy: Mon-Fri 09:00-17:00, lunch break 12:00-13:00, weekend rejection, conflict detection.
-  2. ShiftBasedAvailabilityStrategy: Rotating shifts (morning/evening/night), assigned shift day validation, shift boundary enforcement.
-  3. EmergencyOnCallAvailabilityStrategy: 24/7 emergency triage availability with mandatory 15-minute recovery buffer gap around bookings.
-- Context: DoctorAvailabilityContext with dynamic runtime strategy switching and server-side validation.
-- Automated Test Suite: test_strategy.ts.
+Before writing code, provide:
 
-================================================================================
-Prompt-6: CH03 Automated Reminders Observer Pattern Implementation
-================================================================================
-Implement Change 3 under Part2/changes/Change3/:
-- Subject: DomainEventBus with subscribe, unsubscribe, and publish.
-- Domain Events: APPOINTMENT_SCHEDULED, APPOINTMENT_CANCELLED, APPOINTMENT_RESCHEDULED.
-- Concrete Observers:
-  1. ReminderSchedulerObserver: Computes T-24h and T-2h reminder windows; enqueues tasks with deterministic idempotency keys.
-  2. ReminderCancellationObserver: Automatically invalidates/revokes pending reminders on cancellation.
-  3. AuditLogObserver: Records chronological audit trail.
-- Persistent Store: JsonFileReminderStore with disk persistence and duplicate prevention.
-- Processing Engine: ReminderProcessingEngine evaluating due tasks, transitioning states, retrying transient errors.
-- Automated Test Suite: test_observer.ts.
+1. Current architecture and relevant file paths.
+2. A realistic implementation plan for each change.
+3. New and modified files expected for each change.
+4. Dependencies or external credentials required.
+5. Risks, limitations and test strategy.
 
-================================================================================
-Prompt-7: Application Integration in Part2/code/
-================================================================================
-Integrate all three changes into Part2/code/:
-- Wire VideoServiceFactory, DoctorAvailabilityContext, and DomainEventBus into lib/actions/appointment.actions.ts.
-- Add protected API endpoints:
-  - /api/reminders/process with authorization token check.
-  - /api/video/token with participant authorization check.
-- Enhance success page with teleconsultation session links.
-- Create Part2/code/tests/run_all_tests.ts master integration test suite.
-- Update package.json test script.
+Important constraints:
 
-================================================================================
-Prompt-8: Verification, Test Execution, and Production Build
-================================================================================
-Execute full automated verification on Part2/code/:
-- Run npm test (17/17 tests passing across Adapter, Strategy, Observer, Idempotency, and Retries).
-- Run tsc --noEmit to audit type safety and identify pre-existing vs. new typing issues.
-- Run npm run build to verify Next.js production build and static optimization.
+- Do not invent existing functionality.
+- Do not claim a third-party integration works without implementing and testing it.
+- Avoid paid video APIs or external services that require unavailable credentials. Provide a clearly labelled mock/local provider for testing if needed, while keeping a replaceable provider interface.
+- Ensure availability rules are actually interchangeable to demonstrate Strategy.
+- Ensure appointment events have real subscribers or handlers to demonstrate Observer-style behavior.
+- Implement reminder scheduling and duplicate prevention; do not treat an immediate SMS call as an automated reminder scheduler.
+- Preserve existing appointment creation, scheduling and cancellation behavior.
+- Create independent change evidence under Part2/code/changes/Change1/, Change2/ and Change3/, and integrate the approved changes into Part2/code/.
+- Add meaningful automated tests and run the build and relevant tests.
+- Record actual results only. Do not invent metrics, test results or LLM metadata.
+- Prepare the required Part 2 evaluation CSV, pattern-count CSV, prompts, LLM log and architecture diagrams using the assignment's actual folder and CSV requirements.
 
-================================================================================
-Prompt-9: Academic Evidence Dataset and Evolution Diagrams
-================================================================================
-Generate the final Part 2 deliverables:
-- Part2/patterns_evolution.csv
-- Part2/Pattern_count.csv
-- Part2/llm.csv
-- Part2/Diagrams/architecture_evolution.drawio and exported architecture_evolution.png
-Record actual data and source-code mappings.
+Do not edit any files yet. First show me the inspection findings and proposed implementation plan for all three changes. Wait for my approval before coding.
+
+
+Prompt 3 
+
+I have reviewed your Part 2 architectural inspection and implementation plan.
+
+**I approve proceeding with implementation, subject to the following mandatory corrections.**
+
+1. **CH01 — Adapter:** Implement a genuine Adapter collaboration with a provider-specific adaptee, a concrete adapter and an application-facing target interface. A mock implementation is acceptable, but explicitly label it as a local demonstration. Do not claim that Jitsi, WebRTC or any external video integration is operational unless it is actually implemented and tested.
+
+2. **CH02 — Strategy:** Implement all three proposed availability strategies with genuine runtime interchangeability. Validate availability on the server during appointment scheduling, including appointment conflicts, timezones and relevant edge cases. Document any concurrency limitations that cannot be resolved without database-level guarantees.
+
+3. **CH03 — Observer and Reminders:** Implement a real event publisher with registered subscribers. Use a persistent reminder store in the integrated application, not an in-memory-only scheduler. Include reminder scheduling, cancellation, rescheduling, protected due-reminder processing, idempotency, retries and duplicate-prevention tests. Do not claim exactly-once external delivery without supporting guarantees.
+
+4. **Repository structure:** Preserve `data/code/HealthCare-Doctor-Appointment-Management-System/` unchanged. Use `Part2/code/` as the authoritative integrated application. Keep separate implementation evidence, diffs, tests and results under `Part2/changes/Change1/`, `Change2/` and `Change3/`. Avoid unnecessary duplicate code copies.
+
+5. **Security:** Keep privileged credentials server-side, enforce authorization for consultation session access and scheduled-processing endpoints, and never commit secrets or real patient information.
+
+6. **Compatibility:** Preserve existing patient registration and appointment creation, scheduling, cancellation and immediate notification behavior. Introduce features through backward-compatible changes wherever possible.
+
+7. **Verification:** Run actual unit, integration and regression tests, TypeScript checks and the production build. Record all failures, including pre-existing issues. Do not invent successful test results or performance metrics.
+
+8. **Academic evidence:** Generate the required `patterns_evolution.csv`, `pattern_counts.csv`, LLM records, before/after diagrams, exact source-code mappings and separate change evidence. Follow the supplied assignment CSV column names and record only confirmed pattern instances.
+
+9. **Git discipline:** Work in an isolated development branch or working copy. Do not alter the original baseline. Record the baseline SHA and implementation commits. Do not push or merge without reporting what changed.
+
+Proceed with CH01, CH02 and CH03, integrate all changes, and provide the actual test results and a summary of modified files.
+
+**Priority: Correctness, demonstrable design-pattern collaborations, reproducible evidence and a working integrated application—not simply generating many files.
+
+
+Prompt-4 
+
+I have reviewed your Part 2 completion report.
+
+Before we finalize the submission, perform a strict verification and correction pass.
+
+1. Verify the complete implementation exists in the local `part2-evolution` branch at commit `80842b7`, and confirm the original baseline and Part 1 files remain unchanged.
+
+2. Inspect all three implementations against the design-pattern definitions. Confirm the actual Adapter, Strategy and Observer participants and their method calls with exact source locations.
+
+3. Correct `patterns_evolution.csv` and `Pattern_count.csv`. Do not count State or Command as confirmed implemented patterns unless actual source evidence proves their collaborations. Use only the evolution status values allowed by the assignment.
+
+4. Confirm that the video implementation is clearly documented as a mock demonstration, not functional real-time video conferencing.
+
+5. Verify JSON reminder-store persistence, duplicate prevention, cancellation, retry handling and concurrency limitations. Explain how the scheduled processing endpoint is invoked, and do not claim automatic execution if no actual scheduler exists.
+
+6. Run the test suite, TypeScript check and production build again, saving complete command outputs, exit codes and results under the appropriate evidence folders.
+
+7. Produce exact baseline-versus-evolved source LOC, pattern counts and test metrics using a documented measurement method.
+
+8. Remove unnecessary duplicate implementation files and ensure `Part2/code/` is authoritative.
+
+9. Verify that the architecture diagram represents the implemented source code, not merely the intended design.
+
+10. Produce a final audit table showing each requirement, source file, test evidence, result and remaining limitation.
+
+Do not claim anything is verified without inspecting or executing it.
+
+After completing the audit, provide the final Git status, full implementation commit SHA, exact changed-file list and verified evidence paths. Do not merge into `main` yet.
+
+I will review the results before approving the final submission.
+
+Prompt -5 
+
+# Part 2 — Complete Source-Code Audit and Professional Architecture Diagram
+
+Act as a **Senior Software Architect, Design Patterns Expert, UML Specialist, and Next.js Full-Stack Engineer**.
+
+You have already implemented Part 2 of our Healthcare Appointment Management System case study, including:
+
+- CH01: Video Consultation — Adapter Pattern
+- CH02: Flexible Doctor Availability — Strategy Pattern
+- CH03: Automated Appointment Reminders — Observer Pattern and Scheduled Processing
+
+Your previous implementation and verification commits were:
+
+- Initial implementation: `80842b7`
+- Final verification: `fe2f0b2`
+- Development branch: `part2-evolution`
+
+Our repository is:
+
+https://github.com/Kartheek-3/B2
+
+Original application:
+
+https://github.com/arnobt78/HealthCare-Doctor-Appointment-Management-System--NextJS-FullStack
+
+Original baseline commit:
+
+`f846cd4c476d48a04fcaeb530b48a77c5295bb92`
+
+## Objective
+
+**Perform an independent, file-by-file analysis of the actual Part 2 implementation and create accurate, professional, editable draw.io architecture and UML diagrams.**
+
+This is an academic Design Patterns case study for course 23CSE455. The diagrams must make it easy for the evaluator to understand the original architecture, the three implemented changes, the design-pattern participants, and the relationships between them.
+
+Do not simply regenerate the diagram based on your previous responses. Inspect the actual source code and establish the relationships again.
+
+## Task 1 — Inspect the entire implementation
+
+Start by checking the current Git branch, HEAD commit, and working-tree status.
+
+Inspect all relevant source files under:
+
+`Part2/code/`
+
+Pay particular attention to:
+
+**Original application components:**
+- App Router pages and API routes
+- Patient registration and management
+- Appointment creation, scheduling, cancellation
+- Doctor data and availability
+- Server Actions
+- Appwrite integrations
+- Validation schemas
+- Authentication and notification services
+
+**CH01 — Adapter:**
+- `IVideoConsultationService.ts`
+- `LocalDemonstrationVideoProvider.ts`
+- `LocalDemonstrationVideoAdapter.ts`
+- `VideoServiceFactory.ts`
+- Video-related types and API routes
+- Appointment integration and frontend consultation components
+
+**CH02 — Strategy:**
+- `IAvailabilityStrategy.ts`
+- `StandardBusinessHoursStrategy.ts`
+- `ShiftBasedAvailabilityStrategy.ts`
+- `EmergencyOnCallAvailabilityStrategy.ts`
+- `DoctorAvailabilityContext.ts`
+- Availability configuration and scheduling integration
+
+**CH03 — Observer:**
+- `DomainEventBus.ts`
+- Domain event types
+- Observer/subscriber interfaces
+- `ReminderSchedulerObserver.ts`
+- `ReminderCancellationObserver.ts`
+- `AuditLogObserver.ts`
+- `JsonFileReminderStore.ts`
+- `ReminderProcessingEngine.ts`
+- Notification integrations and scheduled-processing endpoint
+
+Also inspect the complete test suite, evidence logs, CSV datasets, existing `.drawio` diagrams, and documentation.
+
+Discover the exact file paths rather than assuming that all filenames or directories match these examples.
+
+Create a source-code relationship inventory containing:
+
+| Component | Actual source path | Responsibility | Calls/depends on | Called by | Pattern role | Evidence lines |
+|---|---|---|---|---|---|---|
+
+Every relationship must be backed by imports, dependency injection, method calls, event registration, or other actual source-code evidence.
+
+Do not invent any classes, connections, services, or integrations.
+
+## Task 2 — Verify the three design patterns
+
+### CH01 — Adapter Pattern
+
+Verify these roles:
+
+- Client
+- Target interface
+- Concrete Adapter
+- Adaptee
+- Provider factory, if applicable
+
+Trace the actual execution flow from appointment creation or consultation access through the adapter into the local demonstration provider.
+
+Verify the request and response transformations, including timestamps, participant roles and session details.
+
+Clearly identify the mock implementation as a **local demonstration provider, not live WebRTC video conferencing**.
+
+### CH02 — Strategy Pattern
+
+Verify:
+
+- Strategy interface
+- Three concrete strategies
+- Context
+- Runtime strategy selection
+- Strategy delegation
+- Integration into server-side appointment scheduling
+
+Show how changing strategies modifies availability behavior without modifying the caller.
+
+Include the appointment-conflict check and document any remaining race-condition limitations.
+
+### CH03 — Observer Pattern
+
+Verify:
+
+- Subject/event publisher
+- Observer interface
+- Concrete observers
+- Subscription registration
+- Event publishing
+- Subscriber notification
+- Reminder creation and cancellation
+- Scheduled reminder processing
+- Persistent reminder records
+- Retry and idempotency behavior
+
+Trace a complete event flow:
+
+Appointment scheduled → event published → observers notified → reminders persisted → scheduler endpoint invoked → due reminders processed → notification outcome recorded.
+
+Do not claim that a real automatic cron schedule or external SMS delivery exists unless the implementation and deployment configuration prove it.
+
+## Task 3 — Generate four professional diagrams
+
+Create the following diagrams using **diagrams.net / draw.io**.
+
+### Diagram A — Complete Part 2 System Architecture
+
+This is the main academic report diagram.
+
+Show five clearly separated architectural layers:
+
+1. Presentation Layer — Patient UI, Admin UI, appointment forms and consultation interface
+2. Application Layer — Next.js Server Actions, API routes and orchestration
+3. Design Pattern Layer — CH01 Adapter, CH02 Strategy, CH03 Observer
+4. Infrastructure Layer — Appwrite Databases, Users, Storage, Messaging and local reminder persistence
+5. External/Execution Layer — Mock video provider, external scheduler trigger and notification mechanisms
+
+Show connections and their directions accurately.
+
+Use distinct colors for each change:
+
+- CH01 Adapter — Blue
+- CH02 Strategy — Green
+- CH03 Observer — Orange
+- Existing application — Neutral gray
+- Infrastructure — Purple
+
+Include a legend explaining these colors and relationship types.
+
+Clearly distinguish real implemented components, external dependencies, and mock/demonstration services.
+
+### Diagram B — CH01 Adapter UML Class Diagram
+
+Use actual class/interface names from source code.
+
+Include the Target, Adapter, Adaptee, Client, method signatures, and UML interface implementation/composition relationships.
+
+Label the delegation and data transformation responsibilities.
+
+### Diagram C — CH02 Strategy UML Class Diagram
+
+Show the Strategy interface, three concrete strategies, Context, and scheduling client.
+
+Include meaningful method signatures and correct UML realization/dependency arrows.
+
+### Diagram D — CH03 Observer UML and Event Flow Diagram
+
+Show DomainEventBus, subscriber interface, concrete subscribers, reminder processor, reminder store and notification dependency.
+
+Represent the publisher/subscriber relationship accurately.
+
+Also include the chronological flow of a reminder event, either as a second page or as a separate UML sequence diagram.
+
+## Task 4 — Diagram quality requirements
+
+All diagrams must be:
+
+- Fully editable in draw.io.
+- Academically professional and presentation-ready.
+- Correctly aligned, with consistent spacing and typography.
+- Readable when inserted into an A4 report or presentation.
+- Free of overlapping boxes, arrows and labels.
+- Organized with orthogonal connectors wherever possible.
+- Clearly labelled, with no unsupported relationships.
+- Based on actual code, not conceptual assumptions.
+
+Use proper UML conventions wherever the diagram is a UML diagram.
+
+Do not insert misleading visual elements suggesting that a mock provider is a deployed video platform.
+
+Make the complete architecture diagram sufficiently detailed to demonstrate the three new design patterns, but avoid crowding it with unnecessary utility classes.
+
+## Task 5 — Export actual files
+
+Save the diagrams under:
+
+`Part2/Diagrams/`
+
+Use these filenames:
+
+- `Part2_System_Architecture.drawio`
+- `CH01_Adapter_UML.drawio`
+- `CH02_Strategy_UML.drawio`
+- `CH03_Observer_UML.drawio`
+
+Also export each diagram to a high-resolution PNG.
+
+Create a single combined multi-page draw.io file named:
+
+`Part2_Complete_Architecture.drawio`
+
+Every diagram must remain editable, including individual nodes, connectors and text.
+
+Validate all `.drawio` XML files by parsing them, open or render each diagram, inspect the resulting images, and correct all layout and clipping issues.
+
+If the environment does not support exporting or rendering, clearly report the limitation instead of claiming success.
+
+## Task 6 — Generate an architecture verification report
+
+Create:
+
+`Part2/Diagrams/Architecture_Verification_Report.md`
+
+Include:
+
+1. Files inspected and exact Git commit SHA
+2. Architecture summary
+3. Component-to-source-code mapping
+4. Verified dependencies and call relationships
+5. GoF pattern roles and source-code evidence
+6. Explanation of every diagram
+7. Mock-provider and scheduling limitations
+8. Differences between the previous diagram and the corrected diagrams
+9. Errors or inconsistencies discovered
+10. XML validation and export results
+
+Every design-pattern claim must include exact code references.
+
+## Task 7 — Cross-check the academic datasets
+
+Review:
+
+- `Part2/patterns_evolution.csv`
+- `Part2/Pattern_count.csv`
+- `Part1/patterns.csv`
+- `Part1/pattern_counts.csv`
+
+Verify that implemented patterns, pattern-like structures and refactoring opportunities are correctly distinguished.
+
+Pay particular attention to the fact that State and Command were previously identified as refactoring opportunities rather than implemented GoF patterns.
+
+Also follow the assignment's exact `status_after_change` values:
+
+`baseline`, `preserved`, `modified`, `extended`, `replaced`, `removed`, `newly_introduced`.
+
+Do not mix pattern classification with pattern evolution status.
+
+Do not count a proposed or absent pattern as a confirmed implementation.
+
+If corrections are necessary, report the problem and proposed changes before modifying academic evidence.
+
+## Task 8 — Final verification
+
+Before finishing:
+
+1. Confirm the original baseline remains unchanged.
+2. Verify the design patterns against actual source-code relationships.
+3. Confirm all generated draw.io files exist.
+4. Parse the XML of every diagram.
+5. Export all PNG images successfully.
+6. Visually inspect the images for readability and errors.
+7. Confirm each component and arrow has source-code justification.
+8. Run relevant tests if changes to implementation code become necessary.
+9. Record actual command outputs rather than estimated results.
+10. Provide the Git status and final list of created files.
+
+**Do not modify application business logic during this diagram task. Do not modify the baseline, Part 1, or implementation tests. Do not merge or push to GitHub without approval.**
+
+## Expected final response
+
+Give me:
+
+- A complete analysis of the actual architecture.
+- A summary of the verified Adapter, Strategy and Observer collaborations.
+- Four fully editable draw.io diagrams.
+- Four high-resolution PNGs.
+- One combined multi-page draw.io file.
+- The architecture verification report.
+- Any source-code inconsistencies or unverified claims discovered.
+- Exact local paths to every generated artifact.
+
+Prioritize **source-code accuracy, UML correctness, professional diagram quality, and academic defensibility**.
+
+I want diagrams that can be inserted directly into our final 23CSE455 case study report and clearly demonstrate what changed from Part 1 to Part 2.
+
+Prompt - 6 
+
+
+# Part 2 — Run, Test, Debug and Verify the Complete Healthcare Appointment Application
+
+Act as a **Senior Next.js Full-Stack Engineer, QA Automation Engineer, and Software Architect**.
+
+We have completed Part 2 of our Design Patterns case study, including:
+
+- **CH01 — Adapter Pattern:** Video consultation using a local demonstration provider.
+- **CH02 — Strategy Pattern:** Flexible doctor availability with three interchangeable scheduling strategies.
+- **CH03 — Observer Pattern:** Automated appointment reminders using domain events, subscribers and scheduled processing.
+
+Repository: https://github.com/Kartheek-3/B2
+
+Development branch: `part2-evolution`
+
+Latest reported commit: `4e2c524`
+
+Application directory: `Part2/code/`
+
+## Primary objective
+
+**Run the actual updated Next.js application locally, open it in a browser, interact with its features, identify and fix runtime problems, and verify that the three Part 2 changes work within the full application—not only in isolated unit tests.**
+
+I need a working healthcare appointment application that I can demonstrate to my professor.
+
+Do not stop after `npm run build` or `npm test`. A successful build does not prove that the application works in the browser.
+
+## Step 1 — Inspect and configure the environment
+
+1. Check the current Git branch, HEAD commit and working-tree status.
+2. Confirm that `Part2/code/` contains the integrated application.
+3. Verify Node.js and npm versions.
+4. Inspect `package.json`, environment-variable requirements and Appwrite configuration.
+5. Install missing dependencies using the existing lockfile.
+6. Check for available `.env.local` configuration without printing or exposing secret values.
+7. Preserve the original application under `data/code/` and all Part 1 files unchanged.
+
+If Appwrite credentials are unavailable, establish a clearly labelled local demonstration mode using mock repositories or seeded synthetic records. Do not use real patient information or assume that a mock API is a functioning production backend.
+
+If a local demonstration mode is needed, implement it without destroying or replacing the existing production Appwrite integration.
+
+## Step 2 — Start the Next.js application
+
+From `Part2/code/`, execute:
+
+```bash
+npm ci
+npm run dev
+```
+
+Use the Windows PowerShell-compatible commands where required, such as `npm.cmd`.
+
+Check whether port 3000 is available. If occupied, choose another port and report the actual address.
+
+Keep the development server running during browser verification.
+
+Open the actual application using the local browser at:
+
+`http://localhost:3000`
+
+Do not claim that the application started until the server displays a successful startup message and a browser request returns the expected application page.
+
+## Step 3 — Verify existing application functionality
+
+Open and interact with the real pages.
+
+Test these baseline workflows:
+
+1. Homepage loads successfully.
+2. New patient registration form renders and validates inputs.
+3. Patient details can be created or retrieved using the configured backend or explicit demonstration mode.
+4. Doctor selection displays correctly.
+5. Appointment creation works.
+6. Appointment success page displays accurate appointment details.
+7. Admin dashboard loads.
+8. Appointment scheduling works.
+9. Appointment cancellation works.
+10. Existing immediate notification behavior remains intact where the messaging provider is configured.
+
+Check for browser console errors, failed HTTP requests, server errors, hydration warnings, missing environment variables and broken navigation.
+
+Do not silently mark unavailable backend-dependent workflows as passed.
+
+## Step 4 — Verify CH01: Video Consultation Adapter
+
+Using the actual browser interface:
+
+1. Create or load a synthetic appointment eligible for video consultation.
+2. Activate the video consultation option.
+3. Verify that the application calls the video service through `IVideoConsultationService`.
+4. Confirm the adapter translates requests to `LocalDemonstrationVideoProvider`.
+5. Verify room ID generation, participant roles, join details and session access responses.
+6. Verify that unauthorized participants cannot obtain consultation access.
+7. Confirm the interface clearly labels mock sessions as demonstrations.
+
+Important: The local video provider does not support live audio/video streaming. Do not claim a working video call unless an actual WebRTC or equivalent media implementation exists and is tested.
+
+## Step 5 — Verify CH02: Flexible Doctor Availability Strategy
+
+Test the three concrete strategies:
+
+**StandardBusinessHoursStrategy**
+- Valid weekday appointment.
+- Weekend appointment rejection.
+- Lunch-break rejection.
+- Appointment overlap rejection.
+
+**ShiftBasedAvailabilityStrategy**
+- Valid assigned shift.
+- Invalid outside-shift time.
+- Shift boundary and overnight shift behavior.
+
+**EmergencyOnCallAvailabilityStrategy**
+- Valid emergency appointment.
+- 15-minute buffer enforcement.
+- Conflicting appointment rejection.
+
+Verify that strategy selection works through `DoctorAvailabilityContext` and that scheduling validation occurs on the server.
+
+Demonstrate runtime interchangeability by applying different strategies to the same input and comparing the actual results.
+
+Check whether invalid appointments are rejected through the real appointment creation workflow.
+
+## Step 6 — Verify CH03: Observer and Reminder Scheduling
+
+Use synthetic appointments and a mock notification channel.
+
+Test the complete lifecycle:
+
+1. Create or schedule an appointment.
+2. Verify that `DomainEventBus` publishes the appropriate domain event.
+3. Confirm that the registered observers receive it.
+4. Verify creation of T-24-hour and T-2-hour reminder records.
+5. Inspect persisted reminder data.
+6. Invoke the protected reminder-processing API using authorized credentials.
+7. Confirm that due reminders are processed.
+8. Verify notification output using the mock sink.
+9. Invoke the processor again and check duplicate prevention.
+10. Cancel an appointment and verify pending reminders are invalidated.
+11. Reschedule an appointment and verify obsolete reminders are cancelled or superseded.
+12. Test retry behavior after a simulated notification failure.
+13. Restart the application and check whether persisted reminder records remain available.
+
+Use a safe test fixture or isolated reminder store. Do not send actual SMS messages or modify real patient appointments.
+
+Clearly distinguish manual scheduler invocation from automatic periodic execution. If an external cron scheduler is not configured, document it as an operational dependency.
+
+## Step 7 — Fix issues discovered during runtime testing
+
+If a feature fails, investigate and fix the actual cause.
+
+Check:
+
+- Incorrect imports and TypeScript types.
+- Missing environment variables.
+- Broken Appwrite SDK calls.
+- Server and client component boundaries.
+- Invalid API request/response handling.
+- Appointment validation errors.
+- Incorrect role authorization.
+- Notification-event registration.
+- Reminder persistence and filesystem permissions.
+- Missing or incorrectly configured demo data.
+- Incorrect date and timezone conversions.
+
+Fix problems inside `Part2/code/` only, unless evidence files must be updated to reflect the corrected implementation.
+
+Maintain the Adapter, Strategy and Observer collaborations. Do not bypass them merely to make a demonstration pass.
+
+After every correction, rerun the affected tests and relevant browser workflow.
+
+## Step 8 — Browser automation and screenshots
+
+Use an available browser automation tool such as Playwright or the Antigravity browser environment.
+
+Capture screenshots showing:
+
+- Homepage
+- Patient registration
+- Doctor selection
+- Appointment booking
+- Appointment success
+- Admin dashboard
+- Video consultation demonstration
+- Availability rule validation
+- Reminder processing evidence
+
+Save screenshots under:
+
+`Part2/evidence/runtime_screenshots/`
+
+Do not create fictional screenshots or use static design mockups as evidence of running software.
+
+## Step 9 — Automated verification
+
+Run the actual commands available in the updated project:
+
+```bash
+npm test
+npx tsc --noEmit
+npm run build
+npm run lint
+```
+
+Record each command's exit code, test totals and relevant errors.
+
+The previous report mentioned three legacy Appwrite type errors. Verify whether they remain. Do not report `tsc` as successful if it exits with errors.
+
+Additionally, run browser-based end-to-end checks if Playwright or an equivalent testing environment is available.
+
+## Step 10 — Generate runtime evidence
+
+Create:
+
+`Part2/evidence/Runtime_Verification_Report.md`
+
+Include:
+
+- Git branch and full commit SHA.
+- Operating system, Node.js and npm versions.
+- Exact application startup command.
+- Actual localhost address.
+- Environment mode used (Appwrite or demonstration).
+- Pages successfully loaded.
+- Workflow-by-workflow test results.
+- API responses and relevant status codes.
+- Browser console issues.
+- Screenshots and evidence paths.
+- Errors found and corrections made.
+- Remaining limitations.
+- Build, lint, TypeScript and test results.
+
+Create a separate summary table:
+
+| Feature | Test performed | Expected behavior | Actual behavior | Pass/Fail | Evidence |
+|---|---|---|---|---|---|
+
+Do not invent outcomes.
+
+## Step 11 — Final acceptance requirements
+
+The task is complete only when:
+
+1. The updated application starts successfully.
+2. The application can be opened in the browser.
+3. The homepage and major patient/admin pages render.
+4. Original appointment workflows are verified.
+5. All three new design-pattern implementations are exercised through application workflows.
+6. The appropriate automated tests have been run.
+7. Relevant runtime problems have been fixed or explicitly documented as blockers.
+8. Screenshots and logs demonstrate actual execution.
+9. The baseline source and Part 1 remain untouched.
+10. A reproducible README explains exactly how I can launch and demonstrate the application on my own Windows laptop.
+
+If Appwrite credentials or external services prevent a real integration test, report the blocker explicitly and provide a working local demonstration mode where feasible. Never claim that mock integration proves a production service works.
+
+## Final response
+
+Provide:
+
+- **Application status:** Running / Partially Running / Blocked.
+- **Actual local URL:** The address verified in the browser.
+- **Git branch and commit SHA.**
+- **Features tested:** Pass/fail results with evidence.
+- **Errors fixed:** Exact modified files.
+- **Remaining limitations.**
+- **Screenshot locations.**
+- **Commands to run the application again.**
+- **Runtime verification report path.**
+
+Do not merge or push changes without my approval.
+
+**Most importantly, actually run and interact with the application. Do not stop at code analysis, static tests or a successful production build.
+
+
+
+
+

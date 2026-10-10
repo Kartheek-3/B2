@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+
 import { VideoServiceFactory } from "@/lib/video";
 
 /**
@@ -35,7 +36,11 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      access,
+      provider: videoService.getProviderName(),
+      access: {
+        ...access,
+        provider: videoService.getProviderName(),
+      },
     });
   } catch (err: unknown) {
     const errorMsg = err instanceof Error ? err.message : String(err);

@@ -13,13 +13,13 @@ import {
   storage,
   users,
 } from "../appwrite.config";
+import { localDemoStore } from "../demo/localDemoStore";
 import { parseStringify } from "../utils";
 
 // CREATE APPWRITE USER
 export const createUser = async (user: CreateUserParams) => {
   try {
     // Create new user -> https://appwrite.io/docs/references/1.5.x/server-nodejs/users#create
-
     const newuser = await users.create(
       ID.unique(),
       user.email,
@@ -31,21 +31,28 @@ export const createUser = async (user: CreateUserParams) => {
   } catch (error: any) {
     // Check existing user if error code is 409 (conflict)
     if (error && error.code === 409) {
-      const existingUser = await users.list([
-        Query.equal("email", [user.email]),
-      ]);
-      if (existingUser.users[0] && existingUser.users[0].$id) {
-        return existingUser.users[0];
+      try {
+        const existingUser = await users.list([
+          Query.equal("email", [user.email]),
+        ]);
+        if (existingUser.users[0] && existingUser.users[0].$id) {
+          return existingUser.users[0];
+        }
+      } catch (listErr) {
+        // Fall through to demo store if Appwrite list fails
       }
-      // Instead of throwing, return a user-friendly error object
-      return {
-        error: true,
-        message:
-          "Email already exists, but user record is invalid. Please contact support or use the 'Returning Patient?' button.",
-      };
     }
-    console.error("An error occurred while creating a new user:", error);
-    throw error;
+
+    // Graceful fallback to Local Demonstration Store when Appwrite is unreachable or 401
+    console.warn(
+      `[LOCAL DEMO MODE] Appwrite user creation failed (${error?.code || error?.message || error}). Operating in local demonstration mode.`
+    );
+    const demoUser = localDemoStore.createUser({
+      name: user.name,
+      email: user.email,
+      phone: user.phone,
+    });
+    return demoUser;
   }
 };
 
@@ -53,13 +60,13 @@ export const createUser = async (user: CreateUserParams) => {
 export const getUser = async (userId: string) => {
   try {
     const user = await users.get(userId);
-
     return parseStringify(user);
-  } catch (error) {
-    console.error(
-      "An error occurred while retrieving the user details:",
-      error
+  } catch (error: any) {
+    console.warn(
+      `[LOCAL DEMO MODE] Appwrite getUser(${userId}) failed (${error?.code || error?.message}). Falling back to local demonstration store.`
     );
+    const demoUser = localDemoStore.getUser(userId);
+    return demoUser ? parseStringify(demoUser) : null;
   }
 };
 
@@ -85,20 +92,28 @@ export const registerPatient = async ({
     }
 
     // Create new patient document -> https://appwrite.io/docs/references/cloud/server-nodejs/databases#createDocument
+    const { $id, ...patientData } = patient;
     const newPatient = await databases.createDocument(
       NEXT_PUBLIC_DATABASE_ID!,
       NEXT_PUBLIC_PATIENT_COLLECTION_ID!,
-      ID.unique(),
+      $id || ID.unique(),
       {
         identificationDocumentId: file?.$id ? file.$id : null,
         identificationDocumentUrl: publicUrl,
-        ...patient,
-      }
+        ...patientData,
+      } as any
     );
 
     return parseStringify(newPatient);
-  } catch (error) {
-    console.error("An error occurred while creating a new patient:", error);
+  } catch (error: any) {
+    console.warn(
+      `[LOCAL DEMO MODE] Appwrite registerPatient failed (${error?.code || error?.message}). Falling back to local demonstration store.`
+    );
+    const demoPatient = localDemoStore.registerPatient({
+      ...patient,
+      identificationDocumentUrl: "/assets/images/dr-green.png",
+    });
+    return parseStringify(demoPatient);
   }
 };
 
@@ -117,12 +132,12 @@ export const getPatient = async (userId: string) => {
     return patients.documents.length > 0
       ? parseStringify(patients.documents[0])
       : null;
-  } catch (error) {
-    console.error(
-      "An error occurred while retrieving the patient details:",
-      error
+  } catch (error: any) {
+    console.warn(
+      `[LOCAL DEMO MODE] Appwrite getPatient(${userId}) failed (${error?.code || error?.message}). Falling back to local demonstration store.`
     );
-    return null;
+    const demoPatient = localDemoStore.getPatient(userId);
+    return demoPatient ? parseStringify(demoPatient) : null;
   }
 };
 
@@ -135,12 +150,12 @@ export const getUserByEmail = async (email: string) => {
       return parseStringify(usersList.users[0]);
     }
     return null;
-  } catch (error) {
-    console.error(
-      "An error occurred while retrieving the user by email:",
-      error
+  } catch (error: any) {
+    console.warn(
+      `[LOCAL DEMO MODE] Appwrite getUserByEmail failed (${error?.code || error?.message}). Falling back to local demonstration store.`
     );
-    return null;
+    const demoUser = localDemoStore.getUserByEmail(email);
+    return demoUser ? parseStringify(demoUser) : null;
   }
 };
 
@@ -159,12 +174,12 @@ export const getPatientByEmail = async (email: string) => {
       return parseStringify(patients.documents[0]);
     }
     return null;
-  } catch (error) {
-    console.error(
-      "An error occurred while retrieving the patient by email:",
-      error
+  } catch (error: any) {
+    console.warn(
+      `[LOCAL DEMO MODE] Appwrite getPatientByEmail failed (${error?.code || error?.message}). Falling back to local demonstration store.`
     );
-    return null;
+    const demoPatient = localDemoStore.getPatientByEmail(email);
+    return demoPatient ? parseStringify(demoPatient) : null;
   }
 };
 
@@ -180,8 +195,10 @@ export const updatePatientUserId = async (
       { userId }
     );
     return parseStringify(updated);
-  } catch (error) {
-    console.error("An error occurred while updating patient userId:", error);
+  } catch (error: any) {
+    console.warn(
+      `[LOCAL DEMO MODE] Appwrite updatePatientUserId failed (${error?.code || error?.message}). Falling back to local demonstration store.`
+    );
     return null;
   }
 };

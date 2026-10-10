@@ -1,7 +1,7 @@
-import { IAvailabilityStrategy } from "./IAvailabilityStrategy";
-import { StandardBusinessHoursStrategy } from "./StandardBusinessHoursStrategy";
-import { ShiftBasedAvailabilityStrategy } from "./ShiftBasedAvailabilityStrategy";
 import { EmergencyOnCallAvailabilityStrategy } from "./EmergencyOnCallAvailabilityStrategy";
+import { IAvailabilityStrategy } from "./IAvailabilityStrategy";
+import { ShiftBasedAvailabilityStrategy } from "./ShiftBasedAvailabilityStrategy";
+import { StandardBusinessHoursStrategy } from "./StandardBusinessHoursStrategy";
 import {
   SlotValidationRequest,
   DoctorAvailabilityConfig,

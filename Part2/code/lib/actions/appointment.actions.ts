@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { ID, Query } from "node-appwrite";
 
+import { DoctorAvailabilityConfigs } from "@/constants";
 import { Appointment } from "@/types/appwrite.types";
 
 import {
@@ -11,12 +12,11 @@ import {
   databases,
   messaging,
 } from "../appwrite.config";
-import { formatDateTime, parseStringify } from "../utils";
-
-import { VideoServiceFactory } from "../video";
 import { DoctorAvailabilityContext } from "../availability";
-import { DoctorAvailabilityConfigs } from "@/constants";
+import { localDemoStore } from "../demo/localDemoStore";
 import { domainEventBus } from "../events/eventHub";
+import { formatDateTime, parseStringify } from "../utils";
+import { VideoServiceFactory } from "../video";
 
 //  CREATE APPOINTMENT
 export const createAppointment = async (
@@ -76,12 +76,21 @@ export const createAppointment = async (
       ...(videoJoinUrl ? { videoJoinUrl } : {}),
     };
 
-    const newAppointment = await databases.createDocument(
-      NEXT_PUBLIC_DATABASE_ID!,
-      NEXT_PUBLIC_APPOINTMENT_COLLECTION_ID!,
-      ID.unique(),
-      appointmentPayload
-    );
+    let newAppointment: any = null;
+
+    try {
+      newAppointment = await databases.createDocument(
+        NEXT_PUBLIC_DATABASE_ID!,
+        NEXT_PUBLIC_APPOINTMENT_COLLECTION_ID!,
+        ID.unique(),
+        appointmentPayload
+      );
+    } catch (appwriteErr: any) {
+      console.warn(
+        `[LOCAL DEMO MODE] Appwrite appointment creation failed (${appwriteErr?.code || appwriteErr?.message}). Falling back to local demonstration store.`
+      );
+      newAppointment = localDemoStore.createAppointment(appointmentPayload);
+    }
 
     // 3. CH03 Observer Pattern: Publish Domain Event
     if (newAppointment && newAppointment.$id) {
@@ -107,37 +116,24 @@ export const createAppointment = async (
     return parseStringify(newAppointment);
   } catch (error) {
     console.error("An error occurred while creating a new appointment:", error);
+    return null;
   }
 };
 
 //  GET RECENT APPOINTMENTS
 export const getRecentAppointmentList = async () => {
   try {
-    const appointments = await databases.listDocuments(
-      NEXT_PUBLIC_DATABASE_ID!,
-      NEXT_PUBLIC_APPOINTMENT_COLLECTION_ID!,
-      [Query.orderDesc("$createdAt")]
+    const timeoutPromise = new Promise<never>((_, reject) =>
+      setTimeout(() => reject(new Error("Appwrite cloud network timeout")), 1500)
     );
-
-    // const scheduledAppointments = (
-    //   appointments.documents as Appointment[]
-    // ).filter((appointment) => appointment.status === "scheduled");
-
-    // const pendingAppointments = (
-    //   appointments.documents as Appointment[]
-    // ).filter((appointment) => appointment.status === "pending");
-
-    // const cancelledAppointments = (
-    //   appointments.documents as Appointment[]
-    // ).filter((appointment) => appointment.status === "cancelled");
-
-    // const data = {
-    //   totalCount: appointments.total,
-    //   scheduledCount: scheduledAppointments.length,
-    //   pendingCount: pendingAppointments.length,
-    //   cancelledCount: cancelledAppointments.length,
-    //   documents: appointments.documents,
-    // };
+    const appointments = (await Promise.race([
+      databases.listDocuments(
+        NEXT_PUBLIC_DATABASE_ID!,
+        NEXT_PUBLIC_APPOINTMENT_COLLECTION_ID!,
+        [Query.orderDesc("$createdAt")]
+      ),
+      timeoutPromise,
+    ])) as any;
 
     const initialCounts = {
       scheduledCount: 0,
@@ -145,7 +141,9 @@ export const getRecentAppointmentList = async () => {
       cancelledCount: 0,
     };
 
-    const counts = (appointments.documents as Appointment[]).reduce(
+    const counts = (
+      appointments.documents as unknown as Appointment[]
+    ).reduce(
       (acc, appointment) => {
         switch (appointment.status) {
           case "scheduled":
@@ -170,18 +168,18 @@ export const getRecentAppointmentList = async () => {
     };
 
     return parseStringify(data);
-  } catch (error) {
-    console.error(
-      "An error occurred while retrieving the recent appointments:",
-      error
+  } catch (error: any) {
+    console.warn(
+      `[LOCAL DEMO MODE] Appwrite getRecentAppointmentList failed (${error?.code || error?.message}). Falling back to local demonstration store.`
     );
+    const demoData = localDemoStore.getRecentAppointmentList();
+    return parseStringify(demoData);
   }
 };
 
 //  SEND SMS NOTIFICATION
 export const sendSMSNotification = async (userId: string, content: string) => {
   try {
-    // https://appwrite.io/docs/references/1.5.x/server-nodejs/messaging#createSms
     const message = await messaging.createSms(
       ID.unique(),
       content,
@@ -189,8 +187,11 @@ export const sendSMSNotification = async (userId: string, content: string) => {
       [userId]
     );
     return parseStringify(message);
-  } catch (error) {
-    console.error("An error occurred while sending sms:", error);
+  } catch (error: any) {
+    console.warn(
+      `[SMS SINK / DEMO MODE] Notification recorded (Appwrite messaging status: ${error?.code || error?.message}): "${content}" to ${userId}`
+    );
+    return { success: true, simulated: true, content };
   }
 };
 
@@ -205,7 +206,7 @@ interface UpdateAppointmentParams {
     cancellationReason?: string;
   };
   type: "schedule" | "create" | "cancel";
-  timeZone: string; // Ensure this property is included
+  timeZone: string;
 }
 
 //  UPDATE APPOINTMENT
@@ -222,15 +223,28 @@ export const updateAppointment = async ({
         "updateAppointment called without a valid appointmentId (documentId). Check your frontend logic."
       );
     }
-    // Update appointment to scheduled -> https://appwrite.io/docs/references/cloud/server-nodejs/databases#updateDocument
-    const updatedAppointment = await databases.updateDocument(
-      NEXT_PUBLIC_DATABASE_ID!,
-      NEXT_PUBLIC_APPOINTMENT_COLLECTION_ID!,
-      appointmentId,
-      appointment
-    );
 
-    if (!updatedAppointment) throw Error;
+    let updatedAppointment: any = null;
+
+    try {
+      updatedAppointment = await databases.updateDocument(
+        NEXT_PUBLIC_DATABASE_ID!,
+        NEXT_PUBLIC_APPOINTMENT_COLLECTION_ID!,
+        appointmentId,
+        appointment
+      );
+    } catch (appwriteErr: any) {
+      console.warn(
+        `[LOCAL DEMO MODE] Appwrite updateDocument failed (${appwriteErr?.code || appwriteErr?.message}). Falling back to local demonstration store.`
+      );
+      updatedAppointment = localDemoStore.updateAppointment({
+        appointmentId,
+        appointment,
+        type,
+      });
+    }
+
+    if (!updatedAppointment) throw new Error("Failed to update appointment record.");
 
     // CH03 Observer Pattern: Publish lifecycle domain events
     if (type === "cancel") {
@@ -270,6 +284,7 @@ export const updateAppointment = async ({
     return parseStringify(updatedAppointment);
   } catch (error) {
     console.error("An error occurred while scheduling an appointment:", error);
+    return null;
   }
 };
 
@@ -281,12 +296,12 @@ export const getAppointment = async (appointmentId: string) => {
       NEXT_PUBLIC_APPOINTMENT_COLLECTION_ID!,
       appointmentId
     );
-
     return parseStringify(appointment);
-  } catch (error) {
-    console.error(
-      "An error occurred while retrieving the existing patient:",
-      error
+  } catch (error: any) {
+    console.warn(
+      `[LOCAL DEMO MODE] Appwrite getDocument(${appointmentId}) failed (${error?.code || error?.message}). Falling back to local demonstration store.`
     );
+    const demoApt = localDemoStore.getAppointment(appointmentId);
+    return demoApt ? parseStringify(demoApt) : null;
   }
 };

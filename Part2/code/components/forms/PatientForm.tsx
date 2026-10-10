@@ -36,14 +36,14 @@ export const PatientForm = () => {
         email: values.email,
         phone: values.phone,
       };
-      const newUser = await createUser(user);
+      const newUser: any = await createUser(user);
       if (newUser && "$id" in newUser) {
         startTransition(() => {
-          router.push(`/patients/${(newUser as { $id: string }).$id}/register`);
+          router.push(`/patients/${newUser.$id}/register`);
         });
       } else {
         setIsLoading(false);
-        if ("message" in newUser && typeof newUser.message === "string") {
+        if (newUser && "message" in newUser && typeof newUser.message === "string") {
           // Optionally, show error message to user
           console.error(newUser.message);
         }

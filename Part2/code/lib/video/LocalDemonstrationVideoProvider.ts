@@ -94,9 +94,17 @@ export class LocalDemonstrationVideoProvider {
     claimRole: "clinician" | "client",
     subjectName: string
   ): Promise<ProprietaryTokenResponse> {
-    const session = this.activeSessions.get(sessionId);
+    let session = this.activeSessions.get(sessionId);
     if (!session) {
-      throw new Error(`LocalDemonstrationVideoProvider: Session not found for ID: ${sessionId}`);
+      session = {
+        sessionId,
+        rawEndpointUrl: `https://teleconsult.carepulse.local/rooms/${sessionId}`,
+        initializedAt: Date.now(),
+        hostName: "Clinician",
+        guestName: subjectName,
+        state: "INITIALIZED" as const,
+      };
+      this.activeSessions.set(sessionId, session);
     }
 
     const expiry = Date.now() + 3600 * 1000; // 1 hour

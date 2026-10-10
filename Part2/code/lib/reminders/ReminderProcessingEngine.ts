@@ -1,5 +1,6 @@
-import { IReminderStore } from "./IReminderStore";
 import { ReminderTask, NotificationDeliveryResult } from "../events/types";
+
+import { IReminderStore } from "./IReminderStore";
 
 export interface INotificationChannel {
   sendSMS(recipientPhone: string, message: string): Promise<NotificationDeliveryResult>;
