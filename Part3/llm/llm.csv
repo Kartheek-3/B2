@@ -1,0 +1,2 @@
+part,model_and_date,prompt_file,input_file,output_file,evaluation,verification_file
+Part3,Gemini 3.1 Pro 2026-10-10,Part3/llm/part3_prompt.txt,data/code/HealthCare-Doctor-Appointment-Management-System,Part3/llm/pattern_crosslanguage.csv,"Correct, all 28 test suites (7 patterns x 4 languages) verified passing 100%",Part3/llm/pattern_crosslanguage.csv

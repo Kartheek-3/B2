@@ -1,0 +1,2814 @@
+Prompt - 1
+
+Healthcare Appointment Application using Next.js\\\
+Case Study Title\\\
+Design Pattern Identification and Evolution in a Next.js-Based Healthcare Appointment Application\\\
+Part 1 – Pattern Discovery\\\
+Investigate:\\\
+•	patient management \\\
+•	doctor management \\\
+•	appointment scheduling \\\
+•	doctor availability \\\
+•	consultation \\\
+•	reminders \\\
+•	authentication \\\
+•	notification \\\
+Identify actual patterns supported by source-code evidence.\\\
+Part 2 – Software Evolution\\\
+Introduce:\\\
+1\\.	Add video consultation. \\\
+2\\.	Add flexible doctor-availability rules. \\\
+3\\.	Add automated appointment reminders. \\\
+Analyze pattern evolution.\\\
+Part 3 – Cross-Language Analysis\\\
+Select 2 significant patterns and implement the same design problem in Java, Python, JavaScript and C++.\\\
+Expected Outputs\\\
+1\\.	Application description \\\
+2\\.	Framework architecture \\\
+3\\.	Pattern inventory \\\
+4\\.	Pattern-to-source-code mapping \\\
+5\\.	UML diagrams \\\
+6\\.	Source-code evidence \\\
+7\\.	Three evolution scenarios \\\
+8\\.	Before/after analysis \\\
+9\\.	Refactoring analysis \\\
+10\\.	Four-language implementations \\\
+11\\.	LLM prompts and outputs \\\
+12\\.	Human verification \\\
+13\\.	Metrics \\\
+14\\.	Excel + CSV dataset\
+\
+So here DP_Csestudy(1).pdf is the report format&#x20;\
+and DP_Csestudy(1)(1).pdf is the instructions&#x20;\
+and the Github repo of the project : [https\://github.com/arnobt78/HealthCare-Doctor-Appointment-Management-System--NextJS-FullStack]\(https\://github.com/arnobt78/HealthCare-Doctor-Appointment-Management-System--NextJS-FullStack)
+So this are our resources;
+extract the information
+
+Prompt - 2
+
+# Part 3 — Cross-Language Design Pattern Implementation and Evaluation
+
+## Role
+
+Act as a senior software engineer specializing in design patterns, software evolution, cross-language implementation, testing, and empirical software evaluation.
+
+I am responsible for **Part 3 of our Design Patterns Case Study** for the Healthcare Doctor Appointment Management System.
+
+### Repositories and resources
+
+- **Case-study repository:** https://github.com/Kartheek-3/B2
+- **Original healthcare application:** https://github.com/arnobt78/HealthCare-Doctor-Appointment-Management-System--NextJS-FullStack
+- **Assignment instructions PDF:** `DP_Csestudy(1)(1).pdf`
+- **Report format PDF:** `DP_Csestudy(1).pdf`
+
+The case-study repository contains `Part1`, `Part2`, `Part3`, and `data` directories. Inspect the actual directory structure and files rather than relying on the README alone.
+
+## Phase 0 — Mandatory inspection and approval gate
+
+**Do not create, edit, delete, or overwrite any project files during this phase.**
+
+Inspect the following in order:
+
+1. Both assignment PDFs and their exact requirements for Part 3, including dataset schemas, evaluation procedures, naming conventions, and submission requirements.
+2. Part 1's pattern inventory, source-code mappings, evidence, and pattern counts.
+3. Part 2's completed changes, before/after implementations, evolution records, and tests.
+4. The existing `Part3` directory, including source files, CSV files, LLM records, documentation, and test results.
+5. The original healthcare application's relevant source code when needed to verify the proposed patterns.
+
+Do not assume that a pattern exists merely because it is mentioned in the report, proposed in Part 2, or described in documentation.
+
+For each candidate pattern, establish:
+
+- Whether it is implemented in the original application.
+- Its exact source file and line range.
+- Its participating classes, functions, interfaces, or modules.
+- Whether Part 1 or Part 2 provides evidence supporting the claim.
+- Why the pattern is suitable for a meaningful cross-language comparison.
+
+If source evidence is missing or contradictory, mark the candidate as unverified and investigate further. Do not fabricate evidence.
+
+### Phase 0 deliverable
+
+Before implementation, present a concise but complete proposal containing:
+
+1. The exact Part 3 requirements extracted from the assignment.
+2. A summary of relevant Part 1 and Part 2 findings.
+3. Candidate patterns and their verified source evidence.
+4. The recommended two patterns, with reasons for selection.
+5. One clearly defined, equivalent problem for each pattern.
+6. The proposed file and directory structure.
+7. The shared input/output contract and correctness test cases.
+8. The evaluation metrics and exact procedure required by the assignment.
+9. The exact column names and meanings required for `Part3/pattern_crosslanguage.csv` and `Part3/llm/llm.csv`.
+10. The proposed contents and purpose of `Part3/llm/part3_prompt.txt`.
+11. Any unresolved questions, missing dependencies, or blockers.
+
+**Stop after presenting this proposal. Do not implement anything until I explicitly approve it.**
+
+If a required PDF or repository file is inaccessible, state that limitation and request the missing material instead of guessing its contents.
+
+---
+
+## Phase 1 — Pattern selection and problem definition
+
+After approval, implement exactly two significant design patterns, selected from the patterns supported by verified evidence in the case study.
+
+Do not select patterns solely because they are easy to implement or commonly used in healthcare applications.
+
+For each selected pattern, document:
+
+- Pattern name and category.
+- Original source evidence.
+- The design problem being solved.
+- The participants and their responsibilities.
+- Why the pattern is appropriate.
+- Its intended benefits and trade-offs.
+- The common behavior that all four language implementations must reproduce.
+
+The implementations must demonstrate the actual design pattern, not merely produce the same output through unrelated procedural code.
+
+If an existing pattern cannot be reproduced meaningfully in all four languages, explain the limitation and propose an alternative before proceeding.
+
+## Phase 2 — Four-language implementation
+
+Implement both selected patterns in:
+
+- Java
+- Python
+- JavaScript
+- C++
+
+Use clear, maintainable, idiomatic code appropriate to each language while preserving the same logical design, responsibilities, and observable behavior.
+
+Use the existing Part 3 conventions where appropriate. Do not introduce unnecessary frameworks, dependencies, databases, web services, or network access.
+
+For each pattern, define a language-independent behavioral contract containing:
+
+- Inputs and their types.
+- Preconditions and validation rules.
+- Processing rules.
+- Outputs and their structure.
+- Error and edge-case behavior.
+- Deterministic expected results.
+
+All four implementations must follow this contract.
+
+Do not make the implementations artificially identical in syntax. The objective is to compare equivalent design solutions while acknowledging language-specific idioms.
+
+## Phase 3 — Correctness testing
+
+Create meaningful tests that exercise the same scenarios in all four languages.
+
+Include, as applicable:
+
+- Normal successful operations.
+- Boundary conditions.
+- Invalid inputs.
+- Missing or duplicate data.
+- Failure handling.
+- Multiple interchangeable implementations or policies when relevant to the pattern.
+- Regression cases for behavior that must remain unchanged.
+
+Use the same logical test cases and expected outputs across all four languages.
+
+Prefer automated tests that can run from the command line without manual interaction. If language-specific test frameworks differ, preserve the same logical assertions and report the frameworks used.
+
+For each language and pattern, record:
+
+- Compilation or syntax-check result, as applicable.
+- Execution result.
+- Number of tests passed and failed.
+- Exit status.
+- Actual error output, if any.
+- Test command.
+- Any skipped tests and the reason.
+
+Run the tests in the available environment. Never label unexecuted tests as passed.
+
+## Phase 4 — Performance evaluation
+
+First inspect the assignment and determine whether performance measurement is mandatory.
+
+If it is not required, do not add unnecessary benchmarking.
+
+If it is required, follow the assignment's procedure exactly:
+
+1. Use the same machine and document its relevant environment.
+2. Use equivalent workloads and identical logical inputs.
+3. Compile implementations before timing where compilation applies.
+4. Perform one warm-up.
+5. Perform five measured runs.
+6. Report the median of the five measured runs.
+7. Separate compilation time from execution time.
+8. Document the timing method, workload size, and relevant runtime/compiler versions.
+
+Do not invent measurements or claim that measurements were performed when they were not. If the required environment or procedure is unavailable, document the limitation and leave the corresponding values unmeasured.
+
+## Phase 5 — Required files and datasets
+
+Complete the following existing files, using their current schemas and the assignment's exact requirements:
+
+### `Part3/pattern_crosslanguage.csv`
+
+Record the cross-language evaluation data using the exact required column names.
+
+Populate fields only from verified implementations and actual measurements. Where the assignment defines metrics such as source lines of code, maximum function cyclomatic complexity, compiler/runtime, correctness results, or execution time, calculate or record them using a consistent documented method.
+
+Do not silently substitute metrics or change the supplied schema.
+
+### `Part3/llm/part3_prompt.txt`
+
+Store the actual prompt used for the LLM-assisted Part 3 work.
+
+The prompt must accurately reflect the task, selected patterns, behavioral contracts, and evaluation requirements. Preserve the actual prompt used; do not retroactively invent a prompt and claim it generated existing code.
+
+### `Part3/llm/llm.csv`
+
+Inspect the required schema and populate it with truthful records of the actual LLM interactions and verification.
+
+Include the required information about prompts, model identity, date, input/output paths, human evaluation, and supporting evidence wherever required by the assignment.
+
+If a field cannot be verified, use the assignment's prescribed missing-value convention or explicitly mark it as unavailable. Never fabricate a model name, date, output path, verification result, or human approval.
+
+### Supporting files
+
+Add the necessary implementation source files, tests, execution instructions, and evidence under `Part3`.
+
+Preserve existing files and conventions unless a change is necessary and approved. If an existing file needs substantial modification, explain why before changing it.
+
+## Phase 6 — Reproducibility and quality assurance
+
+Provide a clear README or equivalent execution guide that explains:
+
+- Directory structure.
+- Prerequisites.
+- Compiler and runtime versions.
+- Dependencies and installation.
+- Exact commands to compile or execute each implementation.
+- Exact commands to run each test suite.
+- Expected outputs.
+- How the CSV metrics were collected.
+- Known limitations.
+
+Run the final test suites after implementation. Validate the CSV files for correct headers, consistent rows, valid numeric fields, and truthful measurement status.
+
+Check that the source code, test evidence, CSV records, and documentation agree.
+
+## Preservation and safety constraints
+
+- Do not modify Part 1 or Part 2.
+- Do not overwrite existing work without explicit approval.
+- Do not delete files to make the repository appear cleaner.
+- Do not fabricate pattern evidence, line numbers, prompts, LLM outputs, test results, benchmarks, or verification records.
+- Do not claim successful compilation or testing unless the relevant command actually completed successfully.
+- Keep generated files within the approved Part 3 directory.
+- Use Git diffs to verify the final changes and confirm that Parts 1 and 2 remain unchanged.
+
+## Final deliverables
+
+After completing the approved work, provide:
+
+1. A summary of the two selected patterns and the evidence supporting their selection.
+2. A list of every created or modified file.
+3. The shared behavioral contracts and test cases.
+4. The exact commands used to compile, run, and test each implementation.
+5. Actual test results for Java, Python, JavaScript, and C++.
+6. The completed CSV files and a description of their columns.
+7. Performance measurements and their procedure, only if required and actually performed.
+8. The LLM prompt and truthful interaction/verification records.
+9. A Git diff summary confirming that Parts 1 and 2 were preserved.
+10. Remaining limitations, unresolved issues, and any work that could not be verified.
+
+**Start with Phase 0 only. Inspect the materials, prepare the proposal, and wait for my approval before writing code or changing files.
+
+Prompt -3 
+
+I approve the selection of the **Strategy Pattern (Doctor Availability Evaluation Strategy)** and the **Adapter Pattern (Teleconsultation Video Provider Adapter)** for Part 3.
+
+For C++ execution, I prefer **Option A: install or configure a suitable C++ compiler**, provided this can be done safely and with the required permissions. Do not make system-level changes or install dependencies without first obtaining any required permission. If a compiler cannot be configured, use Option B only if the assignment permits it, and clearly document the verified limitation without claiming that the C++ tests passed.
+
+Before implementation, please follow these requirements:
+
+1. Preserve all existing Part 1 and Part 2 files. Do not modify them unless explicitly authorized.
+2. Reconfirm the proposed pattern evidence against the actual source files. Do not rely solely on the previous inspection report.
+3. Follow the exact assignment requirements and CSV schemas. Do not introduce unnecessary duplicate datasets or files.
+4. Implement both patterns in Java, Python, JavaScript, and C++ with equivalent contracts, validation rules, error handling, and logical test cases.
+5. Ensure Strategy scheduling handles interval overlap, lunch breaks, shift boundaries, emergency recovery buffers, and date/time boundaries consistently across all languages.
+6. Ensure Adapter implementations consistently convert timestamps and durations, map doctor/patient roles, and normalize invalid-input and vendor errors.
+7. Use automated tests and record actual commands, runtime/compiler versions, exit statuses, passed/total counts, and failures. Never fabricate execution results or metrics.
+8. Calculate LOC and cyclomatic complexity using documented, consistent rules. Measure performance only if required by the assignment, using the prescribed procedure and comparable workloads.
+9. Maintain truthful LLM records. Do not invent model names, dates, prompts, outputs, or verification results.
+10. After implementation, run all available tests, inspect the final Git diff, and verify that no unrelated files or previous work were changed.
+
+Proceed to Phase 1 and the subsequent implementation phases. If you encounter an ambiguity in the rubric, a destructive operation, a permission requirement, or a blocker that materially affects correctness, stop and report it rather than guessing.
+
+At completion, provide a concise summary of created and modified files, exact execution commands, actual test results for each language and pattern, completed CSV records, metric calculation methods, and any remaining limitations.
+
+Prompt -4 
+
+# Final Audit of Part 3 — Cross-Language Design Patterns
+
+You have completed Phases 1–6 of Part 3 of my Design Patterns case study. Your task now is to perform a **comprehensive, evidence-based final audit** of the completed work before submission.
+
+The project compares two design patterns across Java, Python, JavaScript, and C++:
+
+1. Strategy Pattern — Doctor Availability Evaluation Strategy.
+2. Adapter Pattern — Teleconsultation Video Provider Adapter.
+
+The assignment PDFs, original application, Part 1 findings, Part 2 evolution results, and Part 3 implementations are the authoritative sources for this audit.
+
+## CRITICAL RULES
+
+1. **Audit only. Do not modify, create, delete, overwrite, reformat, or automatically fix any project files during this audit.**
+2. Do not change Part 1, Part 2, Part 3, CSV files, tests, source files, documentation, or Git configuration.
+3. Do not trust the previous completion summary without independently verifying it.
+4. Do not report a test as passed unless you actually execute it and verify its assertions and exit status.
+5. Do not fabricate metrics, commands, compiler versions, model names, dates, prompts, outputs, or verification records.
+6. Clearly distinguish:
+   - PASS — independently verified.
+   - FAIL — a defect or requirement violation was confirmed.
+   - WARNING — a concern that requires attention but is not necessarily a failure.
+   - NOT VERIFIED — evidence is insufficient.
+   - NOT RUN — execution was not performed, with the reason.
+7. Preserve the current working tree. Do not install packages, change dependencies, alter system configuration, or perform destructive operations. If a dependency or permission is missing, report it instead.
+8. Never expose secrets, API keys, tokens, credentials, or sensitive environment variables in the audit report.
+9. Do not push, commit, reset, stash, checkout, or otherwise change Git history or repository state.
+10. Do not assume the existing implementation is correct merely because it passes its own tests.
+
+# PHASE A — Establish the Audit Scope
+
+Inspect the actual repository and identify:
+
+- The assignment instruction PDFs and report-format PDF.
+- The original application source.
+- `Part1/` and its pattern inventory.
+- `Part2/` and its evolution implementation and records.
+- `Part3/` and all four language implementations.
+- Test files, README files, runner scripts, generated binaries, CSV files, LLM prompts, and LLM records.
+- The current Git branch, `git status`, and relevant diffs.
+
+First, determine the exact requirements from the assignment documents. Do not infer missing requirements from the completion summary.
+
+If the assignment PDFs are inaccessible, identify that limitation and continue only with checks that can be performed reliably. Do not invent the rubric.
+
+Inspect the actual file tree rather than relying on the previous report.
+
+# PHASE B — Verify the Design Pattern Implementations
+
+## B1. Strategy Pattern
+
+Audit all four implementations:
+
+- Java
+- Python
+- JavaScript
+- C++
+
+Verify that the implementation genuinely demonstrates the Strategy design pattern, including:
+
+- A meaningful strategy interface or equivalent abstraction.
+- Multiple concrete strategies.
+- A context that delegates behavior to the selected strategy.
+- Runtime strategy selection or replacement, where required by the contract.
+- Separation of scheduling policy from the context.
+- Actual polymorphic or interchangeable behavior, rather than procedural code that merely produces the same output.
+
+Inspect the implementation, not just class names.
+
+Verify these scheduling rules:
+
+1. Standard business hours: Monday–Friday, 09:00–17:00.
+2. Lunch break: 12:00–13:00.
+3. Shift-based availability: 07:00–15:00.
+4. Existing appointment conflict detection.
+5. Emergency availability and the 15-minute recovery buffer.
+6. Correct handling of interval overlap and adjacent appointments.
+7. Correct handling of slots that begin before a permitted period or end after it.
+8. Correct treatment of weekends, midnight, date changes, and time zones according to the documented contract.
+9. Validation of invalid dates, non-positive durations, malformed requests, and invalid booking data.
+10. Consistent validation results and rejection reasons across languages.
+
+Check edge cases independently. For example, test appointments that partially overlap a lunch break, start exactly at 13:00, end exactly at 12:00, or cross a shift boundary.
+
+Do not assume that the six existing tests cover these cases.
+
+## B2. Adapter Pattern
+
+Audit all four implementations and verify the actual collaboration between:
+
+- The target interface, `IVideoConsultationService`.
+- The adapter, `VideoConsultationAdapter`.
+- The vendor/adaptee interface, `ProprietaryVideoProvider`.
+- Domain request and response models.
+
+Verify that the adapter performs real interface and data translation rather than merely wrapping or renaming methods.
+
+Check:
+
+1. Conversion from ISO-8601 timestamps to Unix epoch seconds.
+2. Conversion back to ISO-8601 timestamps.
+3. Correct handling of time zones and UTC offsets.
+4. Conversion between minutes and seconds.
+5. Mapping of `doctor` to `LEVEL_HOST`.
+6. Mapping of `patient` to `LEVEL_GUEST`.
+7. Rejection of unsupported roles, including `admin`.
+8. Validation of empty IDs, invalid timestamps, invalid durations, and malformed vendor responses.
+9. Normalization of vendor-specific exceptions into the documented domain error.
+10. Prevention of accidental leakage of vendor internals through public error messages.
+11. Consistent behavior and output fields across all four languages.
+
+Verify that test cases actually inspect the transformed vendor arguments and returned domain objects. A test that checks only that a method returned something is insufficient.
+
+# PHASE C — Cross-Language Behavioral Equivalence
+
+Compare the implementations directly.
+
+Create an audit matrix covering both patterns and all four languages.
+
+For every logical test case, compare:
+
+- Input.
+- Preconditions.
+- Expected output.
+- Actual output.
+- Error type and message, where applicable.
+- Exit status.
+- Pass/fail result.
+
+Check that all languages use equivalent rules, not just similar class names.
+
+Investigate differences caused by:
+
+- Java type checking and exceptions.
+- Python dynamic typing and date/time handling.
+- JavaScript date parsing, numeric conversion, and runtime behavior.
+- C++ ownership, memory management, date/time functions, and error handling.
+
+Review the previously reported C++ `gmtime()` buffer-overwrite issue. Determine whether the fix is present, correctly implemented, and safe in the actual source. Do not assume that copying a `struct tm` alone establishes thread safety in every implementation.
+
+Report any differences in semantics, validation, timestamp precision, rounding, or error handling.
+
+# PHASE D — Independently Execute Tests
+
+Inspect the test runners and execute the available test suites without modifying source files.
+
+Run Strategy and Adapter tests separately for:
+
+- Java
+- Python
+- JavaScript
+- C++
+
+Use commands appropriate to the existing repository and installed toolchain. Prefer temporary build outputs outside tracked source directories where practical. Do not overwrite existing files or binaries without authorization.
+
+Before executing a test suite:
+
+1. Inspect what the tests actually assert.
+2. Identify the exact source files compiled or imported.
+3. Record the command.
+4. Record the runtime/compiler version.
+5. Execute the test suite.
+6. Record its actual exit status and passed/total count.
+7. Record failures and relevant error messages without exposing secrets.
+
+Do not change the tests to make them pass.
+
+If a test cannot run because a compiler, dependency, permission, or environment is missing, report `NOT RUN` with the verified reason.
+
+The reported baseline is six test cases per pattern per language, but do not force the audit to report 6/6. Report the actual test count and outcome.
+
+Where feasible without editing the project, conduct independent edge-case checks using temporary audit scripts or direct test invocations. Keep additional audit tests separate from the project's existing tests.
+
+Distinguish between:
+- Existing test suite results.
+- Additional audit checks.
+- Tests not executed.
+
+# PHASE E — Audit LOC and Cyclomatic Complexity
+
+Inspect `Part3/pattern_crosslanguage.csv` and determine whether the metrics are valid.
+
+## Source LOC
+
+Verify that:
+
+- Production source files are counted.
+- Test files are excluded.
+- Blank lines are excluded.
+- Comment-only lines are excluded.
+- The same counting policy is applied consistently across languages.
+- The reported values can be reproduced from the actual source files.
+
+Check how inline comments, block comments, docstrings, and language-specific comment syntax are handled.
+
+## Cyclomatic complexity
+
+Inspect the installed version and invocation of `lizard`, if used.
+
+Determine whether it correctly analyzes all four languages and whether its output is consistent with the assignment's required complexity definition.
+
+Check whether the recorded value is the maximum function/method complexity for each implementation, not an average or a project-wide total.
+
+Record the tool, version, method, and any language-specific limitations.
+
+Do not silently replace the assignment's required calculation method with a different convention.
+
+# PHASE F — Audit Performance Measurements
+
+Inspect the actual timing scripts, raw outputs, and CSV values.
+
+The previously documented protocol is:
+
+- One warm-up run.
+- Five measured runs.
+- Median of the five measured results.
+- Same host machine and equivalent workload.
+- Compilation time separated from processing time.
+
+Verify the protocol against the actual assignment instructions first.
+
+For every reported `median_process_ms` value:
+
+1. Find the actual timing code and raw measurements.
+2. Confirm that the workload is equivalent across implementations of the same pattern.
+3. Verify that the warm-up is excluded.
+4. Recalculate the median from the five measured values.
+5. Confirm the units are milliseconds.
+6. Confirm that compilation and unrelated startup work are not accidentally included if the metric is intended to measure processing only.
+7. Identify differences in runtime startup overhead, JIT warm-up, interpreter overhead, and executable invocation that could affect fairness.
+8. Check whether the C++ timings were obtained in WSL while other timings were measured on Windows. If so, explicitly flag the environment difference and its effect on comparability.
+
+Do not rerun performance tests if doing so would overwrite existing outputs or change tracked files. Use non-destructive temporary outputs if necessary.
+
+If raw measurements are unavailable, classify the metric as `NOT VERIFIED`. Do not infer that the value is correct because it appears plausible.
+
+# PHASE G — Audit CSV Schemas and Data Integrity
+
+Inspect the actual assignment-required CSV schemas before judging the files.
+
+At minimum, check `Part3/pattern_crosslanguage.csv` and `Part3/llm/llm.csv`.
+
+For `pattern_crosslanguage.csv`, verify the presence and correctness of the required fields:
+
+`pattern_name,instance_name,language,snippet_path,source_loc,max_function_cc,runtime_compiler,test_command,test_result,median_process_ms,language_notes`
+
+Check:
+
+- Exact column names and ordering, if required.
+- Exactly the required pattern/language combinations.
+- Correct relative source paths that resolve to existing files.
+- Numeric LOC and complexity values.
+- Real runtime/compiler versions.
+- Reproducible commands.
+- Actual test results.
+- Blank timing values where measurements were not performed.
+- Consistent language and pattern names.
+- Correct CSV quoting and escaping.
+- No duplicate or contradictory rows.
+
+For `Part3/llm/llm.csv`, verify the assignment-required columns:
+
+`part,model_and_date,prompt_file,input_file,output_file,evaluation,verification_file`
+
+Check that:
+
+- Referenced paths exist.
+- The prompt file contains the actual prompt used, where available.
+- Model identity and date are supported by evidence.
+- Input and output paths are accurate.
+- Evaluation statements are backed by source inspection and test evidence.
+- Verification files actually contain the referenced tests.
+- No interaction or model metadata has been invented retroactively.
+
+Do not fabricate missing historical information. Clearly identify gaps.
+
+Also check any additional datasets or files required by the actual assignment. Do not create duplicate CSVs or change schemas during this audit.
+
+# PHASE H — Audit Documentation and Assignment Compliance
+
+Compare the current Part 3 against the actual assignment rubric.
+
+Verify:
+
+- `Part3/README.md`, if required.
+- Language-specific README files, if present or required.
+- Exact build and test commands.
+- Design pattern explanations.
+- Input/output contracts.
+- Test case documentation.
+- Metric definitions and calculation procedures.
+- Performance methodology.
+- Limitations and environment details.
+- Required LLM prompt and evaluation records.
+- Any required diagrams, report sections, or supporting evidence.
+
+Check whether the cross-language snippets remain focused and understandable as a design-pattern case study, rather than unnecessarily recreating the full healthcare application in four languages.
+
+Report missing assignment deliverables even if the implementation itself is correct.
+
+# PHASE I — Git and Change Integrity
+
+Use read-only Git commands to inspect:
+
+- Current branch.
+- `git status --short`.
+- `git diff`.
+- `git diff --cached`.
+- Tracked and untracked files relevant to Part 3.
+- Changes under Part 1 and Part 2.
+- Any unexpected generated executables, build files, logs, or temporary artifacts.
+
+Determine whether the current evidence supports the claim that Parts 1 and 2 were preserved unchanged.
+
+Do not reset, clean, checkout, stash, commit, or push.
+
+Do not assume that an empty ordinary `git diff` means there are no untracked files. Report tracked and untracked changes separately.
+
+# PHASE J — Final Audit Report
+
+Return a structured report with these sections:
+
+## 1. Executive Verdict
+
+Choose one:
+
+- READY FOR SUBMISSION
+- READY AFTER MINOR FIXES
+- NOT READY FOR SUBMISSION
+- INCONCLUSIVE — INSUFFICIENT EVIDENCE
+
+Briefly justify the verdict.
+
+## 2. Assignment Compliance Matrix
+
+Use a table with:
+
+Requirement | Expected evidence | Status | Actual evidence | Required action
+
+Cover all mandatory assignment requirements.
+
+## 3. Design Pattern Audit
+
+Report findings for Strategy and Adapter, including whether each genuinely demonstrates the intended pattern.
+
+## 4. Cross-Language Equivalence
+
+Provide a matrix for Java, Python, JavaScript, and C++ showing verified behavior, test status, and any semantic differences.
+
+## 5. Test Execution Results
+
+Provide a table containing:
+
+Pattern | Language | Exact command | Runtime/compiler version | Passed/total | Exit status | Audit status
+
+Separate existing test suites from additional audit checks.
+
+## 6. Metrics Audit
+
+Report LOC, complexity, runtime/compiler versions, and performance measurements. Identify which values were independently reproduced and which remain unverified.
+
+## 7. CSV and LLM Record Audit
+
+List missing columns, invalid values, broken paths, duplicate records, unsupported claims, and incomplete metadata.
+
+## 8. Git Integrity
+
+Summarize tracked changes, untracked files, and any evidence of changes to Part 1 or Part 2.
+
+## 9. Findings Ranked by Severity
+
+For each finding, provide:
+- Severity: Critical, High, Medium, or Low.
+- File and exact location, if identifiable.
+- Evidence.
+- Why it matters.
+- Recommended correction.
+
+Do not claim a defect without evidence. Label suspicions as warnings or items not verified.
+
+## 10. Final Submission Checklist
+
+Provide a concise checklist of the exact items that remain before submission.
+
+## 11. Remediation Plan — No Changes Applied
+
+If issues are found, provide the smallest safe set of proposed fixes, ordered by severity.
+
+For each fix, identify the affected files and how it will be verified. Do not apply any fix in this audit.
+
+# FINAL INSTRUCTION
+
+Complete the audit and stop.
+
+**Do not edit the repository or automatically implement your recommendations.** I will review the findings and explicitly authorize any required fixes in a separate instruction.
+
+Prompt - 5
+
+# Authorized Remediation: Part 3 Pattern-by-Pattern Cross-Language Case Study
+
+You have completed the initial implementation and final audit of my Design Patterns case study. I now authorize you to remediate the verified issues and bring Part 3 into compliance with the actual assignment instructions and the repository hierarchy shown in the provided screenshot.
+
+## 1. First, understand the lecturer's intended workflow
+
+The lecturer requires us to analyze the original application, identify the design patterns found or opportunities discovered, examine their implementation or evolution, and then implement representative patterns across Java, Python, JavaScript, and C++.
+
+Part 3 must therefore preserve the connection between:
+
+1. **Original application analysis:** What was found in the source code, and what evidence supports the finding?
+2. **Pattern identification:** What pattern was identified, or what refactoring opportunity was discovered?
+3. **Pattern evolution:** How was the original implementation changed or formalized in Part 2?
+4. **Cross-language implementation:** How is the selected design pattern implemented in each of the four languages?
+5. **Testing and evaluation:** What tests, measurements, and evidence demonstrate the behavior and compare the implementations?
+
+The two selected patterns are:
+
+- Strategy — Doctor Availability Evaluation Strategy.
+- Adapter — Teleconsultation Video Provider Adapter.
+
+Do not treat these as unrelated standalone programming exercises. Maintain traceability to the original healthcare application and the evidence from Parts 1 and 2.
+
+## 2. Inspect the actual assignment and repository before making changes
+
+Read the assignment PDFs, report-format requirements, repository README, existing Part 1 inventory, Part 2 evolution records, Part 3 implementation, and the screenshot showing the expected repository hierarchy.
+
+Use the assignment documents as the authority for required filenames, CSV schemas, report deliverables, metrics, and test procedures.
+
+The screenshot shows the intended structure in which `Part3/` contains a separate folder for each pattern, with four language implementations and a corresponding `llm/` directory containing the prompt, records, and cross-language dataset.
+
+A representative structure is:
+
+```text
+Part3/
+├── pattern_problem_name/
+│   ├── java/
+│   │   ├── snippet/
+│   │   ├── tests/
+│   │   └── README.md
+│   ├── python/
+│   │   ├── snippet/
+│   │   ├── tests/
+│   │   └── README.md
+│   ├── javascript/
+│   │   ├── snippet/
+│   │   ├── tests/
+│   │   └── README.md
+│   └── cpp/
+│       ├── snippet/
+│       ├── tests/
+│       └── README.md
+├── llm/
+│   ├── part3_prompt.txt
+│   ├── llm.csv
+│   └── pattern_crosslanguage.csv
+└── README.md
+```
+
+This is illustrative. Use the actual pattern names and exact hierarchy required by the lecturer. Do not blindly move files if doing so would break the project or contradict the rubric.
+
+## 3. Protect existing work
+
+- Do not modify or overwrite any Part 1 or Part 2 files.
+- Preserve the existing Part 3 source code, tests, and useful documentation.
+- Before editing, capture the current Git status and inspect the relevant diffs.
+- Make only changes needed to fix confirmed issues and meet the assignment.
+- Do not delete helper scripts merely because they appear unnecessary. Determine whether they are useful, required for reproducibility, or genuine temporary artifacts.
+- If a file must be moved, preserve its content and update affected paths and commands.
+- Do not commit, push, reset, clean, or rewrite Git history.
+- Never fabricate test results, measurements, LLM interactions, model identities, or historical metadata.
+
+## 4. Remediate the pattern-by-pattern directory structure
+
+Organize the selected patterns according to the lecturer's intended hierarchy.
+
+For each pattern, ensure its folder contains the Java, Python, JavaScript, and C++ implementation, corresponding test runner, and language-specific README as required.
+
+Keep each pattern's implementation independent enough to understand and test, while sharing equivalent behavioral contracts and test scenarios across all four languages.
+
+If the assignment expects a separate cross-language dataset in `Part3/llm/`, place the canonical dataset there. If the actual rubric specifies a different location, follow the rubric. Do not create duplicate datasets without a documented requirement.
+
+Update documentation and source paths to match the final structure.
+
+## 5. Verify the pattern-analysis traceability
+
+For each selected pattern, document the following with real source evidence.
+
+### Strategy — Doctor Availability Evaluation Strategy
+
+- Original application file and relevant line range.
+- What the original code did.
+- Whether the baseline contained a formal Strategy implementation or a procedural branching opportunity.
+- What changed in Part 2.
+- The Strategy interface or abstraction.
+- The concrete strategies and their responsibilities.
+- The context's delegation and strategy substitution.
+- How the same roles are represented in Java, Python, JavaScript, and C++.
+- The behavioral contract and equivalent test cases.
+
+Do not describe the original procedural branching as an already-complete Strategy implementation unless the source actually supports that conclusion.
+
+### Adapter — Teleconsultation Video Provider Adapter
+
+- Original application file and relevant line range.
+- The original integration or vendor-coupling problem.
+- Whether the baseline contained an Adapter or an opportunity for one.
+- What changed in Part 2.
+- The target interface, adapter, adaptee, and translated data.
+- How role mapping, timestamp conversion, duration conversion, and error normalization work.
+- How the same responsibilities are represented in all four languages.
+- The behavioral contract and equivalent test cases.
+
+Use actual files and code to support these claims. Do not reuse line numbers from earlier reports without checking the current source.
+
+## 6. Correct the cross-language dataset
+
+The audit found that `pattern_crosslanguage.csv` currently uses an incorrect schema. Correct it using the exact column names and ordering required by the assignment.
+
+The previously identified required schema is:
+
+```csv
+pattern_name,instance_name,language,snippet_path,source_loc,max_function_cc,runtime_compiler,test_command,test_result,median_process_ms,language_notes
+```
+
+Verify this schema against the actual assignment PDF before implementing it.
+
+For every required pattern-language combination, populate the fields using the real implementation and execution evidence:
+
+- `pattern_name`: Strategy or Adapter.
+- `instance_name`: The corresponding healthcare collaboration.
+- `language`: Java, Python, JavaScript, or C++.
+- `snippet_path`: A valid path relative to the required team-folder root.
+- `source_loc`: Actual production LOC, excluding test code and excluded lines according to the rubric.
+- `max_function_cc`: Maximum function/method cyclomatic complexity, not the sum of all function complexities.
+- `runtime_compiler`: Actual runtime/compiler and verified version.
+- `test_command`: Exact reproducible command.
+- `test_result`: Actual test count and outcome, or `not_run` with a verified reason.
+- `median_process_ms`: Actual measured median, or blank if unmeasured.
+- `language_notes`: Brief factual observations about the language's abstraction and implementation choices.
+
+Ensure all paths resolve after restructuring. Check CSV escaping, duplicate rows, missing combinations, invalid numeric fields, and unsupported claims.
+
+## 7. Correct LOC and complexity calculations
+
+Inspect the existing generator and the installed `lizard` tool.
+
+The audit identified that the existing script aggregates cyclomatic complexity rather than recording the maximum complexity of a single function/method.
+
+Correct the calculation so that:
+
+- Production LOC excludes tests, blank lines, and comments as specified by the assignment.
+- Complexity is calculated using a consistent, documented method.
+- `max_function_cc` records the maximum per-function/per-method complexity.
+- The tool's supported languages and any limitations are documented.
+- Results can be reproduced from the final source tree.
+
+Do not silently substitute a different complexity definition from the one specified in the assignment. If the assignment's definition and the tool's calculation differ, explain the difference and follow the required rubric.
+
+## 8. Implement valid performance measurement if required
+
+The audit found that the existing timing values are hardcoded in the generator and are not supported by actual measurements.
+
+First confirm the assignment's timing requirements. If performance measurements are mandatory, create a reproducible benchmark procedure that:
+
+1. Uses equivalent representative workloads for the same pattern across the four languages.
+2. Executes one warm-up run.
+3. Records five measured runs.
+4. Calculates the median from the five measured values.
+5. Separates compilation time from processing time.
+6. Records the actual host environment and runtime/compiler versions.
+7. Stores or documents raw observations sufficiently to reproduce the median.
+8. Populates the dataset only from real results.
+
+Use the same logical workload and equivalent inputs for all implementations of a pattern. Ensure the benchmark measures processing rather than accidentally including unrelated compilation or process startup costs, unless the assignment explicitly defines the metric differently.
+
+Pay attention to Java JIT warm-up, interpreter overhead, JavaScript runtime behavior, and the difference between Windows and WSL execution.
+
+Do not claim these languages were benchmarked under identical conditions if their environments differ materially.
+
+If the assignment does not require performance timing, do not introduce unnecessary benchmarks. Document the actual requirement and leave unmeasured fields blank as permitted.
+
+Never retain the old hardcoded timing values as if they were real results.
+
+## 9. Correct the LLM records truthfully
+
+Correct `Part3/llm/llm.csv` to match the exact assignment schema.
+
+The previously identified schema is:
+
+```csv
+part,model_and_date,prompt_file,input_file,output_file,evaluation,verification_file
+```
+
+Verify it against the actual assignment instructions.
+
+For each genuine interaction that can be established from the available records, document the actual prompt, model identity and date, input, output, evaluation, and verification artifact.
+
+- Preserve the real master prompt in `Part3/llm/part3_prompt.txt`.
+- Make sure the prompt accurately describes the final two pattern problems, contracts, language requirements, and test scenarios.
+- Ensure all file paths resolve in the final directory structure.
+- Base evaluation statements on the actual code and tests.
+- Do not invent historical model identities, dates, input/output files, or interactions.
+- If the existing records are insufficient to establish a field, report that limitation and leave it blank or use the assignment's permitted missing-data representation.
+- Do not fabricate historical prompt history after implementation.
+
+If additional genuine LLM interactions are necessary, perform them only through an available, explicitly authorized model interaction and record what actually occurred.
+
+## 10. Independently rerun tests after restructuring
+
+After the corrections, run the actual test suites for Strategy and Adapter in Java, Python, JavaScript, and C++.
+
+For every test suite, record:
+
+- Exact command.
+- Runtime/compiler version.
+- Number of passed and failed tests.
+- Exit status.
+- Any relevant failure output.
+- Whether it was an existing test or a new audit test.
+
+Inspect the tests to ensure they verify behavior rather than simply print a predetermined success message.
+
+Verify equivalent behavior for:
+
+Strategy:
+- Valid standard appointment.
+- Weekend rejection.
+- Lunch-break overlap.
+- Existing appointment conflict.
+- Shift-boundary rejection.
+- Emergency availability and the required recovery buffer.
+- Relevant invalid and boundary inputs.
+
+Adapter:
+- Session creation.
+- Timestamp and duration conversion.
+- Doctor role mapping.
+- Patient role mapping.
+- Unsupported-role rejection.
+- Vendor-error normalization.
+- Invalid or missing inputs and malformed vendor responses.
+
+The list above is a minimum review guide, not permission to ignore additional mandatory test cases in the assignment.
+
+Do not modify tests merely to obtain passing results.
+
+## 11. Update README files and preserve reproducibility
+
+Ensure the root Part 3 README explains:
+
+- What each selected pattern solves.
+- How each pattern relates to the original application and Part 2 evolution.
+- The final directory structure.
+- The purpose of each language implementation.
+- How to compile, run, and test each implementation.
+- Required runtimes and compiler versions.
+- The LOC and complexity calculation rules.
+- The timing methodology, if required.
+- The CSV schemas and how their values were generated.
+- Known limitations and unmeasured results.
+
+Each language README should contain the exact working commands for that language and pattern, using the final file paths.
+
+Do not claim a command works unless you have actually tested it.
+
+## 12. Final verification and deliverables
+
+After all authorized fixes:
+
+1. Re-run the affected and full required test suites.
+2. Recalculate the required metrics.
+3. Regenerate the CSV datasets from actual evidence.
+4. Validate CSV schemas and paths programmatically.
+5. Check that every required pattern-language combination is present.
+6. Verify that no Part 1 or Part 2 files were changed.
+7. Review `git diff` and `git status`, including untracked files.
+8. Check for accidental generated binaries, caches, secrets, and temporary files.
+9. Confirm the final directory hierarchy matches the assignment.
+10. Do not push or commit.
+
+Provide a final report containing:
+
+- The final repository hierarchy.
+- Every file created, modified, or moved.
+- How Strategy and Adapter trace back to the original source and Part 2.
+- Actual test results for all eight pattern-language combinations.
+- Corrected CSV schemas and validation results.
+- Reproducible LOC and complexity values.
+- Raw timing evidence and calculated medians, if required.
+- Truthful LLM record status.
+- Git integrity results.
+- Remaining limitations or requirements that could not be verified.
+
+## 13. Execution policy
+
+You are authorized to make the necessary Part 3 corrections described above, including source organization, scripts, CSVs, prompt documentation, and README files.
+
+You are **not authorized to modify Part 1 or Part 2**, fabricate evidence, delete useful work without justification, or change Git history.
+
+If an operation could destroy existing work, if the rubric is ambiguous in a way that affects correctness, or if a required dependency cannot be installed safely, stop that operation and report the blocker.
+
+Do not finish merely because the files have been generated. Finish only after the corrected artifacts have been checked against the assignment and the available tests and measurements have actually been verified.
+
+Prompt - 6
+
+# Extended Part 3 Assignment — Audit All Seven Identified Design Patterns
+
+The cross-language implementation of Strategy and Adapter has been completed and remediated. However, our overall analysis identified **seven design patterns**, and I now need you to inspect the existing analysis records and determine how to complete the remaining assigned work.
+
+Your task is to inspect the Part 1 and Part 2 pattern records, reconcile all seven patterns, and complete the Part 3 work required by the actual assignment and lecture instructions.
+
+This is an extension of the existing case study. Do not assume that Strategy and Adapter are the only patterns that need to be addressed.
+
+## 1. Inspect these exact files first
+
+Locate and read:
+
+- `Part1/Pattern_count.csv`
+- `Part2/Pattern_count.csv`
+- `Part2/pattern_evaluation.csv`
+
+Preserve the exact capitalization and spelling of the existing filenames. If a filename differs, inspect the directory and identify the actual corresponding file.
+
+Also inspect:
+
+- `Part1/patterns.csv` or its actual equivalent.
+- `Part2/pattern_evolution.csv`, `Part2/pattern_evaluation.csv`, and other relevant evolution records, using their actual filenames.
+- The assignment instruction PDF and report-format PDF.
+- The original healthcare application source.
+- The current Part 2 implementation and change folders.
+- The current `Part3/` directory, including the completed Strategy and Adapter implementations, tests, datasets, and READMEs.
+
+Do not begin by generating code. First understand what the existing records actually say.
+
+## 2. Reconcile all seven identified patterns
+
+Create an internal reconciliation table covering every pattern identified by the analysis.
+
+For each pattern, determine:
+
+1. Exact pattern name recorded in Part 1.
+2. Count and meaning of the corresponding entry in `Part1/Pattern_count.csv`.
+3. Corresponding Part 2 entry in `Part2/Pattern_count.csv`.
+4. Evaluation status and findings from `Part2/pattern_evaluation.csv`.
+5. Original application source file and verified line-level evidence.
+6. Whether the pattern was already present in the original application, existed only partially, was a refactoring opportunity, or was introduced during Part 2.
+7. Whether a formal implementation was added during Part 2.
+8. Whether the pattern is already covered by the existing Part 3 Strategy or Adapter implementation.
+9. Whether the assignment requires another cross-language implementation for this pattern.
+10. What remains to be delivered, tested, documented, or evaluated.
+
+**Important:** Do not assume that every pattern count corresponds to a separate pattern implementation. Counts may represent instances or occurrences rather than unique pattern types. Determine their meaning from the actual files and assignment instructions.
+
+Do not invent the names of the seven patterns. Derive them from the CSV records and the source code.
+
+## 3. Distinguish pattern types from opportunities
+
+The analysis may contain formal design patterns, partial implementations, procedural code that could be refactored, or proposed patterns introduced by evolution.
+
+Classify each finding accurately:
+
+- Confirmed pattern in the original application.
+- Pattern-like collaboration that requires further verification.
+- Refactoring opportunity in the original application.
+- Pattern introduced or formalized during Part 2.
+- Pattern already covered by the current Part 3 implementation.
+- Pattern requiring additional Part 3 work.
+- Pattern that should not be implemented cross-language because the assignment does not require it.
+
+Support every classification with actual source evidence and the relevant Part 1/Part 2 record.
+
+Do not falsely claim that a refactoring opportunity was already a complete pattern implementation.
+
+## 4. Determine exactly what the lecturer requires for Part 3
+
+Read the assignment documents carefully and establish whether:
+
+- All seven patterns must be implemented across Java, Python, JavaScript, and C++.
+- Only representative patterns must be selected for cross-language implementation.
+- The remaining patterns need analysis, source mapping, counts, or evaluation rather than four-language implementations.
+- The existing Strategy and Adapter implementations satisfy the specified representative-pattern requirement.
+- Any additional patterns are mandatory because of the lecture instructions, evaluation records, or rubric.
+
+Follow the actual written assignment and lecture materials. Do not automatically implement all seven patterns simply because seven were identified.
+
+If the written rubric and my request appear to conflict, explain the discrepancy and use the safest interpretation that satisfies the documented requirements without unnecessary duplication.
+
+## 5. Protect the completed work
+
+The current Part 3 contains the completed cross-language implementations of:
+
+- Strategy — Doctor Availability Evaluation Strategy.
+- Adapter — Teleconsultation Video Provider Adapter.
+
+Preserve these implementations, their tests, documentation, and verified results.
+
+Do not modify Part 1 or Part 2 source files, datasets, reports, or historical evidence.
+
+Do not delete useful historical scripts or artifacts without a demonstrated reason. Do not rewrite Git history, reset, clean, commit, or push.
+
+Before making changes, inspect the current Git status and diffs. Record the current Part 3 hierarchy.
+
+## 6. Produce a pattern-by-pattern gap analysis
+
+Before implementing additional patterns, produce a report with these sections.
+
+### A. Seven-pattern inventory
+
+List all seven patterns using the exact names from the source records.
+
+For each, show:
+
+- Part 1 count and interpretation.
+- Part 2 count and interpretation.
+- Part 2 evaluation result.
+- Original source evidence.
+- Evolution evidence.
+- Current Part 3 coverage.
+- Required deliverables according to the rubric.
+- Status: complete, partially complete, missing, not required, or unclear.
+
+### B. Cross-reference matrix
+
+Provide a table with these columns:
+
+`pattern_name, part1_evidence, part1_count, part2_evidence, part2_count, evaluation_status, original_source, evolution_source, part3_status, required_action`
+
+Use exact file paths and line ranges wherever available. If evidence cannot be located, mark it as unavailable instead of guessing.
+
+### C. Missing-work assessment
+
+Identify:
+
+- Patterns not represented in Part 3.
+- Missing source-code mappings.
+- Missing test evidence.
+- Missing evaluation records or metrics.
+- Missing required cross-language implementations.
+- Any mismatch between pattern names, counts, and evaluation records.
+- Any inconsistencies between the existing datasets and the actual source code.
+
+### D. Recommended implementation scope
+
+Clearly divide the work into:
+
+1. Already completed and should be preserved.
+2. Required additional implementations.
+3. Required documentation or datasets only.
+4. Optional improvements not required by the rubric.
+5. Ambiguities that need clarification.
+
+## 7. Implement only the work that is actually required
+
+After the gap analysis, proceed with the additional work that is clearly required by the assignment.
+
+Do not stop after merely reporting the gaps if the requirement is unambiguous and can be completed safely.
+
+For every additional pattern selected for implementation:
+
+1. Define the actual problem using evidence from the healthcare application.
+2. Explain how the pattern relates to Part 1 and Part 2.
+3. Identify the pattern participants and their responsibilities.
+4. Implement equivalent, idiomatic versions in Java, Python, JavaScript, and C++ only when required by the rubric.
+5. Use the same logical input/output contract across languages.
+6. Implement meaningful tests with equivalent expected behavior.
+7. Record real test results and execution commands.
+8. Update the appropriate README and cross-language dataset.
+9. Keep the implementation focused on demonstrating the pattern rather than recreating the whole application.
+
+Avoid implementing a pattern twice if it is already covered by the current Strategy or Adapter implementation. If an existing implementation covers only part of a pattern's required scope, explain the gap and make the smallest necessary extension.
+
+Do not introduce unnecessary frameworks, dependencies, or abstractions.
+
+## 8. Maintain dataset and metric integrity
+
+Preserve the corrected schema for `Part3/llm/pattern_crosslanguage.csv` if that is the location required by the assignment. Use the actual rubric to confirm the correct path and schema.
+
+The previously identified cross-language schema is:
+
+`pattern_name,instance_name,language,snippet_path,source_loc,max_function_cc,runtime_compiler,test_command,test_result,median_process_ms,language_notes`
+
+Verify that schema against the assignment documents before changing it.
+
+For any new implementations:
+
+- Measure production LOC using the assignment's rules.
+- Record maximum function/method cyclomatic complexity, not aggregate complexity.
+- Record actual runtime/compiler versions.
+- Record reproducible test commands and actual results.
+- Measure execution time only if required and using the documented protocol.
+- Never reuse fabricated timing values or copy another implementation's measurements.
+- Keep unmeasured fields blank or use the assignment's permitted status notation.
+- Preserve the truthful LLM record schema and existing genuine interaction history.
+- Do not invent prompts, model names, dates, test results, or source references.
+
+Ensure that every dataset row maps to a real implementation and a real pattern instance.
+
+## 9. Validate the final repository structure
+
+Follow the exact repository hierarchy in the lecture screenshot and assignment documents.
+
+Preserve the current organization of Strategy and Adapter unless a genuine mismatch with the required structure must be corrected.
+
+For any additional pattern, organize its implementation and evidence according to the required structure, with the four languages, tests, and README files as required.
+
+Do not create duplicate reports or datasets merely to make the repository appear complete. There should be one authoritative location for each required artifact unless the rubric explicitly requires otherwise.
+
+## 10. Run final verification
+
+After implementing required changes:
+
+- Run all affected test suites.
+- Run the complete required Part 3 test suite.
+- Verify the equivalent contracts across all applicable languages.
+- Validate CSV column names, paths, row completeness, and numeric fields.
+- Verify LOC and complexity calculations.
+- Verify performance values against actual measurements if timing is required.
+- Check that no unsupported LLM records or fabricated results have been introduced.
+- Verify that Part 1 and Part 2 remain unchanged.
+- Inspect tracked and untracked Git changes.
+- Confirm the final repository hierarchy matches the assignment.
+
+If any environment is unavailable, report the precise limitation rather than claiming success.
+
+## 11. Final report
+
+Provide:
+
+1. The names of all seven identified patterns.
+2. The verified counts from Part 1 and Part 2.
+3. The evaluation findings from `Part2/pattern_evaluation.csv`.
+4. The source evidence and evolution evidence for each pattern.
+5. Which patterns require cross-language implementations according to the rubric.
+6. Which patterns were already complete and which additional work was performed.
+7. The files created, modified, or moved.
+8. Test results and exact commands.
+9. Updated dataset and metric validation results.
+10. Git integrity results.
+11. Any remaining limitations or ambiguities.
+
+Conclude with a clear verdict: whether Part 3 now satisfies the documented assignment requirements, and list any items that remain incomplete.
+
+### Execution policy
+
+You are authorized to inspect all the files named above and implement the additional Part 3 work that the actual assignment requires.
+
+Preserve Part 1 and Part 2 completely. Preserve the completed Strategy and Adapter work. Do not fabricate evidence or make destructive changes.
+
+The goal is not simply to produce seven separate code examples. The goal is to complete the pattern-by-pattern case study, maintaining traceability from original analysis through evolution and, where required, cross-language implementation and evaluation.
+
+Prompt - 7
+
+# Part 3 — Singleton Pattern: Cross-Language Implementation
+
+Work only on the Singleton pattern for my healthcare Doctor Appointment Management System design-pattern case study.
+
+## 1. Inspect the evidence first
+
+Inspect the following sources, using their actual paths in the repository:
+
+- Original application configuration and Appwrite client initialization, previously identified around `appwrite.config.ts`.
+- `Part1/` pattern inventory and pattern-count CSV.
+- `Part2/` pattern-count CSV and pattern-evaluation/evolution records.
+- Assignment PDFs and the required Part 3 directory hierarchy.
+- Existing `Part3/` files.
+
+Verify the original source evidence and relevant line numbers. Determine whether the source demonstrates a true Singleton, a module-scoped shared instance, or merely a pattern-like implementation. Do not overstate the classification.
+
+## 2. Implement the representative problem
+
+Implement a focused healthcare configuration/client-manager example that ensures a single shared instance within the relevant application process.
+
+Implement it independently in:
+
+- Java
+- Python
+- JavaScript
+- C++
+
+Use idiomatic language mechanisms: private construction and controlled access in Java, appropriate instance control in Python, module or class semantics in JavaScript, and safe static instance management in C++.
+
+Document language-specific differences. Do not introduce real credentials, connect to a live service, or expose secrets.
+
+## 3. Required structure
+
+Use the assignment-required pattern hierarchy, preferably consistent with the existing folders:
+
+`Part3/singleton/{java,python,javascript,cpp}/`
+
+Each language must contain its implementation, tests, and README in the required locations. Preserve existing files unless a change is demonstrably necessary.
+
+## 4. Tests
+
+Test that repeated access returns the same instance, initialization is performed only as intended, shared configuration behaves consistently, and invalid configuration is handled appropriately.
+
+Explain any concurrency guarantees or limitations. Do not claim thread safety unless the implementation and tests support it.
+
+## 5. Documentation and dataset
+
+Document:
+
+- Original source evidence.
+- Part 1 classification.
+- Part 2 status.
+- The representative problem.
+- Pattern participants and implementation choices.
+- Test commands and actual results.
+
+Update the canonical cross-language CSV using the exact assignment schema. Record genuine LOC, maximum function cyclomatic complexity, runtime/compiler versions, and test outcomes. Measure timing only if required, using the prescribed protocol.
+
+Do not create fake LLM interaction records or modify Part 1 or Part 2.
+
+## 6. Final verification
+
+Run all four test suites, inspect the resulting diffs, validate dataset paths, and report every file changed.
+
+If the original implementation is only Singleton-like rather than a canonical GoF Singleton, explicitly document that distinction. Complete the work and provide an evidence-based report without claiming unexecuted tests passed.
+
+Prompt - 8
+
+# Part 3 — Factory Method Pattern: Cross-Language Implementation
+
+Work only on the Factory Method pattern for my healthcare Doctor Appointment Management System case study.
+
+## 1. Inspect the existing implementation
+
+Inspect the original appointment validation code, previously identified around `validation.ts` and the `getAppointmentSchema` function. Locate the exact files and line ranges.
+
+Read the Part 1 pattern inventory, both relevant pattern-count records, the Part 2 evaluation/evolution records, and the assignment instructions.
+
+Determine whether the original code implements the GoF Factory Method, a simple parameterized factory, or only a factory-like function. Do not label a switch statement as a full Factory Method implementation without demonstrating the required creator abstraction and polymorphism.
+
+## 2. Define and implement a small problem
+
+Build an appointment-validation component demonstrating the Factory Method pattern.
+
+Use a common validator interface and an abstract creator with a genuine factory method. Provide concrete creators that construct different appointment validators, such as standard and emergency appointment validators, provided that these categories and rules are justified by the healthcare domain and documented contract.
+
+Each validator must validate a defined request and return a consistent result. Avoid adding complex rules that cannot be explained or tested.
+
+Implement the same logical design in Java, Python, JavaScript, and C++. Use idiomatic abstractions in each language while preserving equivalent behavior.
+
+## 3. Required structure
+
+Create or update:
+
+`Part3/factory_method/{java,python,javascript,cpp}/`
+
+Include source code, automated tests, and a README for each language according to the assignment's directory conventions.
+
+Do not alter Part 1 or Part 2 files. Do not duplicate the existing Strategy or Adapter implementations.
+
+## 4. Automated tests
+
+Test:
+
+- Correct validator construction by each concrete creator.
+- Valid requests.
+- Invalid or missing required fields.
+- Different validation rules for the supported appointment types.
+- Rejection of unsupported appointment types.
+- Consistent results and error handling across all languages.
+
+Use equivalent logical inputs and expected outputs in all four implementations.
+
+## 5. Traceability and evidence
+
+Explain what the original factory-like code did, how it was classified in Part 1, what happened in Part 2, and how the Part 3 implementation demonstrates the canonical Factory Method pattern.
+
+Keep the original application analysis distinct from the new cross-language example. Never claim that the original source contained a full GoF implementation if it did not.
+
+Update the required cross-language CSV with verified source paths, actual LOC, maximum function complexity, runtime/compiler versions, reproducible test commands, and real results. Measure performance only if mandated by the assignment.
+
+Inspect the final diffs and report all changes. Do not fabricate model interactions, timing results, or test outcomes.
+
+Prompt - 7 
+
+# Part 3 — Factory Method Pattern: Cross-Language Implementation
+
+Work only on the Factory Method pattern for my healthcare Doctor Appointment Management System case study.
+
+## 1. Inspect the existing implementation
+
+Inspect the original appointment validation code, previously identified around `validation.ts` and the `getAppointmentSchema` function. Locate the exact files and line ranges.
+
+Read the Part 1 pattern inventory, both relevant pattern-count records, the Part 2 evaluation/evolution records, and the assignment instructions.
+
+Determine whether the original code implements the GoF Factory Method, a simple parameterized factory, or only a factory-like function. Do not label a switch statement as a full Factory Method implementation without demonstrating the required creator abstraction and polymorphism.
+
+## 2. Define and implement a small problem
+
+Build an appointment-validation component demonstrating the Factory Method pattern.
+
+Use a common validator interface and an abstract creator with a genuine factory method. Provide concrete creators that construct different appointment validators, such as standard and emergency appointment validators, provided that these categories and rules are justified by the healthcare domain and documented contract.
+
+Each validator must validate a defined request and return a consistent result. Avoid adding complex rules that cannot be explained or tested.
+
+Implement the same logical design in Java, Python, JavaScript, and C++. Use idiomatic abstractions in each language while preserving equivalent behavior.
+
+## 3. Required structure
+
+Create or update:
+
+`Part3/factory_method/{java,python,javascript,cpp}/`
+
+Include source code, automated tests, and a README for each language according to the assignment's directory conventions.
+
+Do not alter Part 1 or Part 2 files. Do not duplicate the existing Strategy or Adapter implementations.
+
+## 4. Automated tests
+
+Test:
+
+- Correct validator construction by each concrete creator.
+- Valid requests.
+- Invalid or missing required fields.
+- Different validation rules for the supported appointment types.
+- Rejection of unsupported appointment types.
+- Consistent results and error handling across all languages.
+
+Use equivalent logical inputs and expected outputs in all four implementations.
+
+## 5. Traceability and evidence
+
+Explain what the original factory-like code did, how it was classified in Part 1, what happened in Part 2, and how the Part 3 implementation demonstrates the canonical Factory Method pattern.
+
+Keep the original application analysis distinct from the new cross-language example. Never claim that the original source contained a full GoF implementation if it did not.
+
+Update the required cross-language CSV with verified source paths, actual LOC, maximum function complexity, runtime/compiler versions, reproducible test commands, and real results. Measure performance only if mandated by the assignment.
+
+Inspect the final diffs and report all changes. Do not fabricate model interactions, timing results, or test outcomes.
+
+Prompt - 8 
+
+# Part 3 — Factory Method Pattern: Cross-Language Implementation
+
+Work only on the Factory Method pattern for my healthcare Doctor Appointment Management System case study.
+
+## 1. Inspect the existing implementation
+
+Inspect the original appointment validation code, previously identified around `validation.ts` and the `getAppointmentSchema` function. Locate the exact files and line ranges.
+
+Read the Part 1 pattern inventory, both relevant pattern-count records, the Part 2 evaluation/evolution records, and the assignment instructions.
+
+Determine whether the original code implements the GoF Factory Method, a simple parameterized factory, or only a factory-like function. Do not label a switch statement as a full Factory Method implementation without demonstrating the required creator abstraction and polymorphism.
+
+## 2. Define and implement a small problem
+
+Build an appointment-validation component demonstrating the Factory Method pattern.
+
+Use a common validator interface and an abstract creator with a genuine factory method. Provide concrete creators that construct different appointment validators, such as standard and emergency appointment validators, provided that these categories and rules are justified by the healthcare domain and documented contract.
+
+Each validator must validate a defined request and return a consistent result. Avoid adding complex rules that cannot be explained or tested.
+
+Implement the same logical design in Java, Python, JavaScript, and C++. Use idiomatic abstractions in each language while preserving equivalent behavior.
+
+## 3. Required structure
+
+Create or update:
+
+`Part3/factory_method/{java,python,javascript,cpp}/`
+
+Include source code, automated tests, and a README for each language according to the assignment's directory conventions.
+
+Do not alter Part 1 or Part 2 files. Do not duplicate the existing Strategy or Adapter implementations.
+
+## 4. Automated tests
+
+Test:
+
+- Correct validator construction by each concrete creator.
+- Valid requests.
+- Invalid or missing required fields.
+- Different validation rules for the supported appointment types.
+- Rejection of unsupported appointment types.
+- Consistent results and error handling across all languages.
+
+Use equivalent logical inputs and expected outputs in all four implementations.
+
+## 5. Traceability and evidence
+
+Explain what the original factory-like code did, how it was classified in Part 1, what happened in Part 2, and how the Part 3 implementation demonstrates the canonical Factory Method pattern.
+
+Keep the original application analysis distinct from the new cross-language example. Never claim that the original source contained a full GoF implementation if it did not.
+
+Update the required cross-language CSV with verified source paths, actual LOC, maximum function complexity, runtime/compiler versions, reproducible test commands, and real results. Measure performance only if mandated by the assignment.
+
+Inspect the final diffs and report all changes. Do not fabricate model interactions, timing results, or test outcomes.
+
+Prompt - 9 
+
+# Part 3 — Observer Pattern: Audit and Finalize Existing Implementation
+
+The Observer pattern has already been implemented in `Part3/observer/` across Java, Python, JavaScript, and C++. Do not recreate it from scratch or overwrite working files.
+
+Your task is to audit the implementation, repair confirmed gaps if necessary, and make the documentation and metrics consistent with the assignment.
+
+## 1. Evidence and traceability
+
+Inspect:
+
+- The original appointment mutation/notification code.
+- Part 1 pattern inventory and count records.
+- Part 2 pattern count, evaluation and evolution records.
+- `Part2/code/lib/events/` or the verified equivalent.
+- The existing `Part3/observer/` implementation, tests, README files, and dataset entries.
+
+Verify actual file paths and line numbers. Distinguish between the original procedural notification coupling and the formal Observer implementation introduced during evolution.
+
+## 2. Required pattern behavior
+
+Check that the implementation demonstrates a subject/event bus with independently subscribed observers.
+
+The healthcare reminder use case should support appointment-scheduled events and, where required by the verified contract, appointment-cancellation events. Check the existing reminder scheduler, reminder cancellation, and audit observers against the actual Part 2 design.
+
+Verify that observers can react without embedding all notification logic in the appointment operation itself.
+
+Ensure the reminder example uses consistent scheduling rules, including the documented 24-hour and 2-hour reminders where these are already part of the implementation contract.
+
+## 3. Tests
+
+Verify:
+
+- Event delivery to the correct subscribers.
+- No notification to unsubscribed observers, if unsubscription is supported.
+- Multiple subscribers receive the appropriate event.
+- Reminder scheduling uses the correct appointment time.
+- Cancellation removes or suppresses applicable reminders when required.
+- Duplicate events do not create duplicate reminders if idempotency is part of the contract.
+- Invalid events and observer failures are handled consistently.
+- The same logical scenarios produce equivalent results in all four languages.
+
+Inspect test assertions before running tests. Do not report success based only on printed messages.
+
+## 4. Documentation and metrics
+
+Preserve the existing implementation and update it only where a verified issue requires correction.
+
+Validate the required cross-language CSV schema, source paths, LOC, maximum function cyclomatic complexity, actual runtime/compiler versions, and real test outcomes.
+
+Check existing performance results against the assignment's required protocol. Do not preserve hardcoded timings as measured results.
+
+Do not manufacture additional historical LLM interactions.
+
+## 5. Final verification
+
+Run the existing four-language test suites and report their actual results. Inspect the final diff, check CSV integrity, and confirm that Part 1 and Part 2 remain unchanged.
+
+If everything is already correct, do not change it merely to create activity. Report the verified evidence and any remaining limitations.
+
+Prompt - 10 
+
+# Part 3 — State Pattern: Cross-Language Implementation
+
+Work only on the State pattern for my healthcare Doctor Appointment Management System case study.
+
+## 1. Establish whether the pattern is required
+
+Inspect the assignment rubric and lecture repository structure. Then inspect the original application, Part 1 pattern inventory and count records, and Part 2 pattern evaluation/evolution records.
+
+The earlier analysis classified State as an opportunity rather than a formal Part 2 implementation. Verify that classification before proceeding.
+
+Locate actual appointment lifecycle statuses and transitions in the source code. Do not invent baseline evidence or claim that a formal State pattern already exists if it does not.
+
+## 2. Define the representative problem
+
+Implement an appointment lifecycle component in which behavior depends on the current state.
+
+Use the actual application lifecycle statuses where identifiable. Define supported transitions explicitly, such as scheduling, confirmation, cancellation, or completion, only where these are consistent with the verified domain requirements.
+
+Demonstrate real State pattern roles:
+
+- State interface or equivalent abstraction.
+- Concrete state objects.
+- Context containing the current state.
+- State-specific behavior and valid transition rules.
+
+Do not simply create an enum and a large switch statement and call it the State pattern. If the chosen language requires a different idiom, document how it preserves the pattern's behavior.
+
+Keep the new Part 3 example separate from the historical source. Do not modify Part 1 or Part 2.
+
+## 3. Four-language implementation
+
+Implement equivalent behavior in:
+
+- Java
+- Python
+- JavaScript
+- C++
+
+Use the required hierarchy under `Part3/state/`, with source files, tests, and a README for each language.
+
+Use a deterministic in-memory appointment model instead of calling live services.
+
+## 4. Tests
+
+Create the same logical test cases across languages, including:
+
+- Valid lifecycle transition.
+- Invalid transition from a given state.
+- Repeated cancellation or completion, according to the contract.
+- State-specific behavior.
+- Invalid input or an unknown state.
+- Consistent results for equivalent sequences of operations.
+
+Test both allowed and disallowed transitions. Document all assumptions.
+
+## 5. Evidence, metrics, and verification
+
+Record the baseline finding as an opportunity if that is what the actual source supports. Clearly label the Part 3 implementation as a new representative State pattern example rather than a historical Part 2 implementation.
+
+Update the canonical cross-language dataset with actual paths, LOC, maximum function complexity, runtime/compiler version, commands, and real results. Measure timing only when required.
+
+Run all four test suites, inspect the final diff, and confirm no Part 1 or Part 2 files were modified. Report unresolved ambiguities instead of guessing.
+
+Prompt - 11 
+
+# Part 3 — Strategy Pattern: Audit and Finalize Existing Implementation
+
+The Strategy pattern has already been implemented in `Part3/strategy/` for Java, Python, JavaScript, and C++. Preserve the implementation and verify it against the assignment.
+
+## 1. Inspect actual evidence
+
+Inspect the original appointment booking/validation logic, the Part 1 pattern inventory and counts, Part 2 pattern evaluation and evolution records, and the current Strategy implementation.
+
+Verify the original conditional scheduling logic and the Part 2 evolution into `IAvailabilityStrategy`, its concrete strategies, and `DoctorAvailabilityContext`. Use actual paths and line numbers; do not repeat unverified references from previous reports.
+
+## 2. Verify the common behavior
+
+Check that all four implementations provide equivalent behavior for:
+
+- Standard business hours, Monday–Friday, 09:00–17:00.
+- The documented lunch break from 12:00 to 13:00.
+- Shift-based availability, 07:00–15:00.
+- Existing booking conflicts.
+- Emergency availability and the 15-minute recovery buffer.
+- Runtime strategy selection or replacement.
+- Invalid dates, durations, requests, and booking data.
+
+Verify interval-overlap behavior, exact boundaries, partial overlaps, and appointments crossing permitted time windows. Check time-zone handling and date transitions under the documented contract.
+
+Do not assume equivalence merely because each test runner reports success.
+
+## 3. Verify the pattern
+
+Confirm there is a meaningful strategy abstraction, concrete policies, and a context that delegates availability decisions to the selected policy. Ensure the implementation does not reduce to procedural branching disguised by pattern-related class names.
+
+## 4. Tests and dataset
+
+Run all existing test suites without changing tests just to make them pass.
+
+Verify that the cross-language dataset uses the required schema and accurate paths. Correct only demonstrated defects in LOC, maximum function cyclomatic complexity, compiler/runtime versions, test commands, test-result fields, and required performance measurements.
+
+Use the assignment's measurement protocol if performance timing is required. Leave unsupported values unmeasured rather than estimating them.
+
+## 5. Preserve and report
+
+Preserve the current working implementation, avoid duplicating Strategy code elsewhere, and do not modify Part 1 or Part 2.
+
+Provide the exact commands run, results, changes made, and remaining limitations. If no changes are needed, report the successful audit without unnecessary edits.
+
+Prompt - 12 
+
+# Part 3 — Command Pattern: Cross-Language Implementation
+
+Work only on the Command pattern for my healthcare Doctor Appointment Management System case study.
+
+## 1. Inspect the evidence
+
+Inspect the original appointment UI and action logic, previously described as conditional branching for creating, scheduling, and cancelling appointments. Verify the exact relevant files and line numbers in the actual repository.
+
+Read the Part 1 inventory/counts, Part 2 count/evaluation/evolution records, and assignment requirements. Confirm that Command was identified as an opportunity rather than an existing formal implementation, if supported by the source.
+
+Do not claim that the original application already contained Command objects unless verified.
+
+## 2. Define the representative problem
+
+Implement appointment operations as independent commands.
+
+Use a common command abstraction with an `execute()` operation and concrete commands for supported actions such as creating, scheduling, and cancelling an appointment. Use these operations only if they match the verified application workflow.
+
+Include an invoker that executes a command without needing to know all the implementation details.
+
+Use a small service/repository interface and deterministic in-memory implementation. Do not call the live healthcare system or require credentials.
+
+If undo/redo is included, implement its behavior meaningfully and test it; otherwise, do not claim it is supported.
+
+## 3. Four-language implementation
+
+Implement equivalent design and behavior in Java, Python, JavaScript, and C++ under `Part3/command/`, following the assignment-required structure.
+
+Demonstrate the separation of the requester/invoker from the concrete operation. Avoid merely wrapping each branch in a class if the command abstraction does not provide meaningful separation.
+
+## 4. Tests
+
+Use equivalent logical cases in all four languages:
+
+- Execute a valid appointment command.
+- Execute a second command of a different type.
+- Verify state changes through the repository/service.
+- Reject invalid or missing appointment data.
+- Handle a command targeting a nonexistent appointment.
+- Verify that invalid command execution does not accidentally change stored data.
+- Confirm consistent results and errors across languages.
+
+Adapt the exact cases to the verified contract and document any assumptions.
+
+## 5. Documentation and dataset
+
+Describe the original conditional behavior, its classification in Part 1, the Part 2 status, and the new representative Command implementation. Do not invent an evolution source where none exists.
+
+Update the canonical dataset using the exact assignment schema and actual evidence. Record genuine LOC, maximum function complexity, runtime/compiler versions, commands, test results, and any required measured timings.
+
+Do not modify Part 1 or Part 2. Run every test suite, validate CSV paths, inspect the Git diff, and return a final evidence-based report.
+
+Prompt - 13 
+
+# Part 3 — Adapter Pattern: Audit and Finalize Existing Implementation
+
+The Adapter pattern has already been implemented in `Part3/adapter/` across Java, Python, JavaScript, and C++. Preserve the existing implementation and verify it against the source evidence, Part 2 evolution records, and assignment requirements.
+
+## 1. Inspect the original integration
+
+Inspect the original healthcare application configuration and service calls, the Part 1 pattern inventory/counts, Part 2 count/evaluation/evolution records, and the existing video consultation adapter.
+
+Verify which integration problem existed in the original application and which changes were actually introduced in Part 2. Do not characterize a hypothetical vendor integration as an actual original SDK integration unless the code and records establish it.
+
+## 2. Verify the Adapter implementation
+
+Check the following roles:
+
+- Target interface: `IVideoConsultationService`.
+- Adapter: `VideoConsultationAdapter`.
+- Adaptee: `ProprietaryVideoProvider`.
+- Domain request and response models.
+
+Verify that the adapter genuinely translates incompatible interfaces and data, rather than merely renaming functions.
+
+Check:
+
+- ISO-8601 timestamps to Unix epoch seconds and back.
+- Minutes-to-seconds conversion.
+- `doctor` to `LEVEL_HOST`.
+- `patient` to `LEVEL_GUEST`.
+- Rejection of unsupported roles.
+- Invalid or missing identifiers.
+- Malformed vendor responses.
+- Vendor exception normalization.
+- Consistent domain output and error behavior.
+
+Pay special attention to timezone offsets, rounding/precision, and exact boundary cases.
+
+## 3. Equivalent tests
+
+Run the existing tests in all four languages and inspect their assertions. Verify that tests check actual transformed vendor arguments, output values, and standardized errors rather than merely checking that a method returned a result.
+
+Use matching logical test cases and expected outputs across Java, Python, JavaScript, and C++.
+
+## 4. Dataset and measurements
+
+Verify the required cross-language dataset schema and all source paths after directory restructuring.
+
+Correct any demonstrated errors in LOC, maximum function complexity, runtime/compiler versions, test commands, or test outcomes.
+
+If the assignment requires performance measurement, confirm each median is supported by the prescribed warm-up and measured runs. Do not retain hardcoded timing values as real results.
+
+Preserve genuine LLM records and do not invent missing historical information.
+
+## 5. Final verification
+
+Make only necessary, evidence-supported corrections. Do not create a duplicate Adapter implementation and do not modify Part 1 or Part 2.
+
+Run all four test suites, inspect the final Git diff, validate the dataset, and report actual changes and any remaining limitations. If the implementation already satisfies the rubric, preserve it and report the successful verification.
+
+Prompt - 14 
+
+# Final Part 3 CSV Consolidation, Data Validation, and Submission Audit
+
+The individual pattern-analysis and implementation tasks for my Design Patterns case study should now be completed. Your next task is to inspect every CSV file under `Part3/`, analyze the actual implementations and evidence, populate the relevant datasets accurately, and perform a final audit of the entire Part 3 deliverable.
+
+The seven identified pattern types are:
+
+1. Singleton
+2. Factory Method
+3. Observer
+4. Strategy
+5. State
+6. Command
+7. Adapter
+
+The current known cross-language implementations include Strategy, Adapter, and Observer. Other pattern implementations may have been added during the subsequent tasks. Verify the actual repository state rather than assuming that all seven implementations are complete.
+
+## CRITICAL RULES
+
+- Do not fabricate CSV values, execution results, metrics, source evidence, model details, historical prompts, or dates.
+- Inspect the actual assignment PDFs and follow their exact requirements.
+- Do not modify any Part 1 or Part 2 files.
+- Preserve completed source implementations and useful historical artifacts.
+- Modify Part 3 CSV files only where necessary, and make other Part 3 changes only when required to correct a verified problem.
+- Do not delete files merely because they appear redundant. Resolve duplicate datasets based on the rubric and current references first.
+- Do not mark any pattern as fully implemented unless its required code and tests actually exist.
+- Do not claim tests passed unless they have actually been executed and their results verified.
+- Do not retain fabricated or hardcoded performance timings as measured results.
+- Do not invent LLM interactions to make the records look complete.
+- Do not commit, push, reset, clean, or rewrite Git history.
+- Preserve the current working tree and inspect diffs before editing.
+
+# PHASE 1 — Inspect every CSV file in Part 3
+
+Recursively locate every `.csv` file inside `Part3/`, including files in nested folders.
+
+Do not inspect only the CSV names already mentioned in previous reports. Discover the files that actually exist.
+
+For each CSV, record:
+
+- Relative path.
+- Filename.
+- Current column names and column order.
+- Number of data rows.
+- Purpose of the dataset.
+- Patterns and languages represented.
+- Whether the schema matches an assignment requirement.
+- Whether it contains missing, duplicated, inconsistent, fabricated, or outdated values.
+- Whether another CSV appears to duplicate its contents.
+- Which source files and execution records are required to verify its entries.
+
+Inspect all existing CSV content, not just the headers.
+
+Also read the assignment instruction PDFs, report-format requirements, repository hierarchy instructions, `Part3/README.md`, each pattern's README, and the relevant Part 1 and Part 2 records.
+
+Use actual filenames and capitalization. Do not assume that `Pattern_count.csv`, `pattern_counts.csv`, `pattern_crosslanguage.csv`, and `cross_language.csv` are interchangeable.
+
+## PHASE 2 — Reconcile the seven patterns
+
+Inspect the following, using their actual paths:
+
+- Part 1 pattern inventory and pattern-count CSV.
+- Part 2 pattern-count CSV.
+- Part 2 pattern evaluation and evolution CSV files.
+- Original healthcare application source.
+- Part 2 pattern implementations.
+- All current Part 3 pattern folders.
+
+For each of the seven patterns, establish:
+
+1. The exact pattern name.
+2. Its Part 1 count and classification.
+3. Its Part 2 count and evaluation status.
+4. Original source-code evidence and actual line references.
+5. Whether it was originally present, pattern-like, partially implemented, or a refactoring opportunity.
+6. Whether Part 2 formally introduced or evolved the pattern.
+7. Whether a Part 3 implementation exists.
+8. Which of Java, Python, JavaScript, and C++ implementations actually exist.
+9. Which test suites exist and whether they have been executed.
+10. Which CSV rows are required by the assignment.
+
+Distinguish confirmed GoF patterns from pattern-like constructs and refactoring opportunities.
+
+Do not infer that a count of one automatically means one unique, canonical pattern implementation.
+
+If the rubric requires every detected pattern type to be implemented in all four languages, verify that requirement and assess all seven accordingly. If an implementation or test is missing, do not invent a successful CSV row. Record the actual gap and resolve it if this is covered by the previously authorized implementation tasks.
+
+## PHASE 3 — Select the correct authoritative CSV locations
+
+The repository may contain both root-level and nested CSV files, including names such as:
+
+- `Part3/cross_language.csv`
+- `Part3/llm/pattern_crosslanguage.csv`
+- `Part3/llm/llm.csv`
+
+These are examples of filenames to search for, not proof that all three should exist.
+
+Determine which locations and schemas are required by the assignment PDF and repository hierarchy screenshot.
+
+Then:
+
+- Select the canonical location for each required dataset.
+- Update any references to the canonical path where necessary.
+- Preserve valid existing data.
+- Avoid unnecessary duplicate datasets.
+- Do not remove a duplicate without first determining whether the assignment explicitly requires it.
+- If two existing CSVs serve different purposes, retain both and document their distinct purposes.
+- If the rubric genuinely requires separate files, maintain each required file with the correct content.
+
+At the end, state explicitly which CSV files are authoritative and why.
+
+## PHASE 4 — Consolidate the cross-language evaluation dataset
+
+Verify the exact schema against the assignment instructions.
+
+The previously identified expected schema is:
+
+`pattern_name,instance_name,language,snippet_path,source_loc,max_function_cc,runtime_compiler,test_command,test_result,median_process_ms,language_notes`
+
+Use this schema only after confirming it against the actual rubric.
+
+For each required pattern and language, populate the row using evidence from the actual source code and executed tests.
+
+Required field handling:
+
+- `pattern_name`: Exact pattern name.
+- `instance_name`: The actual problem or collaboration represented by the implementation.
+- `language`: Java, Python, JavaScript, or C++.
+- `snippet_path`: Correct path relative to the team-folder root, resolving to the actual production source.
+- `source_loc`: Actual production lines of code using the assignment's counting rules.
+- `max_function_cc`: Maximum function or method cyclomatic complexity, not the sum of complexities.
+- `runtime_compiler`: Verified toolchain name and version.
+- `test_command`: Exact, reproducible execution command from the final directory structure.
+- `test_result`: Actual result, with passed/total count and a permitted `not_run` reason where applicable.
+- `median_process_ms`: Actual median execution time when required and measured, otherwise the assignment's permitted blank or status representation.
+- `language_notes`: Concise, factual observations about language-specific abstractions and implementation trade-offs.
+
+If the rubric requires seven pattern types across all four languages, validate the expected pattern-language coverage against that requirement rather than silently omitting patterns.
+
+Do not create rows for nonexistent or unverified implementations. Resolve missing implementation work if authorized and required; otherwise list it as an outstanding issue.
+
+Check that each row identifies a meaningful design-pattern implementation rather than an unrelated example or a procedural program with a pattern name.
+
+## PHASE 5 — Calculate source metrics correctly
+
+Inspect all existing scripts or procedures that generate CSV metrics.
+
+### Source LOC
+
+Verify that the calculation:
+
+- Includes only production source files.
+- Excludes tests.
+- Excludes blank lines and comments according to the assignment.
+- Handles relevant language-specific comment syntax.
+- Is applied consistently across the four languages.
+- Can be reproduced from the final source tree.
+
+### Maximum cyclomatic complexity
+
+If `lizard` is used, inspect its version and invocation. Confirm that the recorded figure is the maximum per-function or per-method complexity for the relevant implementation.
+
+Do not record aggregate complexity when the schema requires `max_function_cc`.
+
+Document the applicable calculation method and any language/tool limitations.
+
+Recalculate incorrect values from the final source files. Do not simply preserve values from a previous CSV generator.
+
+## PHASE 6 — Verify performance measurements
+
+First confirm whether the assignment requires timing measurements for every implementation.
+
+If required, inspect the benchmark scripts and any retained raw timing results. The previously documented procedure is one warm-up followed by five measured runs, with the median of the five measured results recorded. Confirm the precise protocol from the assignment before applying it.
+
+For each timing value:
+
+1. Verify that an actual benchmark was executed.
+2. Confirm that the workload is representative and equivalent for implementations of the same pattern.
+3. Confirm that the warm-up is excluded from the five measured observations.
+4. Recalculate the median from the actual observations.
+5. Confirm the units are milliseconds.
+6. Separate compilation time from processing time as required.
+7. Record relevant environment differences, including Windows versus WSL.
+8. Do not claim identical execution conditions if the environments are materially different.
+
+If raw results do not exist, do not reconstruct them from the existing median. Rerun the benchmark only where safe, permitted, and consistent with the assignment.
+
+If timing is not required, do not introduce unnecessary benchmarks. Use the permitted representation for unmeasured data.
+
+Never use hardcoded sample values as measured results.
+
+## PHASE 7 — Populate and validate the LLM interaction dataset
+
+Inspect the existing LLM CSV files and the actual prompt and output artifacts.
+
+The previously identified expected schema is:
+
+`part,model_and_date,prompt_file,input_file,output_file,evaluation,verification_file`
+
+Confirm the required columns and ordering from the assignment.
+
+For each genuine record:
+
+- Use the correct Part 3 designation.
+- Record the actual model identity and date only when supported by evidence.
+- Reference the actual master prompt.
+- Reference a real input/context artifact.
+- Reference actual generated output files or source artifacts.
+- Base the evaluation on the genuine code and test evidence.
+- Link to an existing verification file that demonstrates the claimed result.
+
+Ensure that `Part3/llm/part3_prompt.txt` accurately documents the prompt used for the relevant implementation work. If several prompts were used for separate patterns, preserve them where required by the assignment and reference them correctly.
+
+Do not describe an earlier retrospective prompt as the exact historical prompt used unless there is evidence that it was actually used.
+
+Do not invent missing model names, dates, input files, output files, verification files, or interaction history. If a field cannot be verified, follow the assignment's missing-data rules and report the limitation.
+
+## PHASE 8 — Audit every other CSV found in Part 3
+
+For every additional CSV discovered, determine its intended purpose and schema from the assignment, README files, or existing references.
+
+Do not assume that every CSV should contain cross-language metrics.
+
+For each required dataset:
+
+- Preserve the expected structure.
+- Insert relevant data only when supported by actual source evidence.
+- Reconcile pattern names and counts with the verified seven-pattern inventory.
+- Check whether all required rows and fields exist.
+- Remove duplicate records only when they are demonstrably unintended and removing them is safe.
+- Preserve historically meaningful records.
+- Fix broken paths, invalid references, incorrect counts, and inconsistent naming.
+- Do not add unrequested datasets simply to make the directory look complete.
+
+If no authoritative schema can be established, report that ambiguity rather than inventing one.
+
+## PHASE 9 — Validate all CSV files programmatically
+
+After updating the required datasets, validate every CSV recursively under `Part3/`.
+
+At minimum, check:
+
+- CSV syntax and quoting.
+- Empty or duplicate column names.
+- Required headers and ordering.
+- Missing required values.
+- Unexpected duplicate rows.
+- Inconsistent pattern and language names.
+- Invalid numeric values in metric columns.
+- Broken source, prompt, input, output, or verification paths.
+- Duplicate pattern-language combinations where not permitted.
+- Missing combinations required by the assignment.
+- Conflicting test results across different CSVs.
+- Timing values without supporting benchmark evidence.
+- LLM records without supporting files.
+- Disagreement between the counts and the actual implementations.
+
+Do not modify source code solely to make a CSV validator pass. Trace the underlying issue and correct the relevant artifact.
+
+Save the validation results in the final audit report. Do not create an extra CSV merely to store the audit results unless the assignment requires it.
+
+## PHASE 10 — Final execution and source verification
+
+Run the test suites that are required for the final Part 3 deliverable.
+
+For every available pattern-language combination, verify:
+
+- Implementation files exist.
+- Tests assert meaningful behavior.
+- The commands work from the documented directory.
+- The actual runtime/compiler version is known.
+- The test results match the CSV.
+- The output and errors match the documented contract.
+
+Run the following where required:
+
+- Strategy tests in Java, Python, JavaScript, and C++.
+- Adapter tests in Java, Python, JavaScript, and C++.
+- Observer tests in Java, Python, JavaScript, and C++.
+- Equivalent tests for Singleton, Factory Method, State, and Command if those implementations are required and present.
+
+If any additional pattern is unavailable, do not represent it as tested. Report the missing work.
+
+Inspect the code as well as the test output. A test runner that merely prints a passing message is not sufficient evidence.
+
+Do not modify tests to force successful results.
+
+## PHASE 11 — Final repository integrity check
+
+Inspect:
+
+- Current Git branch.
+- `git status --short`.
+- `git diff`.
+- `git diff --cached`.
+- Tracked and untracked files.
+- All files modified under Part 3.
+- Any differences under Part 1 and Part 2.
+- Generated binaries, caches, temporary scripts, and secrets.
+
+Do not delete useful generation scripts if they are required to reproduce valid datasets or measurements. If a script is no longer needed, report its status and preserve it unless removal has been explicitly justified.
+
+Do not commit or push.
+
+## PHASE 12 — Final audit report
+
+Produce the final report with the following sections.
+
+### A. Executive verdict
+
+Choose one:
+
+- READY FOR SUBMISSION
+- READY AFTER MINOR FIXES
+- NOT READY FOR SUBMISSION
+- INCONCLUSIVE — INSUFFICIENT EVIDENCE
+
+Justify the verdict with verified evidence.
+
+### B. CSV inventory
+
+List every CSV file found under Part 3, its purpose, required schema, row count, and validation result.
+
+### C. Seven-pattern reconciliation
+
+Provide a table containing:
+
+`pattern_name,part1_status,part1_count,part2_status,part2_count,source_evidence,part3_implementation_status,languages_verified,required_csv_rows,final_status`
+
+Use the actual evidence and mark unsupported data as unavailable.
+
+### D. Cross-language dataset
+
+Show the canonical path, verified schema, required row coverage, missing rows, duplicates, and validation results.
+
+### E. LLM records
+
+Show the canonical path, schema validation, record completeness, supporting artifact status, and any missing historical metadata.
+
+### F. Metrics audit
+
+Summarize LOC, maximum cyclomatic complexity, compiler/runtime versions, actual test results, and timing verification.
+
+Clearly separate independently measured values from values that could not be verified.
+
+### G. Test results
+
+Provide a table with:
+
+`pattern,language,command,runtime_or_compiler,passed,total,exit_status,audit_status`
+
+Include only actual execution results.
+
+### H. Integrity check
+
+Report Part 3 changes, any untracked files, and whether the available Git evidence supports the claim that Part 1 and Part 2 were preserved.
+
+### I. Remaining issues
+
+Rank any unresolved findings by severity. Include file paths, evidence, required corrective action, and whether the issue blocks submission.
+
+### J. Final submission checklist
+
+Identify the remaining tasks, if any, and whether every required CSV contains valid, evidence-backed data.
+
+# FINAL EXECUTION INSTRUCTION
+
+Complete the CSV consolidation, fix confirmed data/schema errors, run the required validation and tests, and finish the final audit.
+
+Do not stop after producing a proposed plan if the requirements are clear and the corrections are within the authorized Part 3 scope.
+
+However, do not guess when source evidence is missing. Do not fabricate values to make the datasets appear complete. If a required pattern implementation, raw benchmark, LLM record, or rubric detail is unavailable, clearly report the gap.
+
+The final goal is a Part 3 submission whose CSV files accurately represent the actual implementations, test outcomes, and measurements and whose directory structure and artifacts comply with the documented assignment.
+
+Prompt - 16 
+
+# Final Submission Gate — Resolve Inconsistencies in Part 3 Audit
+
+The latest audit report declares Part 3 ready for submission. Before accepting that verdict, perform a final, evidence-based verification of the issues below.
+
+All seven patterns must be accounted for:
+Singleton, Factory Method, Observer, Strategy, State, Command, and Adapter.
+
+The intended coverage is four languages per pattern, with 28 pattern-language dataset rows, provided that the actual assignment confirms this requirement.
+
+## 1. Verify the canonical CSV location
+
+Inspect the assignment PDFs, lecturer's repository hierarchy screenshot, README references, and all CSV files currently under `Part3/`.
+
+The latest report identifies these three datasets:
+
+- `Part3/llm/pattern_crosslanguage.csv`
+- `Part3/cross_language.csv`
+- `Part3/llm/cross_language.csv`
+
+Determine whether all three are actually required.
+
+If the assignment designates `Part3/llm/pattern_crosslanguage.csv` as the canonical dataset and the other two are unnecessary duplicates:
+
+- Preserve the canonical file and its verified contents.
+- Update documentation to reference the canonical file.
+- Remove duplicate copies only after verifying that they contain no unique required information and are not required by the rubric.
+- Do not remove any required dataset or valuable historical information.
+
+If multiple files are explicitly required, document the purpose of each and verify that their contents are synchronized.
+
+## 2. Reconcile Strategy and Adapter with the original Part 1 evidence
+
+Earlier analysis classified Strategy and Adapter as refactoring opportunities, while the latest report labels them as patterns found in Part 1.
+
+Open the actual Part 1 inventory, pattern-count CSV, Part 2 pattern-count CSV, pattern-evaluation CSV, and evolution records.
+
+Resolve this discrepancy using the original records.
+
+For each of the seven patterns, verify:
+
+- Original classification and count.
+- Part 2 classification and count.
+- Verified source file and line range.
+- Whether the pattern already existed, was pattern-like, was a refactoring opportunity, or was formally introduced during evolution.
+- Whether the current Part 3 implementation is a representative example or a direct implementation of the evolved design.
+
+Correct any inaccurate descriptions in Part 3 documentation or datasets. Do not modify Part 1 or Part 2.
+
+## 3. Verify reproducible test commands
+
+Inspect all 28 rows in the cross-language dataset.
+
+The reported Java commands primarily invoke precompiled classes, and the C++ commands execute precompiled binaries. Determine whether those commands are sufficient to reproduce the tests from a clean checkout.
+
+For each implementation:
+
+- Provide the exact build/compile command where compilation is required.
+- Provide the exact test execution command.
+- Document required working directories and environment variables.
+- Ensure that the necessary source files and dependencies are present.
+- Verify commands without relying on untracked, pre-existing binaries.
+
+Where the assignment requires one `test_command` field, use a reproducible compound command where appropriate or clearly document both build and execution commands in the README.
+
+Re-run tests from the documented source files. Do not modify tests merely to make them pass.
+
+## 4. Replace ambiguous compiler/runtime version ranges
+
+The report lists values such as `Java 17/21` and `Node.js 20/22`.
+
+Inspect the actual execution environment and obtain specific version output for each language:
+
+- Java compiler and runtime.
+- Python interpreter.
+- Node.js runtime.
+- C++ compiler, including the WSL environment if used.
+
+Populate each dataset row with the actual toolchain version used for that implementation. Do not mix versions from different machines or sessions without documenting the distinction.
+
+## 5. Verify performance values from actual evidence
+
+Inspect every `median_process_ms` value for all 28 rows.
+
+Locate the benchmark implementation, execution procedure, and raw timing observations.
+
+Confirm the exact timing protocol required by the assignment, including the warm-up run, the five measured runs, median calculation, units, and separation of compilation time where applicable.
+
+If raw measurements remain available:
+
+- Recalculate the median.
+- Compare it with the CSV value.
+- Correct demonstrably incorrect entries.
+
+If raw measurements are unavailable:
+
+- Do not fabricate or reconstruct them from the existing medians.
+- Re-run benchmarks only when safe, required, and permitted by the assignment.
+- Otherwise mark the affected measurements unverified and use the permitted missing-data representation.
+
+Document material environment differences between native Windows and WSL. Do not describe timings as directly comparable if the environments differ materially.
+
+## 6. Verify the LLM records
+
+Inspect `Part3/llm/llm.csv`, `Part3/llm/part3_prompt.txt`, and every referenced input, output, and verification artifact.
+
+Confirm that:
+
+- Model identity and date reflect actual, verifiable interactions.
+- The prompt file accurately represents the recorded interaction.
+- All referenced paths exist.
+- The output file corresponds to the stated interaction.
+- The evaluation is supported by the actual code and test evidence.
+
+The current report references `Part3/strategy/java/tests/StrategyTest.java` as its verification file while claiming that all seven patterns passed.
+
+Determine whether that file actually supports the recorded evaluation. If the assignment expects a specific artifact for each interaction, correct the records using genuine existing evidence. Do not invent past interactions or model metadata.
+
+## 7. Verify Git and repository integrity
+
+Inspect the actual repository state, including:
+
+- `git status --short --untracked-files=all`
+- `git diff` and `git diff --cached`
+- Files tracked under `Part3/`
+- Relevant ignore rules affecting required files
+- Differences in Part 1 and Part 2 relative to a verified baseline commit, if available
+
+A clean working tree alone is not proof that Part 1 and Part 2 have never changed. If the original baseline cannot be established, disclose that limitation.
+
+Ensure all required submission files are included and not accidentally excluded by `.gitignore`.
+
+Do not commit, push, reset, clean, or rewrite Git history.
+
+## 8. Final decision
+
+Return a final report with:
+
+1. Verified CSV inventory and the canonical dataset location.
+2. The corrected seven-pattern traceability matrix.
+3. Exact build and test commands for all 28 pattern-language combinations.
+4. Actual runtime/compiler versions.
+5. Verified or unverified LOC, complexity, and timing values.
+6. LLM record integrity findings.
+7. Git and file-tracking verification.
+8. Any corrections made and all remaining limitations.
+
+Choose one final verdict:
+
+- READY FOR SUBMISSION
+- READY AFTER MINOR FIXES
+- NOT READY FOR SUBMISSION
+- INCONCLUSIVE — INSUFFICIENT EVIDENCE
+
+Do not automatically declare the submission ready just because all test runners report passing results. Verify source evidence, reproducibility, schemas, and metric integrity.
+
+You are authorized to make necessary, evidence-supported corrections inside Part 3 only. Preserve all Part 1 and Part 2 files and the seven pattern implementations. Do not fabricate results or delete valuable work.
+
+
+Prompt - 17 
+
+# Final Evidence Verification — Part 3 Submission
+
+The latest audit reports that all seven patterns are implemented across Java, Python, JavaScript, and C++, with 28 passing pattern-language test suites. Before final submission, verify three remaining areas and correct any confirmed issues.
+
+## 1. Verify the performance measurements
+
+Inspect the exact assignment requirements, benchmark scripts, raw timing observations, and all 28 rows in the canonical dataset:
+
+`Part3/llm/pattern_crosslanguage.csv`
+
+The report states that timing uses one warm-up run followed by five measured runs, with the median recorded in milliseconds. It also acknowledges that C++ timing includes WSL process-launch overhead.
+
+Verify whether the assignment requires complete process wall-clock time or the processing time of the design-pattern implementation.
+
+- Recalculate every median from the actual raw observations.
+- Check that the warm-up is excluded and that exactly five measured observations are used.
+- Confirm that the recorded unit is milliseconds.
+- Ensure compilation time is separated where required.
+- Check whether each measured run includes process startup, workload execution, and shutdown.
+- Determine whether the C++ measurements include additional WSL startup overhead that other languages do not incur.
+
+If the goal is to compare pattern-processing performance, adjust the benchmark so that repeated operations run inside an already-started process, using equivalent workloads and the method required by the rubric. For C++, avoid repeatedly launching WSL from Windows if this adds a different overhead to every observation. Measure compilation separately.
+
+Do not alter valid measurements merely to make the results look more comparable. If the assignment explicitly defines process-launch wall-clock time as the metric, preserve that definition and document the environment differences.
+
+If raw timing observations are unavailable, report the measurements as unverified rather than reconstructing them from their medians.
+
+Update only the affected dataset fields and documentation, and rerun the validation.
+
+## 2. Correct the LLM verification references
+
+Inspect `Part3/llm/llm.csv`, `Part3/llm/part3_prompt.txt`, all referenced files, and the actual test runners.
+
+The latest report lists `Part3/llm/pattern_crosslanguage.csv` as both the output artifact and the verification file.
+
+Verify whether this satisfies the assignment's meaning of `output_file` and `verification_file`. A CSV containing reported results should not be treated as proof of successful execution unless it genuinely serves that role under the rubric.
+
+Where necessary:
+
+- Point `output_file` to the genuine generated artifact or artifacts.
+- Point `verification_file` to existing automated tests or a genuine consolidated test execution report supporting the recorded evaluation.
+- Ensure the verification evidence covers all seven patterns and all four languages if the evaluation claims that all 28 suites passed.
+- Check that the model identity, date, input, output, and prompt references reflect real interactions.
+- Inspect whether the number of LLM records adequately represents the genuine interactions required by the assignment.
+
+If several genuine pattern prompts were used, record them according to the assignment's required granularity. Do not invent previous prompts, historical model identities, dates, or interactions to fill missing records.
+
+Verify that every referenced path exists and that the corrected CSV retains the exact required schema.
+
+## 3. Resolve duplicate dataset files
+
+Inspect the assignment PDF and the repository hierarchy screenshot.
+
+The current report lists:
+
+- `Part3/llm/pattern_crosslanguage.csv`
+- `Part3/cross_language.csv`
+- `Part3/llm/cross_language.csv`
+
+Determine whether the rubric actually requires all three.
+
+If only `Part3/llm/pattern_crosslanguage.csv` is required, retain it as the authoritative dataset. Update README references and remove redundant copies only after confirming that they contain no unique required information, are not referenced by required tools, and are not explicitly required by the assignment.
+
+If multiple copies are required, preserve them and verify that the documented regeneration procedure keeps them synchronized.
+
+Do not delete valuable historical information or remove files merely for aesthetic reasons.
+
+## 4. Final integrity check
+
+After the necessary corrections:
+
+- Revalidate every CSV under `Part3/`.
+- Check that all 28 required pattern-language combinations remain represented.
+- Rerun any tests affected by changes.
+- Confirm that dataset test results still match actual executions.
+- Inspect Git status and diffs, including untracked files.
+- Confirm that Part 1 and Part 2 have not been changed.
+- Do not commit or push.
+
+## 5. Final report
+
+Report:
+
+1. Whether the timing protocol was verified and whether any measurements changed.
+2. Whether each LLM record has valid supporting evidence.
+3. Which CSV files are required and which are authoritative.
+4. Actual tests rerun and their results.
+5. All files changed and any remaining limitations.
+
+Choose a final verdict based on evidence, not the previous report:
+
+- READY FOR SUBMISSION
+- READY AFTER MINOR FIXES
+- NOT READY FOR SUBMISSION
+- INCONCLUSIVE — INSUFFICIENT EVIDENCE
+
+Do not fabricate measurements or verification records. Preserve the seven pattern implementations and do not modify Part 1 or Part 2.
+
+
+Prompt - 18 
+
+# MASTER PROMPT — CREATE THE COMPLETE B2 DESIGN PATTERNS CASE STUDY SLIDE DECK
+
+## ROLE
+
+Act as a senior presentation designer, software architect, design-pattern specialist, technical researcher, and academic presentation expert.
+
+You have access to the complete B2 repository. Your task is to inspect the available project files and create a polished, technically accurate, presentation-ready slide deck for our Design Patterns Case Study.
+
+Do not merely give me an outline, recommendations, or slide text. **Create the actual editable PowerPoint presentation and export the finished PDF.**
+
+## 1. PROJECT CONTEXT
+
+Course: Design Patterns  
+Case Study: AI-Assisted Design Patterns in Modern Web Frameworks, Agile and Iterative Development, and Cross-Language Pattern Analysis
+
+Team: B2
+
+Original application:
+https://github.com/arnobt78/HealthCare-Doctor-Appointment-Management-System--NextJS-FullStack
+
+Original baseline commit:
+`f846cd4c476d48a04fcaeb530b48a77c5295bb92`
+
+Team repository:
+https://github.com/Kartheek-3/B2
+
+Final assignment repository:
+https://github.com/aswathymohan-amrita/23CSE455_DP_CaseStudy
+
+Main technology stack of the original application:
+- Next.js
+- React
+- TypeScript
+- Appwrite
+- Zod
+- Tailwind CSS
+
+The case study has three parts:
+
+**Part 1:** AI-assisted identification and validation of design patterns in the original application.
+
+**Part 2:** Application evolution through three meaningful changes using suitable design patterns.
+
+**Part 3:** Cross-language implementations and comparison using Java, Python, JavaScript, and C++.
+
+## 2. FIRST, INSPECT THE ENTIRE REPOSITORY
+
+Before designing slides, inspect the actual repository and its available files.
+
+Read the assignment PDFs, report template, README, Part 1 evidence, Part 2 source changes, Part 3 implementations, CSV files, test results, architecture diagrams, LLM prompts, LLM logs, and existing reports.
+
+Use these materials to establish:
+- What the original application does.
+- Which design patterns were identified and how each was classified.
+- Which changes were actually implemented in Part 2.
+- Which patterns are actually demonstrated by those changes.
+- Which implementations exist in all four languages in Part 3.
+- Which tests were executed and their actual results.
+- Which metrics were measured and the procedures used.
+- The team's actual contributions.
+- The limitations and incomplete deliverables, if any.
+
+Do not assume a task is complete merely because a previous conversation, README, or report claims it is. Verify against available source code, test evidence, CSVs, and execution logs.
+
+If repository contents conflict with the report, prioritize verifiable implementation evidence and explain the discrepancy appropriately.
+
+Do not stop after inspecting the root README. Explore the relevant subdirectories and supporting artifacts.
+
+## 3. ACADEMIC ACCURACY REQUIREMENTS
+
+Accuracy is more important than making the project appear impressive.
+
+### Part 1 classification
+
+The previous baseline audit identified the following inventory:
+
+1. Singleton-like — pattern-like structure.
+2. Factory-like schema selection — pattern-like structure.
+3. Observer — refactoring opportunity in the original baseline.
+4. Strategy — refactoring opportunity in the original baseline.
+5. State — refactoring opportunity in the original baseline.
+6. Command — refactoring opportunity in the original baseline.
+7. Adapter — refactoring opportunity in the original baseline.
+
+The previous audit concluded that none of these seven claims established a fully implemented classical GoF pattern in the original baseline, two were pattern-like structures, and five were refactoring opportunities.
+
+Recheck this against the repository before presenting it as the final result.
+
+Never display all seven candidates as seven confirmed implementations.
+
+Clearly distinguish:
+- Existing, verified implementations.
+- Partial or pattern-like structures.
+- Patterns introduced and verified during Part 2.
+- Refactoring opportunities.
+- Unverified claims.
+
+### Part 2 changes
+
+The previously proposed changes were:
+
+- CH01: Video consultation integration using an Adapter pattern.
+- CH02: Flexible doctor availability using a Strategy pattern.
+- CH03: Automated appointment reminders using Observer-style events or domain events with scheduled processing.
+
+These are proposed change descriptions, not automatic proof of completion.
+
+Inspect the actual code and tests. Show each change as implemented only if the evidence supports that claim. Use its real implementation details, component names, and verified test results.
+
+### Part 3 cross-language evaluation
+
+Inspect the real code in Java, Python, JavaScript, and C++.
+
+Report the patterns, equivalent problems, test cases, and benchmark values actually contained in the evidence.
+
+If timing measurements are required, follow the assignment's stated procedure: one warmup followed by five measured runs on the same machine, using comparable workloads, and report the median where required.
+
+Never invent benchmark values, test pass rates, percentage improvements, class counts, LOC, complexity measurements, or performance claims.
+
+If a metric is missing, either omit it or clearly label the missing evidence. Do not substitute estimated results.
+
+## 4. PRESENTATION DELIVERABLES
+
+Create these files using the correct team directory:
+
+1. `B2_slide.pptx` — the complete, editable PowerPoint presentation.
+2. `B2_slide.pdf` — the final presentation exported to PDF.
+
+Save them in the location required by the assignment's repository hierarchy. Inspect the provided instructions to determine the correct directory before saving.
+
+If there is an existing slide deck, preserve it or create a separate version rather than silently overwriting it.
+
+Do not modify the original application, Part 1 findings, Part 2 implementation, Part 3 implementation, or existing assignment evidence merely to make the presentation easier to construct.
+
+## 5. SLIDE STRUCTURE
+
+Create approximately 10–12 well-designed slides. Prioritize clarity, visual storytelling, credible technical evidence, and an appropriate academic presentation flow. Adjust the count only when the actual verified content justifies it.
+
+### Slide 1 — Title
+
+Include:
+- Design Patterns Case Study.
+- Healthcare Doctor Appointment Management System.
+- Course information from the provided assignment materials.
+- Team B2.
+- All team members' names, roll numbers, and other required details only when verified from repository records.
+
+Use a premium, restrained software-engineering visual style with a healthcare and technology theme.
+
+### Slide 2 — Problem Statement and Objectives
+
+Explain:
+- The problem the healthcare appointment application addresses.
+- Its main users and verified functionality.
+- Why software design patterns are relevant.
+- The three objectives of discovery, application evolution, and cross-language evaluation.
+
+Use a simple visual problem-to-solution narrative rather than a wall of text.
+
+### Slide 3 — Original Application and Technology Stack
+
+Present the actual technology stack and essential capabilities.
+
+Show the original architecture using the real repository structure, including appropriate elements such as:
+- Next.js App Router and UI components.
+- Patient registration and appointment forms.
+- Validation and server actions.
+- Appwrite services.
+- Appointment management and SMS notification flow.
+
+Use the project's existing verified architecture diagram where suitable. Reuse genuine diagrams when they are accurate and legible.
+
+Do not invent microservices, external providers, doctor availability engines, or functionality that the application does not contain.
+
+### Slide 4 — Part 1: AI-Assisted Pattern Discovery
+
+Explain the investigation approach:
+- Source-code inspection.
+- LLM-assisted pattern discovery.
+- Independent source evidence review.
+- False-positive rejection.
+- Final classification.
+
+Present the actual final classification counts, using a clean bar chart, compact table, or visual summary.
+
+Keep pattern-like structures, implemented GoF patterns, and future refactoring opportunities separate.
+
+Include a few source-backed examples, such as the module-level Appwrite client and schema-selection function, if they remain supported by the final audit.
+
+### Slide 5 — Part 1: Evidence and Lessons Learned
+
+Show a concise comparison of:
+- Pattern candidate.
+- Source-code evidence.
+- Verified classification.
+- Reasoning.
+
+Explain how an ordinary conditional, function, SDK call, or status value can resemble a pattern without meeting the pattern's structural requirements.
+
+Describe the role of LLMs accurately: they assist discovery, but source-code verification is needed to avoid false positives.
+
+Avoid copying large amounts of code or long LLM outputs onto the slide.
+
+### Slide 6 — Part 2: Evolution Overview
+
+Present a clear summary of the three change scenarios.
+
+For each change, include:
+- The original limitation.
+- The implemented solution.
+- The selected pattern.
+- The relevant modules.
+- The intended architectural benefit.
+
+Use the actual completed changes, not the proposed descriptions if the implementation differs.
+
+### Slide 7 — Part 2: Architecture Before and After
+
+Illustrate how the implementation evolved.
+
+Prioritize simple before-and-after architecture diagrams over screenshots of large code blocks.
+
+For each verified change, demonstrate the relevant collaboration:
+- Adapter: the interface between application logic and the external provider.
+- Strategy: interchangeable availability policies selected through a common contract.
+- Observer/domain events: event producers and actual registered handlers or subscribers.
+
+Only use these pattern names when the actual implementation meets the corresponding design criteria. Do not label a normal function call as Observer or a conditional as Strategy without supporting structure.
+
+Where useful, provide a small amount of real code evidence and mention the important implementation files.
+
+### Slide 8 — Part 2: Testing and Evaluation
+
+Show actual verification results for the three changes.
+
+Include relevant evidence such as:
+- Unit and integration tests.
+- Appointment creation, scheduling, and cancellation regression tests.
+- Availability boundaries and conflicting appointments.
+- Video provider failures or authorization behavior.
+- Reminder timing, duplicate prevention, cancellation, and delivery failure handling.
+
+Only include the tests that exist and were actually run.
+
+If a change uses a local mock provider rather than a real external integration, disclose that distinction.
+
+Use a compact table or results visualization. A green checkmark is acceptable only for a verified pass.
+
+### Slide 9 — Part 3: Cross-Language Implementations
+
+Introduce the patterns and comparable problems used in Part 3.
+
+Show the actual implementations in:
+- Java.
+- Python.
+- JavaScript.
+- C++.
+
+Use a four-column comparison layout, small syntax excerpts, or a diagram to emphasize how the same design principle is represented differently across the languages.
+
+Ensure all examples come from the actual implementations. Do not show invented classes or present unrelated examples as project results.
+
+### Slide 10 — Part 3: Results and Metrics
+
+Compare the actual results for the selected implementations.
+
+Use assignment-required metrics supported by the data, such as:
+- Correctness tests.
+- Execution time.
+- Code size or complexity.
+- Other verified evaluation criteria.
+
+Use clear units, labels, and a consistent measurement procedure. Prefer meaningful charts over decorative ones.
+
+Do not create simulated benchmark charts or estimate missing values.
+
+If a comparison is incomplete, clearly state what could and could not be verified.
+
+### Slide 11 — Discussion, Limitations, and Conclusion
+
+Explain:
+- The major verified outcomes from Parts 1, 2, and 3.
+- How the application changed architecturally.
+- Lessons learned about applying design patterns.
+- Benefits and trade-offs of the chosen approaches.
+- The role and limitations of AI-assisted software analysis.
+- Remaining limitations or future improvements.
+
+Conclusions must follow from the available evidence.
+
+### Slide 12 — Contributions, References, and Q&A
+
+Include:
+- Actual contributions from all five team members, based on verified contribution records.
+- Original repository URL and baseline commit.
+- Other essential references from the provided assignment materials.
+- A concise closing and Q&A.
+
+Do not invent individual contributions. If contribution records are unavailable, request or flag the missing information rather than assigning work arbitrarily.
+
+If citations are necessary on earlier slides, place concise source labels or references directly on those slides.
+
+## 6. VISUAL DESIGN SYSTEM
+
+Create a professional academic presentation with the quality of a carefully designed technical conference deck.
+
+### Design direction
+
+- Format: widescreen 16:9.
+- Style: clean, premium, minimal, technical, credible.
+- Theme: healthcare technology combined with software architecture.
+- Palette: dark navy, white or off-white, restrained teal, and a limited accent color.
+- Typography: a consistent sans-serif family with strong, readable hierarchy.
+- Layouts: use variation across title slides, architecture diagrams, comparison tables, metrics, and conclusions.
+- Spacing: generous margins, consistent alignment, balanced whitespace.
+- Diagrams: clean connector lines, readable labels, consistent node styles, and meaningful grouping.
+- Code: syntax-highlighted, legible snippets kept short enough to read when projected.
+- Charts: accurate labels, units, legends, and values.
+- Footer: add a subtle team/course identifier and slide number where appropriate.
+
+Avoid:
+- Generic AI-generated filler slides.
+- Excessive gradients, glowing effects, decorative icons, and random stock images.
+- Dense paragraphs.
+- Tiny fonts.
+- Unreadable source-code screenshots.
+- Inconsistent colors and alignment.
+- Repeating the same layout on every slide.
+- Decorative 3D illustrations that compete with the technical content.
+- Fake dashboard screenshots or fabricated metrics.
+
+The presentation must be readable on a classroom projector.
+
+Use genuine project diagrams and evidence when available. If a technical diagram must be recreated, base it on verified source structure and use editable PowerPoint shapes whenever feasible.
+
+## 7. SPEAKER NOTES
+
+Where supported by the chosen presentation tool, add concise speaker notes for each slide.
+
+Notes should help a student explain:
+- The main message.
+- The relevant code or architecture.
+- Why the selected pattern qualifies.
+- What the test evidence demonstrates.
+- The limitations that might be questioned during evaluation.
+
+Keep notes technically accurate and consistent with the slide content. Do not use notes to introduce claims absent from the slides' evidence.
+
+## 8. TECHNICAL REQUIREMENTS
+
+Choose a reliable method available in the environment, such as PptxGenJS, python-pptx, or another suitable PowerPoint-generation workflow.
+
+The final PowerPoint must remain editable.
+
+Create reusable helpers for common elements such as title styles, footers, cards, evidence labels, and diagram formatting when appropriate.
+
+If code is used to generate the deck:
+- Keep generation scripts separate from the submitted presentation files.
+- Avoid hard-coded slide content that contradicts repository evidence.
+- Use existing diagrams and data when available.
+- Maintain consistent slide dimensions and alignment.
+- Ensure the output is deterministic enough to regenerate.
+
+Do not include secrets, API keys, patient data, credentials, `.env` files, dependency caches, or other sensitive information.
+
+## 9. MANDATORY FINAL QUALITY CHECK
+
+Do not stop when the PPTX file is created.
+
+1. Export the PowerPoint to PDF.
+2. Render the PDF slides to images or use an equivalent visual inspection method.
+3. Inspect every slide for clipped content, text overflow, overlapping shapes, broken diagrams, missing fonts, unreadable charts, and poor spacing.
+4. Fix all detected layout problems.
+5. Verify slide order, headings, spelling, terminology, captions, citations, links, and slide numbering.
+6. Compare every reported pattern, test result, and metric against the repository evidence.
+7. Confirm the PDF opens successfully and its page count matches the PowerPoint slide count.
+8. Confirm the PowerPoint remains editable.
+9. Verify that both final files exist in the correct B2 directory.
+10. Do not claim a rendering, export, or test succeeded unless it actually succeeded.
+
+## 10. FINAL RESPONSE
+
+After completing the work, provide a concise completion report listing:
+
+- The exact path of `B2_slide.pptx`.
+- The exact path of `B2_slide.pdf`.
+- The number of slides created.
+- The main files and repository evidence used.
+- Whether the PDF was exported and visually inspected.
+- Any remaining missing evidence or limitations that could not be resolved.
+
+The deliverable is not an outline or a slide-generation script alone. The required final outputs are the complete editable presentation and the verified PDF.
+
+Begin by inspecting the assignment instructions and the existing B2 repository, then complete the entire slide-deck creation and verification workflow.

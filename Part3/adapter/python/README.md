@@ -1,0 +1,13 @@
+# Adapter Pattern - Python Implementation
+
+## Environment
+- Runtime/Compiler: Python 3.14
+
+## How to Compile and Run
+Run the following from this directory:
+```bash
+python tests/test_adapter.py
+```
+
+## Pattern Details
+Provides an equivalent implementation of the adapter pattern. The source logic matches the defined contract and edge cases (time offsets, error mapping).
