@@ -1,0 +1,112 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=22mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,tabularx,booktabs,hyperref,xcolor}
+\setlength{\parindent}{0pt}\setlength{\parskip}{6pt}
+\newcommand{\entry}[2]{\textbf{#1:} \textcolor{gray}{\textit{[#2]}}\par}
+\newcommand{\help}[1]{\textbf{Add:} #1\par}
+\begin{document}
+\begin{center}\Large\textbf{23CSE455 Design Patterns}\\[4pt]\LARGE Case Study Report\end{center}
+\textcolor{blue}{Important note : remove the Grey part (placeholder) and replace your content.}\\
+
+\entry{Team}{Exact team name, such as A1 or B1}
+\entry{Case study}{Assigned domain, framework and title}
+\entry{Application}{Selected real application and faculty approval}
+\entry{Date}{YYYY-MM-DD}
+\textbf{Submission repository:} \href{https://github.com/aswathymohan-amrita/23CSE455_DP_CaseStudy}{23CSE455\_DP\_CaseStudy}\par
+\textbf{Students}\par
+\begin{tabularx}{\linewidth}{@{}llX@{}}\toprule
+Roll number & Student name & Batch\\\midrule
+\textit{Roll number} & \textit{Name} & \textit{CSE A / EAC / AIDS /AIE}\\
+\textit{Roll number} & \textit{Name} & \textit{Batch}\\\bottomrule
+\end{tabularx}
+\help{Add one row for each student.}
+
+\section{Application and architecture}
+\entry{Original source}{Repository URL, version/tag, exact baseline commit, access date, license}
+\entry{Environment}{Language, framework, database and dependency versions}
+\entry{Scope}{Files/modules inspected and excluded; reasons for exclusions}
+\entry{Architecture}{Insert one diagram; explain components and a request/event flow}
+\entry{Run instructions}{README path, setup/run/test commands and actual result}
+\section{Part 1 Pattern discovery}
+\entry{Method}{How candidates were found and source evidence checked}
+\subsection{Totals at the baseline}
+\entry{Confirmed pattern types}{Distinct names, such as Strategy and Observer; total number}
+\entry{Confirmed pattern instances}{Independent collaborations; total number}
+\entry{Concrete participant classes}{Classes implementing the variable roles; total number}
+\entry{Unique participant symbols}{Distinct mapped classes/interfaces/functions; shared symbols counted once}
+\entry{Rejected and uncertain candidates}{Separate counts and reasons; record observation scope}
+
+
+\subsection{Pattern inventory}
+\begin{tabularx}{\linewidth}{@{}lXll@{}}\toprule
+Pattern type & Instance names & Instances & Concrete classes\\\midrule
+Strategy & Overdue Fine Calculation (example) & 1 & 2\\
+Observer & Book Return Notification (example) & 1 & 1\\\bottomrule
+\end{tabularx}
+\help{Replace the example rows with your findings. Record every identified candidate within the approved scope; no minimum pattern quota.}
+\subsection{One record for each pattern instance}
+\entry{Instance name}{Meaningful collaboration name, not just Strategy or a class name}
+\entry{Pattern type and category}{Exact recognized name; GoF / GRASP / architecture / concurrency / framework idiom}
+\entry{Purpose and origin}{Problem solved; application / framework / dependency / student-added}
+
+\textbf{Participant mapping}\par
+\begin{tabularx}{\linewidth}{@{}lXX@{}}\toprule
+Pattern role & Actual class, interface and function & File and line range\\\midrule
+Strategy & FinePolicy (example) & path:lines\\
+ConcreteStrategy & RegularFine (example) & path:lines\\
+ConcreteStrategy & StudentFine (example) & path:lines\\
+Context & Library.returnBook (example) & path:lines\\\bottomrule
+\end{tabularx}
+\textbf{Observer example:} Subject = not separately declared; ConcreteSubject = Library (also performs subject role); Observer = ReturnListener; ConcreteObserver = NotificationLog. Where code declares separate Subject/ConcreteSubject classes, name each actual class and corresponding method.\par
+\help{Use actual qualified symbol names. A role may be a function or module; do not invent classes for non-class-based implementations. Include all participants, even across multiple files.}
+\entry{Evidence}{Intent, relationships, calls/delegation and behavior; concise code excerpts}
+\entry{Diagram}{Editable UML/component diagram and rendered image paths}
+\entry{Verification}{Confirmed / rejected / uncertain; reviewer, justification, tests and alternatives}
+
+\help{Repeat the record for each confirmed instance. Record rejected/uncertain candidates with a reason. A class name, annotation or LLM assertion alone is insufficient.}
+\section{Part 2 Evolution and refactoring}
+\help{Implement three realistic changes from your assigned case study. Repeat this record for CH01, CH02 and CH03.}
+\entry{Change and acceptance criteria}{Requirement and observable expected results}
+\entry{Before and after}{Exact commits and changed source paths}
+\entry{Implementation and tests}{What changed; run command; actual test result and log path}
+\entry{Pattern effects}{Instance name; preserved / modified / extended / replaced / removed / newly introduced; reason}
+\entry{Refactoring}{Real code smell, technique, diff and behavior-preservation evidence}
+\entry{Before/after metrics}{Same measurement scope and tool; source LOC and actual test results; missing measures explained}
+\subsection{Updated pattern counts}
+\help{For each snapshot record distinct pattern types, instances, concrete participant classes and rejected/uncertain observations. Keep the instance name when its collaboration continues. For replacement/new collaboration, name it and explain its relationship to the previous one.}
+\entry{Interpretation}{Benefits, trade-offs and remaining limitations; more or fewer LOC alone does not prove better design}
+\section{Part 3 Cross-language comparison}
+\help{For each confirmed pattern type, choose one representative verified instance. Implement its small problem/snippet in Java, Python, JavaScript and C++; preserve the same pattern and behavior.}
+\entry{Selected instances}{Source instance names and pattern types; selection reasons}
+\entry{Common specifications}{Inputs, outputs, rules, error cases and shared fixtures}
+\entry{Implementations}{Paths, versions and run commands for all four languages}
+\entry{Actual results}{Passed/total cases and logs per implementation; mark not run honestly}
+\entry{Static and dynamic comparison}{Source LOC, maximum function cyclomatic complexity, runtime/compiler, test command/result, median process time and language notes; record in cross\_language.csv}
+\entry{Comparison}{Participant structures, abstraction, inheritance/composition and language features}
+\entry{Technology discussion}{Short sourced discussion relevant to the course}
+
+\section{LLM records and human verification}
+\help{Use free/publicly accessible tools. Save exact prompts, supplied inputs, outputs and verification notes for major analyses in each part. Do not submit invented LLM records as actual experiments.}
+\entry{Run and model}{Displayed model, access tier, date and part}
+\entry{Inputs and outputs}{Paths; source commit and supplied code/context}
+\entry{Claims and evaluation}{Correct / partially correct / incorrect / cannot confirm; evidence, reviewer and correction}
+\entry{Generated code}{What was used and how it was tested}
+\section{Findings, contributions and references}
+\entry{Findings}{Evidence-supported conclusions and limitations}
+\entry{Contributions}{Roll number, name, batch and actual contribution; link to source/evidence}
+\entry{References}{Application, pattern definitions, framework documents and tools}
+\section{Team folder and datasets (take a screenshots from the GitHub repository— your team)}
+\begin{verbatim}
+A1/
+  README.md
+  A1_Report.tex
+  A1_Final_Report.pdf
+  data/   patterns.csv, pattern_counts.csv,
+          cross_language.csv, llm.csv
+  Part1/  report PDF, code/, evidence/, llm/
+  Part2/  report PDF, code/, evidence/, llm/
+  Part3/  report PDF, code/, test-cases/, evidence/, llm/
+\end{verbatim}
+
+\end{document}
